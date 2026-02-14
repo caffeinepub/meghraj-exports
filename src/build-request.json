@@ -1,0 +1,188 @@
+{
+  "kind": "build_request",
+  "title": "Replace Dark Leather theme with logo-aligned Navy + Gold luxury branding (header, typography, cards, buttons, texture, logo)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-21",
+      "text": "Replace the current site-wide “Dark Leather Premium” design tokens with the new logo-aligned Navy + Gold luxury palette across the entire frontend, using the exact colors: Background #0F1B2D, Secondary Dark #141F33, Gold Accent #C8A24D, Soft Cream Text #F4EFE6, Muted Gold Divider #B9933C. Update global CSS variables and Tailwind theme usage so existing components (header, footer, pages, cards, forms) automatically inherit the new palette without introducing bright blue UI.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "The user has uploaded 1 image(s): image.png.",
+          "Apply the exact color palette you listed (#0F1B2D, #141F33, #C8A24D, #F4EFE6, #B9933C) as the new global theme",
+          "yes proceed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Global background renders as dark navy (not brown/maroon) and primary accent renders as gold across all pages (Home, Products, Category, Catalogue, About, Contact).",
+        "Text is soft-cream on dark backgrounds with sufficient contrast; muted text is visibly subdued but readable.",
+        "Borders/dividers use muted gold tones rather than heavy/bright outlines.",
+        "No UI elements default to bright blue (links, focus states, buttons) unless explicitly part of the navy/gold system."
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "text": "Upgrade the header into a more premium, luxury-style navigation: make the header visually lighter and more refined by using a transparent/overlay treatment on the Home hero (with subtle blur), increased spacing, thinner nav typography, and replace the current active-state “filled pill” with a gold underline (or similarly subtle gold indicator). Keep mobile navigation functional and consistent with the new premium styling.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "Transparent header over hero",
+          "Add subtle blur effect",
+          "Make navigation thinner",
+          "Highlight “Products” with gold underline instead of filled box"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On the Home page, the header overlays the hero image with a subtle blur and does not appear as a flat opaque bar.",
+        "Active nav item is indicated via a subtle gold underline/marker (not a solid filled background) on both desktop and mobile menus.",
+        "Mobile menu open/close remains accessible (aria-label preserved) and readable on dark navy background.",
+        "Logo area and navigation have noticeably more breathing room than current header height/spacing."
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "text": "Integrate the provided logo into the top-left of the header in place of (or alongside) the plain text site name, sized appropriately for a premium look (not oversized), with adequate padding/clear space. Ensure the logo remains sharp on retina displays and visually harmonizes with the new navy+gold palette.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "My logo is",
+          "Add your logo in top left",
+          "Reduce size slightly",
+          "Add spacing around it",
+          "Keep header clean"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Header shows the MeghRaj Exports logo at top-left on desktop and mobile.",
+        "Logo is not cramped: padding/clear space is present around it, and it does not collide with nav/menu button.",
+        "Logo remains readable on dark background and does not appear as a white rectangle pasted on the page (transparent/clean edge handling)."
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "text": "Refine buttons site-wide to feel more premium: primary buttons should use gold background with navy text; secondary/outline buttons should use gold borders with cream text; hover should invert (gold ↔ navy) with smooth transitions and subtle elevation. Apply this consistently to key CTAs including “View Products”, “Request Catalogue”, “Send Inquiry”, and “Contact Us”.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "Make it: Gold background, Dark navy text",
+          "On hover → invert colors",
+          "Luxury effect comes from interaction"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Primary CTA buttons render with gold fill and navy text by default.",
+        "Hover/focus states invert colors smoothly (no jarring animations) and maintain accessibility (visible focus ring aligned to the theme).",
+        "Buttons across Home, Category, Catalogue, Contact pages follow a consistent style system (shape, radius, typography, shadow)."
+      ]
+    },
+    {
+      "id": "REQ-25",
+      "text": "Reduce the “boxy template” feel on product/category cards and highlight blocks by removing heavy borders, using subtler shadows, and adding refined gold detailing (thin gold divider lines under section titles where appropriate). Add a restrained hover interaction (slight zoom + soft gold glow) to category cards and key cards while keeping motion subtle.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "Remove borders",
+          "Add subtle shadow",
+          "Add gold divider line under section title",
+          "Add hover effect: Slight zoom, Soft gold glow"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Cards (e.g., Home highlights, Products category cards) no longer rely on thick borders to define shape; they use shadow and background separation instead.",
+        "Hover interactions are subtle and consistent (no large scaling); visual emphasis is via soft gold glow/accent.",
+        "Section titles that represent major content blocks can show thin gold dividers/separators consistent with #B9933C/#C8A24D."
+      ]
+    },
+    {
+      "id": "REQ-26",
+      "text": "Improve typography hierarchy to feel more “luxury”: increase heading presence (size/weight/letter-spacing choices) while keeping body text lighter with increased line-height and spacing. Ensure typography is consistent across pages and components (header, hero, section titles, accordions, form labels).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "Typography Upgrade",
+          "Headings: Use a refined serif font",
+          "Make headings larger.",
+          "Body text: Slightly lighter weight. More spacing between lines.",
+          "Spacing = premium."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Headings read as premium editorial serif (existing serif is acceptable) with stronger hierarchy than current (more differentiation between H1/H2/H3).",
+        "Body copy has improved readability via line-height and spacing; no cramped paragraphs.",
+        "Navigation typography appears thinner/more refined than current while remaining readable."
+      ]
+    },
+    {
+      "id": "REQ-27",
+      "text": "Add subtle luxury detailing and depth across the site: implement thin gold separators between major sections and optional small gold accent markers for bullet-like lists where they exist, without clutter. Add a very subtle leather-like texture overlay on the main dark backgrounds at ~5% opacity so the navy is not perfectly flat.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-messages"
+        ],
+        "quotes": [
+          "Add Subtle Gold Details",
+          "Thin gold line under “Our Products”",
+          "Gold separators between sections",
+          "Small gold accent dot before bullet points",
+          "Background Texture Trick (Very Powerful)",
+          "Use a very subtle leather texture overlay at 5% opacity"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Major page sections can be visually separated with thin gold lines/gradients consistent with the theme (not heavy rules).",
+        "Backgrounds show subtle texture depth (barely visible) and do not reduce text readability.",
+        "Texture overlay is subtle and not distracting; it remains consistent across pages using the main background."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui (compose only).",
+    "Keep the app as a B2B inquiry/catalogue site: do not add pricing, cart, checkout, or e-commerce flows.",
+    "Do not serve images through the backend; use static assets under frontend/public/assets/generated."
+  ],
+  "nonGoals": [
+    "Backend changes to inquiry storage/validation.",
+    "Changing the product taxonomy hierarchy or category content structure.",
+    "Adding third-party auth beyond Internet Identity or adding external integrations."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Seamless subtle leather texture tile, dark navy-toned (leather-texture-tile.dim_1024x1024.png)"
+    ],
+    "edits": [
+      "Remove background to make a clean transparent logo (image.png > meghraj-logo-transparent.dim_800x800.png)",
+      "Create a gold-only logo variant suitable for dark navy backgrounds (image.png > meghraj-logo-gold.dim_800x800.png)",
+      "Create a simplified square mark for small usage (image.png > meghraj-mark-square.dim_512x512.png)"
+    ]
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

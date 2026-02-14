@@ -1,0 +1,81 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-13T20:27:16.595Z",
+  "summary": "The diff implements much of the navy+gold luxury rebrand (new CSS variable palette via OKLCH, premium typography, leather texture overlay, updated header with gold logo and desktop underline active state, updated cards/accordions with softer shadows and gold accents). However, some explicit requirements are either not evidenced (required generated image assets) or appear partially unmet (mobile active-state still uses a filled background; button hover inversion not shown). There are also unrequested changes/features (taxonomy structure changes, extra footer attribution/tracking, SubcategoryCard component).",
+  "missing_requirements": [
+    {
+      "id": "REQ-21",
+      "requirement": "Use the exact specified hex colors for the navy+gold palette (#0F1B2D, #141F33, #C8A24D, #F4EFE6, #B9933C) across the entire frontend.",
+      "reason": "The diff updates CSS variables using OKLCH channel values, but does not provide evidence that these values map exactly to the required hex colors (requirement calls for exact colors).",
+      "evidence": [
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "requirement": "Active nav item is indicated via a subtle gold underline/marker (not a solid filled background) on both desktop and mobile menus.",
+      "reason": "Desktop shows an underline span, but the mobile active state is shown using a filled background (`bg-primary/5`) which conflicts with the acceptance criteria; the truncated mobile underline implementation cannot be confirmed.",
+      "evidence": [
+        "frontend/src/components/SiteHeader.tsx"
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "requirement": "Buttons site-wide: primary gold fill with navy text; secondary/outline gold borders with cream text; hover should invert (gold ↔ navy) with smooth transitions and subtle elevation.",
+      "reason": "`btn-primary` hover state is `hover:bg-primary/90` plus slight scale and shadow, but no evidence of color inversion to navy-on-hover (or vice versa). `btn-secondary` definition is truncated, so the required inversion behavior cannot be verified.",
+      "evidence": [
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "requirement": "Provide required static image assets under frontend/public/assets/generated: leather texture tile (leather-texture-tile.dim_1024x1024.png), transparent logo (meghraj-logo-transparent.dim_800x800.png), gold-only logo (meghraj-logo-gold.dim_800x800.png), and square mark (meghraj-mark-square.dim_512x512.png).",
+      "reason": "No new files were added in the diff, yet the code references `/assets/generated/leather-texture-tile.dim_1024x1024.png` and `/assets/generated/meghraj-logo-gold.dim_800x800.png`; there is no evidence the required images were created/placed under the specified static assets directory.",
+      "evidence": [
+        "frontend/src/index.css",
+        "frontend/src/components/SiteHeader.tsx",
+        "file-diff: ADDED FILES = none"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Footer includes 'caffeine.ai attribution with UTM tracking'.",
+      "reason": "BuildRequest does not request adding attribution or tracking; this appears to be an extra/unrequested change.",
+      "evidence": [
+        "frontend-file-summaries.txt (SiteFooter summary)"
+      ]
+    },
+    {
+      "description": "Changes to product taxonomy structure/content (e.g., removing subcategory image fields; category-level banner images only).",
+      "reason": "BuildRequest explicitly lists changing product taxonomy hierarchy or category content structure as a non-goal, yet the diff summary claims taxonomy restructuring.",
+      "evidence": [
+        "frontend-file-summaries.txt (frontend/src/data/productTaxonomy.ts summary)"
+      ]
+    },
+    {
+      "description": "Added/modified a reusable SubcategoryCard component with image fallback placeholder behavior.",
+      "reason": "Not requested by any of REQ-21..REQ-27 (which focus on branding/theme/header/typography/cards/buttons/texture).",
+      "evidence": [
+        "frontend-file-summaries.txt (frontend/src/components/SubcategoryCard.tsx summary)"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/CategoryHierarchy.tsx",
+    "frontend/src/components/SiteHeader.tsx",
+    "frontend/src/components/SiteLayout.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/AboutPage.tsx",
+    "frontend/src/pages/CataloguePage.tsx",
+    "frontend/src/pages/CategoryPage.tsx",
+    "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ProductsPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

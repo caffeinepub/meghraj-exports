@@ -1,0 +1,231 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Navy + Gold luxury rebrand with premium header, logo integration, refined typography, buttons, cards, and subtle texture",
+  "requirements": [
+    {
+      "id": "REQ-21",
+      "summary": "Replace global Dark Leather design tokens with the exact Navy + Gold palette via CSS variables and Tailwind theme so the entire frontend inherits the new colors without bright-blue defaults.",
+      "acceptanceCriteria": [
+        "Global background renders as dark navy (not brown/maroon) and primary accent renders as gold across all pages (Home, Products, Category, Catalogue, About, Contact).",
+        "Text is soft-cream on dark backgrounds with sufficient contrast; muted text is visibly subdued but readable.",
+        "Borders/dividers use muted gold tones rather than heavy/bright outlines.",
+        "No UI elements default to bright blue (links, focus states, buttons) unless explicitly part of the navy/gold system."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update global CSS variables to map background/card/secondary/primary/muted/border/ring to the exact new palette (Background #0F1B2D, Secondary Dark #141F33, Gold Accent #C8A24D, Soft Cream Text #F4EFE6, Muted Gold Divider #B9933C). Update focus/interactive styles to avoid browser default bright blue (e.g., ring/link focus) while keeping accessible contrast."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Align Tailwind theme usage with the updated CSS variables so existing utility classes (bg-background, text-foreground, border-border, text-muted-foreground, bg-card, text-primary, ring-primary, etc.) reflect the navy+gold system; adjust/remove legacy 'leather/gold/beige' extension colors where they conflict with the new palette to prevent drift and accidental bright-blue styling."
+        },
+        {
+          "path": "frontend/index.css",
+          "operation": "modify",
+          "description": "If this stylesheet is used anywhere in the build, update its base theme tokens to match the same navy+gold palette and focus states as frontend/src/index.css so no pages fall back to a mismatched color system."
+        }
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "summary": "Upgrade the header to a premium luxury navigation with transparent/overlay treatment on the Home hero, subtle blur, refined spacing/typography, and gold underline active state while keeping mobile nav accessible.",
+      "acceptanceCriteria": [
+        "On the Home page, the header overlays the hero image with a subtle blur and does not appear as a flat opaque bar.",
+        "Active nav item is indicated via a subtle gold underline/marker (not a solid filled background) on both desktop and mobile menus.",
+        "Mobile menu open/close remains accessible (aria-label preserved) and readable on dark navy background.",
+        "Logo area and navigation have noticeably more breathing room than current header height/spacing."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Refactor header styling to support a Home-only transparent/overlay variant (with backdrop blur) and a standard solid variant for other pages; increase vertical padding/spacing, use thinner/refined nav typography, and replace the active-state filled pill with a gold underline/marker for both desktop and mobile menus while preserving the existing mobile toggle aria-label."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Adjust the Home hero section spacing (e.g., top padding / stacking context) so the upgraded transparent header overlays the hero cleanly without layout jump or content collision."
+        }
+      ]
+    },
+    {
+      "id": "REQ-23",
+      "summary": "Integrate the provided MeghRaj Exports logo into the header top-left with premium sizing, padding, and retina-sharp rendering using generated static assets.",
+      "acceptanceCriteria": [
+        "Header shows the MeghRaj Exports logo at top-left on desktop and mobile.",
+        "Logo is not cramped: padding/clear space is present around it, and it does not collide with nav/menu button.",
+        "Logo remains readable on dark background and does not appear as a white rectangle pasted on the page (transparent/clean edge handling)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/meghraj-logo-transparent.dim_800x800.png",
+          "operation": "create",
+          "description": "Add the generated transparent-background logo asset as a static file (do not serve via backend) for use in the header on lighter areas if needed."
+        },
+        {
+          "path": "frontend/public/assets/generated/meghraj-logo-gold.dim_800x800.png",
+          "operation": "create",
+          "description": "Add the generated gold-only logo variant (static asset) optimized for dark navy backgrounds for primary header usage."
+        },
+        {
+          "path": "frontend/public/assets/generated/meghraj-mark-square.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated simplified square mark (static asset) for small/compact usage (e.g., mobile or tight header states)."
+        },
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Replace/augment the text-only site name with an <img> using the generated logo assets, ensuring correct sizing, adequate padding/clear space, and crisp rendering on high-DPI displays; keep navigation alignment balanced across breakpoints."
+        }
+      ]
+    },
+    {
+      "id": "REQ-24",
+      "summary": "Refine site-wide button styling into a consistent premium system (gold primary, gold outline secondary, invert on hover/focus, subtle elevation) across key CTAs.",
+      "acceptanceCriteria": [
+        "Primary CTA buttons render with gold fill and navy text by default.",
+        "Hover/focus states invert colors smoothly (no jarring animations) and maintain accessibility (visible focus ring aligned to the theme).",
+        "Buttons across Home, Category, Catalogue, Contact pages follow a consistent style system (shape, radius, typography, shadow)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define reusable button style utilities/components via Tailwind layers (e.g., shared classes for primary and secondary buttons) using the new theme tokens; ensure hover/focus-visible includes theme-aligned ring and smooth transitions without bright-blue defaults."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Update the 'View Products', 'Request Catalogue', and 'Contact Us' buttons to use the shared premium button style utilities for consistent gold/navy invert behavior and subtle elevation."
+        },
+        {
+          "path": "frontend/src/pages/CategoryPage.tsx",
+          "operation": "modify",
+          "description": "Update 'Send Inquiry' and 'Back to Products' actions to match the shared premium button style system (primary and secondary as appropriate) with consistent hover/focus."
+        },
+        {
+          "path": "frontend/src/pages/CataloguePage.tsx",
+          "operation": "modify",
+          "description": "Update 'Request Catalogue' CTA to use the shared premium button styles and ensure focus/hover states invert within the navy+gold system."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Update 'Send Inquiry' and 'Submit Another Inquiry' buttons to use shared premium button styles including disabled styling aligned to the theme (no default blue focus)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-25",
+      "summary": "Reduce boxy feel on cards/blocks by removing heavy borders, using subtler shadows, refined gold detailing, and subtle hover interactions (slight zoom + soft gold glow).",
+      "acceptanceCriteria": [
+        "Cards (e.g., Home highlights, Products category cards) no longer rely on thick borders to define shape; they use shadow and background separation instead.",
+        "Hover interactions are subtle and consistent (no large scaling); visual emphasis is via soft gold glow/accent.",
+        "Section titles that represent major content blocks can show thin gold dividers/separators consistent with #B9933C/#C8A24D."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust/extend shadows and theme-friendly glow utilities (via boxShadow or custom colors tied to CSS variables) to enable subtle premium card elevation and gold-tinted hover glow without introducing harsh outlines."
+        },
+        {
+          "path": "frontend/src/pages/ProductsPage.tsx",
+          "operation": "modify",
+          "description": "Refine category cards to reduce border emphasis, apply subtler base shadow, and add restrained hover interaction (slight scale + soft gold glow) while keeping motion subtle and consistent."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Update highlight cards to remove boxy border feel, use refined shadows/background separation, and unify hover treatment to the new premium system."
+        },
+        {
+          "path": "frontend/src/pages/CategoryPage.tsx",
+          "operation": "modify",
+          "description": "Refine the 'Customization Note' block (and other key blocks) to avoid heavy borders; use muted-gold detailing and premium shadow separation."
+        },
+        {
+          "path": "frontend/src/components/CategoryHierarchy.tsx",
+          "operation": "modify",
+          "description": "Update accordion item styling to remove heavy borders, use softer shadows and subtle separators, and ensure hover states match the refined premium card language. Use the shadcn-ui Accordion component already in use to support the hierarchy UI; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-26",
+      "summary": "Improve typography hierarchy for a luxury feel: stronger serif headings, lighter/airier body text, refined nav typography, consistent across pages and components.",
+      "acceptanceCriteria": [
+        "Headings read as premium editorial serif (existing serif is acceptable) with stronger hierarchy than current (more differentiation between H1/H2/H3).",
+        "Body copy has improved readability via line-height and spacing; no cramped paragraphs.",
+        "Navigation typography appears thinner/more refined than current while remaining readable."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Tune global typography defaults: heading sizes/weights/letter-spacing for clearer H1/H2/H3 hierarchy, and body font weight/line-height/paragraph spacing for a more premium, airy reading experience; ensure form labels and small text remain readable on dark backgrounds."
+        },
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Refine navigation typography to be thinner/more premium (e.g., weight, tracking, casing if appropriate) while maintaining legibility and consistent spacing across breakpoints."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Ensure content typography (section headings and body paragraphs) aligns with the new global hierarchy and spacing expectations (no cramped blocks; consistent serif heading treatment)."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Align form label/input/validation typography with the refined hierarchy (lighter body, clear labels, consistent spacing) while preserving accessibility and readability."
+        }
+      ]
+    },
+    {
+      "id": "REQ-27",
+      "summary": "Add subtle luxury detailing: thin gold separators, small gold accent markers for lists, and a very subtle leather-like texture overlay (~5% opacity) on main dark backgrounds.",
+      "acceptanceCriteria": [
+        "Major page sections can be visually separated with thin gold lines/gradients consistent with the theme (not heavy rules).",
+        "Backgrounds show subtle texture depth (barely visible) and do not reduce text readability.",
+        "Texture overlay is subtle and not distracting; it remains consistent across pages using the main background."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/leather-texture-tile.dim_1024x1024.png",
+          "operation": "create",
+          "description": "Add the generated seamless subtle leather texture tile as a static asset (do not serve via backend) to be used for a low-opacity overlay on dark navy backgrounds."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Implement a consistent, barely-visible (~5% opacity) background texture overlay using frontend/public/assets/generated/leather-texture-tile.dim_1024x1024.png and add reusable utilities for thin muted-gold separators and gold list markers while ensuring readability is not reduced."
+        },
+        {
+          "path": "frontend/src/components/SiteLayout.tsx",
+          "operation": "modify",
+          "description": "Wire the global background texture/separator styling into the top-level layout so it applies consistently across pages that use the main background."
+        },
+        {
+          "path": "frontend/src/pages/ProductsPage.tsx",
+          "operation": "modify",
+          "description": "Add refined thin gold divider detailing under the main page title/section heading (where appropriate) using the new separator utilities, consistent with muted gold tones."
+        },
+        {
+          "path": "frontend/src/pages/CataloguePage.tsx",
+          "operation": "modify",
+          "description": "Update list bullets/markers to use small gold accent markers (muted gold) and ensure section separation uses thin gold rules rather than heavy borders."
+        },
+        {
+          "path": "frontend/src/components/CategoryHierarchy.tsx",
+          "operation": "modify",
+          "description": "Update product type list markers to use small gold accent markers consistent with the theme and ensure separators/dividers are thin and muted (not heavy rules). Use the shadcn-ui Accordion component already in use to support the hierarchy UI; verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

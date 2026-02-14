@@ -1,0 +1,50 @@
+import { useNavigate } from '@tanstack/react-router';
+import { productCategories } from '../data/productTaxonomy';
+
+export default function ProductsPage() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="py-20 md:py-28">
+      <div className="container mx-auto px-4 lg:px-6">
+        <div className="mb-16 text-center">
+          <h1 className="mb-6 font-serif font-bold text-foreground">
+            Our Products
+          </h1>
+          <div className="mx-auto mb-6 w-24 gold-divider" />
+          <p className="mx-auto max-w-2xl text-lg md:text-xl leading-relaxed text-muted-foreground">
+            Explore our comprehensive range of equestrian and saddlery products. Each category
+            offers extensive customization options to meet your specific requirements.
+          </p>
+        </div>
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {productCategories.map((category) => (
+            <button
+              key={category.slug}
+              onClick={() => navigate({ to: '/products/$categorySlug', params: { categorySlug: category.slug } })}
+              className="group relative overflow-hidden rounded-lg bg-card shadow-soft transition-all duration-300 hover:shadow-gold-glow hover:scale-[1.02]"
+            >
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent opacity-90" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {category.name}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {category.subcategories.length} subcategories
+                </p>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
