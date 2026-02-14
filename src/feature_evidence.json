@@ -2,11 +2,12 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-replace-the-current-site-wide-dark-leather-premium-design-tokens-with-the-new-logo-aligned-navy-gold-luxury-palette-across-the-entire-frontend-using-the-exact-colors-background-0f1b2d-secondary-dark-141f33-gold-accent-c8a24d-soft-cream-text-f4efe6-muted-gold-divider-b9933c-update-global-css-variables-and-tailwind-theme-usage-so-existing-components-header-footer-pages-cards-forms-automatically-inherit-the-new-palette-without-introducing-bright-blue-ui",
-      "featureTitle": "Replace the current site-wide “Dark Leather Premium” design tokens with the new logo-aligned Navy + Gold luxury palette across the entire frontend, using the exact colors: Background #0F1B2D, Secondary Dark #141F33, Gold Accent #C8A24D, Soft Cream Text #F4EFE6, Muted Gold Divider #B9933C. Update global CSS variables and Tailwind theme usage so existing components (header, footer, pages, cards, forms) automatically inherit the new palette without introducing bright blue UI.",
+      "featureId": "feature-on-subcategory-pages-route-pattern-products-categoryslug-subcategoryslug-change-the-product-card-interaction-so-clicking-any-product-card-opens-a-centered-modal-quick-view-instead-of-navigating-to-a-new-page-while-keeping-the-existing-routing-structure-intact",
+      "featureTitle": "On subcategory pages (route pattern `/products/$categorySlug/$subcategorySlug`), change the product card interaction so clicking any product card opens a centered modal (quick-view) instead of navigating to a new page, while keeping the existing routing structure intact.",
       "files": [
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/src/components/ProductQuickViewModal.tsx",
+        "frontend/src/components/SubcategoryCard.tsx",
+        "frontend/src/pages/SubcategoryPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,16 +17,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-21"
+        "REQ-1"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-upgrade-the-header-into-a-more-premium-luxury-style-navigation-make-the-header-visually-lighter-and-more-refined-by-using-a-transparent-overlay-treatment-on-the-home-hero-with-subtle-blur-increased-spacing-thinner-nav-typography-and-replace-the-current-active-state-filled-pill-with-a-gold-underline-or-similarly-subtle-gold-indicator-keep-mobile-navigation-functional-and-consistent-with-the-new-premium-styling",
-      "featureTitle": "Upgrade the header into a more premium, luxury-style navigation: make the header visually lighter and more refined by using a transparent/overlay treatment on the Home hero (with subtle blur), increased spacing, thinner nav typography, and replace the current active-state “filled pill” with a gold underline (or similarly subtle gold indicator). Keep mobile navigation functional and consistent with the new premium styling.",
+      "featureId": "feature-implement-the-modal-backdrop-and-open-close-behavior-apply-a-semi-transparent-dark-overlay-with-backdrop-filter-blur-6px-disable-background-scroll-while-open-and-support-closing-via-1-a-close-button-in-the-top-right-2-clicking-outside-the-modal-and-3-pressing-the-esc-key",
+      "featureTitle": "Implement the modal backdrop and open/close behavior: apply a semi-transparent dark overlay with `backdrop-filter: blur(6px)`, disable background scroll while open, and support closing via (1) a close button in the top-right, (2) clicking outside the modal, and (3) pressing the ESC key.",
       "files": [
-        "frontend/src/components/SiteHeader.tsx",
-        "frontend/src/pages/HomePage.tsx"
+        "frontend/src/components/ProductQuickViewModal.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -35,14 +36,72 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-22"
+        "REQ-2"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-integrate-the-provided-logo-into-the-top-left-of-the-header-in-place-of-or-alongside-the-plain-text-site-name-sized-appropriately-for-a-premium-look-not-oversized-with-adequate-padding-clear-space-ensure-the-logo-remains-sharp-on-retina-displays-and-visually-harmonizes-with-the-new-navy-gold-palette",
-      "featureTitle": "Integrate the provided logo into the top-left of the header in place of (or alongside) the plain text site name, sized appropriately for a premium look (not oversized), with adequate padding/clear space. Ensure the logo remains sharp on retina displays and visually harmonizes with the new navy+gold palette.",
+      "featureId": "feature-match-the-requested-premium-modal-layout-and-responsive-behavior-desktop-tablet-shows-a-two-column-layout-with-a-large-product-image-on-the-left-and-content-on-the-right-mobile-stacks-with-the-image-on-top-and-content-below-content-must-include-product-title-large-serif-a-3-5-line-description-a-bullet-feature-list-and-a-send-inquiry-button",
+      "featureTitle": "Match the requested premium modal layout and responsive behavior: desktop/tablet shows a two-column layout with a large product image on the left and content on the right; mobile stacks with the image on top and content below. Content must include: product title (large serif), a 3–5 line description, a bullet feature list, and a “Send Inquiry” button.",
       "files": [
+        "frontend/src/components/ProductQuickViewModal.tsx",
+        "frontend/src/pages/SubcategoryPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-the-exact-modal-styling-and-animation-modal-background-141f33-subtle-1px-gold-border-soft-glow-shadow-and-open-close-animation-using-a-subtle-fade-scale-duration-0-3s-ease-scale-0-95-1-and-opacity-0-1-on-open-reverse-on-close-the-send-inquiry-button-must-use-gold-c8a24d-with-dark-navy-text-and-hover-effects-slight-lift-slight-darkening",
+      "featureTitle": "Apply the exact modal styling and animation: modal background `#141F33`, subtle 1px gold border, soft glow shadow, and open/close animation using a subtle fade + scale (duration 0.3s ease; scale 0.95→1 and opacity 0→1 on open; reverse on close). The “Send Inquiry” button must use gold `#C8A24D` with dark navy text and hover effects (slight lift + slight darkening).",
+      "files": [
+        "frontend/src/components/ProductQuickViewModal.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-wire-the-modal-send-inquiry-button-to-navigate-to-the-existing-contact-page-route-contact-and-prefill-the-category-in-the-same-way-the-current-subcategory-page-cta-does-keeping-existing-inquiry-flow-intact",
+      "featureTitle": "Wire the modal “Send Inquiry” button to navigate to the existing contact page route (`/contact`) and prefill the category in the same way the current subcategory page CTA does (keeping existing inquiry flow intact).",
+      "files": [
+        "frontend/src/components/ProductQuickViewModal.tsx",
+        "frontend/src/pages/SubcategoryPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-replace-the-current-site-logo-in-both-header-and-footer-with-the-uploaded-image-file-screenshot-2026-02-15-at-3-36-48-am-removebg-preview-png-ensuring-high-resolution-usage-the-header-logo-renders-at-2-the-current-size-while-keeping-the-header-height-unchanged-aspect-ratio-is-preserved-no-stretching-the-logo-remains-vertically-centered-and-spacing-around-the-logo-is-maintained-update-the-footer-logo-to-match-the-new-asset-as-well",
+      "featureTitle": "Replace the current site logo in both header and footer with the uploaded image file `Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png`, ensuring: high-resolution usage, the header logo renders at ~2× the current size while keeping the header height unchanged, aspect ratio is preserved (no stretching), the logo remains vertically centered, and spacing around the logo is maintained. Update the footer logo to match the new asset as well.",
+      "files": [
+        "frontend/src/components/SiteFooter.tsx",
         "frontend/src/components/SiteHeader.tsx"
       ],
       "components": [
@@ -53,94 +112,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-23"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-refine-buttons-site-wide-to-feel-more-premium-primary-buttons-should-use-gold-background-with-navy-text-secondary-outline-buttons-should-use-gold-borders-with-cream-text-hover-should-invert-gold-navy-with-smooth-transitions-and-subtle-elevation-apply-this-consistently-to-key-ctas-including-view-products-request-catalogue-send-inquiry-and-contact-us",
-      "featureTitle": "Refine buttons site-wide to feel more premium: primary buttons should use gold background with navy text; secondary/outline buttons should use gold borders with cream text; hover should invert (gold ↔ navy) with smooth transitions and subtle elevation. Apply this consistently to key CTAs including “View Products”, “Request Catalogue”, “Send Inquiry”, and “Contact Us”.",
-      "files": [
-        "frontend/src/index.css",
-        "frontend/src/pages/CataloguePage.tsx",
-        "frontend/src/pages/CategoryPage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/HomePage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-24"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-reduce-the-boxy-template-feel-on-product-category-cards-and-highlight-blocks-by-removing-heavy-borders-using-subtler-shadows-and-adding-refined-gold-detailing-thin-gold-divider-lines-under-section-titles-where-appropriate-add-a-restrained-hover-interaction-slight-zoom-soft-gold-glow-to-category-cards-and-key-cards-while-keeping-motion-subtle",
-      "featureTitle": "Reduce the “boxy template” feel on product/category cards and highlight blocks by removing heavy borders, using subtler shadows, and adding refined gold detailing (thin gold divider lines under section titles where appropriate). Add a restrained hover interaction (slight zoom + soft gold glow) to category cards and key cards while keeping motion subtle.",
-      "files": [
-        "frontend/src/components/CategoryHierarchy.tsx",
-        "frontend/src/pages/CategoryPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/ProductsPage.tsx",
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-25"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-improve-typography-hierarchy-to-feel-more-luxury-increase-heading-presence-size-weight-letter-spacing-choices-while-keeping-body-text-lighter-with-increased-line-height-and-spacing-ensure-typography-is-consistent-across-pages-and-components-header-hero-section-titles-accordions-form-labels",
-      "featureTitle": "Improve typography hierarchy to feel more “luxury”: increase heading presence (size/weight/letter-spacing choices) while keeping body text lighter with increased line-height and spacing. Ensure typography is consistent across pages and components (header, hero, section titles, accordions, form labels).",
-      "files": [
-        "frontend/src/components/SiteHeader.tsx",
-        "frontend/src/index.css",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/ContactPage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-26"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-subtle-luxury-detailing-and-depth-across-the-site-implement-thin-gold-separators-between-major-sections-and-optional-small-gold-accent-markers-for-bullet-like-lists-where-they-exist-without-clutter-add-a-very-subtle-leather-like-texture-overlay-on-the-main-dark-backgrounds-at-5-opacity-so-the-navy-is-not-perfectly-flat",
-      "featureTitle": "Add subtle luxury detailing and depth across the site: implement thin gold separators between major sections and optional small gold accent markers for bullet-like lists where they exist, without clutter. Add a very subtle leather-like texture overlay on the main dark backgrounds at ~5% opacity so the navy is not perfectly flat.",
-      "files": [
-        "frontend/src/components/CategoryHierarchy.tsx",
-        "frontend/src/components/SiteLayout.tsx",
-        "frontend/src/index.css",
-        "frontend/src/pages/CataloguePage.tsx",
-        "frontend/src/pages/ProductsPage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-27"
+        "REQ-6"
       ],
       "confidence": "high"
     }

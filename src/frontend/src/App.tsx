@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
 import CategoryPage from './pages/CategoryPage';
+import SubcategoryPage from './pages/SubcategoryPage';
 import CataloguePage from './pages/CataloguePage';
 import ContactPage from './pages/ContactPage';
 import SiteLayout from './components/SiteLayout';
@@ -35,6 +36,12 @@ const categoryRoute = createRoute({
   component: CategoryPage,
 });
 
+const subcategoryRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/products/$categorySlug/$subcategorySlug',
+  component: SubcategoryPage,
+});
+
 const catalogueRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/catalogue',
@@ -52,6 +59,7 @@ const routeTree = rootRoute.addChildren([
   aboutRoute,
   productsRoute,
   categoryRoute,
+  subcategoryRoute,
   catalogueRoute,
   contactRoute,
 ]);

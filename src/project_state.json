@@ -1,226 +1,58 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 9,
-  "summary": "Build a premium, logo-aligned Navy + Gold luxury B2B export catalogue website for MeghRaj Exports (equestrian & saddlery products) focused on product showcasing and buyer inquiry generation (no e-commerce, pricing, or checkout), using a text-based 3-level product hierarchy (Category → Subcategory → Product Types) with category-level banner images only.",
+  "projectStateVersion": 3,
+  "summary": "Implement premium product quick-view modal on product card click (subcategory pages) instead of navigation, with backdrop blur/overlay, animations, and responsive layout; update header and footer logos using provided high-res image without changing header height; preserve existing routing and content.",
   "architectural_notes": [
-    "Website is a B2B product catalogue; explicitly no pricing, cart, or checkout functionality.",
-    "Centralized taxonomy is text-only at subcategory/product-type levels: 3 levels (Category → Subcategory → Product Types). Only category-level images are retained.",
-    "Category pages: show one main banner image at top; render subcategories as an elegant text list or accordion (no subcategory image cards).",
-    "Typography: elegant serif for headings (Playfair Display/Cormorant style) + clean sans-serif for body (Inter/Lato style); premium feel via spacing, thin gold separators, soft shadows, subtle rounded corners, slow smooth hover transitions.",
-    "Design direction update: replace brown/maroon ‘Dark Leather Premium’ palette with logo-aligned Luxury Navy + Gold palette — Primary BG #0F1B2D, Secondary #141F33, Gold Accent #C8A24D, Soft Cream Text #F4EFE6, Muted Gold Divider #B9933C.",
-    "Luxury UI styling guidelines: reduce heavy borders/boxiness; use subtle shadows, refined hover effects (soft gold glow / slight zoom), improved spacing/typography hierarchy, and premium button styling (gold fill with navy text; hover invert).",
-    "Header direction: transparent-over-hero with subtle blur; thinner nav styling; active/featured nav indicated via gold underline rather than filled pill.",
-    "Optional: add a very subtle leather texture overlay (~5% opacity) to the navy background for depth (should be barely noticeable)."
+    "Modal implementation should prevent background scroll while open and restore scroll on close."
   ],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Seamless subtle leather texture tile, dark navy-toned (leather-texture-tile.dim_1024x1024.png)\n\n## Edit Images\n- Remove background to make a clean transparent logo (image.png > meghraj-logo-transparent.dim_800x800.png)\n- Create a gold-only logo variant suitable for dark navy backgrounds (image.png > meghraj-logo-gold.dim_800x800.png)\n- Create a simplified square mark for small usage (image.png > meghraj-mark-square.dim_512x512.png)",
   "existing_features": [
     {
-      "id": "feature-implement-the-main-site-information-architecture-with-a-top-navigation-menu-containing-home-about-us-products-catalogue-contact-navigation-must-be-consistent-across-desktop-and-mobile-and-clearly-indicate-the-active-page",
-      "title": "Implement the main site information architecture with a top navigation menu containing: Home, About Us, Products, Catalogue, Contact. Navigation must be consistent across desktop and mobile and clearly indicate the active page.",
+      "id": "feature-on-subcategory-pages-route-pattern-products-categoryslug-subcategoryslug-change-the-product-card-interaction-so-clicking-any-product-card-opens-a-centered-modal-quick-view-instead-of-navigating-to-a-new-page-while-keeping-the-existing-routing-structure-intact",
+      "title": "On subcategory pages (route pattern `/products/$categorySlug/$subcategorySlug`), change the product card interaction so clicking any product card opens a centered modal (quick-view) instead of navigating to a new page, while keeping the existing routing structure intact.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-apply-a-clean-professional-export-focused-visual-theme-across-the-entire-site-using-a-white-background-and-simple-accent-colors-dark-brown-black-navy-use-professional-typography-structured-spacing-and-avoid-heavy-animations-or-flashy-effects",
-      "title": "Apply a clean, professional, export-focused visual theme across the entire site using a white background and simple accent colors (dark brown/black/navy). Use professional typography, structured spacing, and avoid heavy animations or flashy effects.",
+      "id": "feature-implement-the-modal-backdrop-and-open-close-behavior-apply-a-semi-transparent-dark-overlay-with-backdrop-filter-blur-6px-disable-background-scroll-while-open-and-support-closing-via-1-a-close-button-in-the-top-right-2-clicking-outside-the-modal-and-3-pressing-the-esc-key",
+      "title": "Implement the modal backdrop and open/close behavior: apply a semi-transparent dark overlay with `backdrop-filter: blur(6px)`, disable background scroll while open, and support closing via (1) a close button in the top-right, (2) clicking outside the modal, and (3) pressing the ESC key.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-build-the-home-page-with-1-a-hero-section-featuring-a-high-quality-equestrian-product-image-saddle-or-bridle-2-company-name-meghraj-exports-3-tagline-global-equestrian-saddlery-product-suppliers-4-two-cta-buttons-view-products-navigates-to-products-and-request-catalogue-navigates-to-catalogue-5-a-short-introduction-describing-the-company-as-a-sourcing-and-export-partner-and-6-a-highlights-section-for-global-shipping-custom-manufacturing-and-bulk-orders",
-      "title": "Build the Home page with: (1) a hero section featuring a high-quality equestrian product image (saddle or bridle), (2) company name “MeghRaj Exports”, (3) tagline “Global Equestrian & Saddlery Product Suppliers”, (4) two CTA buttons “View Products” (navigates to Products) and “Request Catalogue” (navigates to Catalogue), (5) a short introduction describing the company as a sourcing and export partner, and (6) a highlights section for Global Shipping, Custom Manufacturing, and Bulk Orders.",
+      "id": "feature-match-the-requested-premium-modal-layout-and-responsive-behavior-desktop-tablet-shows-a-two-column-layout-with-a-large-product-image-on-the-left-and-content-on-the-right-mobile-stacks-with-the-image-on-top-and-content-below-content-must-include-product-title-large-serif-a-3-5-line-description-a-bullet-feature-list-and-a-send-inquiry-button",
+      "title": "Match the requested premium modal layout and responsive behavior: desktop/tablet shows a two-column layout with a large product image on the left and content on the right; mobile stacks with the image on top and content below. Content must include: product title (large serif), a 3–5 line description, a bullet feature list, and a “Send Inquiry” button.",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-create-an-about-us-page-with-professional-b2b-content-describing-meghraj-exports-as-an-international-trading-export-partner-for-equestrian-and-saddlery-products-emphasizing-quality-sourcing-customization-and-export-readiness-no-salesy-e-commerce-language",
-      "title": "Create an About Us page with professional B2B content describing MeghRaj Exports as an international trading/export partner for equestrian and saddlery products, emphasizing quality, sourcing, customization, and export readiness (no salesy e-commerce language).",
+      "id": "feature-apply-the-exact-modal-styling-and-animation-modal-background-141f33-subtle-1px-gold-border-soft-glow-shadow-and-open-close-animation-using-a-subtle-fade-scale-duration-0-3s-ease-scale-0-95-1-and-opacity-0-1-on-open-reverse-on-close-the-send-inquiry-button-must-use-gold-c8a24d-with-dark-navy-text-and-hover-effects-slight-lift-slight-darkening",
+      "title": "Apply the exact modal styling and animation: modal background `#141F33`, subtle 1px gold border, soft glow shadow, and open/close animation using a subtle fade + scale (duration 0.3s ease; scale 0.95→1 and opacity 0→1 on open; reverse on close). The “Send Inquiry” button must use gold `#C8A24D` with dark navy text and hover effects (slight lift + slight darkening).",
       "reqIds": [
         "REQ-4"
       ],
       "version": 1
     },
     {
-      "id": "feature-build-a-products-landing-page-that-lists-all-product-categories-as-a-structured-grid-list-each-category-card-must-include-the-category-name-and-link-to-its-category-page",
-      "title": "Build a Products landing page that lists all product categories as a structured grid/list. Each category card must include the category name and link to its category page.",
+      "id": "feature-wire-the-modal-send-inquiry-button-to-navigate-to-the-existing-contact-page-route-contact-and-prefill-the-category-in-the-same-way-the-current-subcategory-page-cta-does-keeping-existing-inquiry-flow-intact",
+      "title": "Wire the modal “Send Inquiry” button to navigate to the existing contact page route (`/contact`) and prefill the category in the same way the current subcategory page CTA does (keeping existing inquiry flow intact).",
       "reqIds": [
         "REQ-5"
       ],
       "version": 1
     },
     {
-      "id": "feature-create-a-dedicated-category-page-for-each-of-the-14-specified-categories-each-category-page-must-include-1-one-representative-image-2-subcategories-displayed-in-a-structured-list-or-grid-content-can-be-editable-placeholders-3-text-noting-customization-availability-4-text-noting-bulk-export-supply-and-5-a-send-inquiry-button-that-routes-to-the-contact-page-with-the-product-category-pre-selected",
-      "title": "Create a dedicated category page for each of the 14 specified categories. Each category page must include: (1) one representative image, (2) subcategories displayed in a structured list or grid (content can be editable placeholders), (3) text noting customization availability, (4) text noting bulk export supply, and (5) a “Send Inquiry” button that routes to the Contact page with the Product Category pre-selected.",
+      "id": "feature-replace-the-current-site-logo-in-both-header-and-footer-with-the-uploaded-image-file-screenshot-2026-02-15-at-3-36-48-am-removebg-preview-png-ensuring-high-resolution-usage-the-header-logo-renders-at-2-the-current-size-while-keeping-the-header-height-unchanged-aspect-ratio-is-preserved-no-stretching-the-logo-remains-vertically-centered-and-spacing-around-the-logo-is-maintained-update-the-footer-logo-to-match-the-new-asset-as-well",
+      "title": "Replace the current site logo in both header and footer with the uploaded image file `Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png`, ensuring: high-resolution usage, the header logo renders at ~2× the current size while keeping the header height unchanged, aspect ratio is preserved (no stretching), the logo remains vertically centered, and spacing around the logo is maintained. Update the footer logo to match the new asset as well.",
       "reqIds": [
         "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-the-catalogue-page-focused-on-inquiry-generation-not-sales-the-page-must-include-clear-copy-inviting-buyers-to-request-the-full-catalogue-and-a-prominent-request-catalogue-cta-that-routes-to-the-contact-inquiry-form-with-an-appropriate-pre-filled-product-category-value-such-as-catalogue-request",
-      "title": "Implement the Catalogue page focused on inquiry generation (not sales). The page must include clear copy inviting buyers to request the full catalogue and a prominent “Request Catalogue” CTA that routes to the Contact inquiry form (with an appropriate pre-filled Product Category value such as “Catalogue Request”).",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-build-the-contact-page-with-an-inquiry-form-containing-fields-name-company-name-country-email-whatsapp-product-category-message-include-company-email-placeholder-text-and-whatsapp-contact-placeholder-text-on-the-page-after-submission-show-a-clear-success-state-and-prevent-duplicate-submissions-while-the-request-is-in-progress",
-      "title": "Build the Contact page with an inquiry form containing fields: Name, Company Name, Country, Email, WhatsApp, Product Category, Message. Include company email placeholder text and WhatsApp contact placeholder text on the page. After submission, show a clear success state and prevent duplicate submissions while the request is in progress.",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-ensure-the-entire-site-is-responsive-and-optimized-for-desktop-and-mobile-with-readable-typography-accessible-form-controls-labels-focus-states-and-no-pricing-cart-checkout-elements-anywhere-in-the-ui",
-      "title": "Ensure the entire site is responsive and optimized for desktop and mobile, with readable typography, accessible form controls (labels, focus states), and no pricing/cart/checkout elements anywhere in the UI.",
-      "reqIds": [
-        "REQ-10"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-centralized-data-driven-product-taxonomy-definition-categories-subcategories-used-to-render-both-the-products-landing-page-and-each-category-page-so-the-catalogue-structure-can-be-updated-without-changing-multiple-components",
-      "title": "Create a centralized, data-driven product taxonomy definition (categories + subcategories) used to render both the Products landing page and each category page, so the catalogue structure can be updated without changing multiple components.",
-      "reqIds": [
-        "REQ-11"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-required-generated-images-as-static-assets-under-frontend-public-assets-generated-and-use-them-in-the-home-hero-and-each-category-page-representative-image-do-not-serve-images-through-the-backend",
-      "title": "Add the required generated images as static assets under frontend/public/assets/generated and use them in the Home hero and each category page representative image (do not serve images through the backend).",
-      "reqIds": [
-        "REQ-12"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-centralized-product-taxonomy-data-model-so-each-subcategory-has-its-own-image-path-stored-as-a-static-asset-rather-than-being-represented-as-a-plain-string",
-      "title": "Update the centralized product taxonomy data model so each subcategory has its own image path (stored as a static asset) rather than being represented as a plain string.",
-      "reqIds": [
-        "REQ-13"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-render-subcategories-on-each-category-page-as-a-responsive-grid-of-large-cards-where-each-card-shows-the-subcategory-image-and-subcategory-name-similar-to-how-category-cards-are-presented-on-the-products-page",
-      "title": "Render subcategories on each category page as a responsive grid of large cards, where each card shows the subcategory image and subcategory name (similar to how category cards are presented on the Products page).",
-      "reqIds": [
-        "REQ-14"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-unique-static-image-assets-for-every-subcategory-listed-by-the-user-under-frontend-public-assets-generated-and-reference-those-filenames-from-the-product-taxonomy-so-the-new-subcategory-cards-display-real-images",
-      "title": "Add unique static image assets for every subcategory listed by the user under `frontend/public/assets/generated` and reference those filenames from the product taxonomy so the new subcategory cards display real images.",
-      "reqIds": [
-        "REQ-15"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-replace-the-centralized-product-taxonomy-with-the-user-provided-3-level-hierarchy-main-category-subcategory-product-types-across-all-14-categories-and-remove-all-subcategory-level-image-fields-so-the-taxonomy-is-text-only-below-the-main-category-level-category-level-banner-image-remains",
-      "title": "Replace the centralized product taxonomy with the user-provided 3-level hierarchy (Main Category → Subcategory → Product Types) across all 14 categories, and remove all subcategory-level image fields so the taxonomy is text-only below the main category level (category-level banner image remains).",
-      "reqIds": [
-        "REQ-16"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-category-page-to-remove-subcategory-image-cards-and-instead-render-the-text-based-hierarchy-in-a-clean-minimal-layout-a-single-main-banner-image-at-the-top-followed-by-subcategories-displayed-as-an-elegant-structured-text-list-or-accordion-that-reveals-product-types-under-each-subcategory",
-      "title": "Update the Category page to remove subcategory image cards and instead render the text-based hierarchy in a clean, minimal layout: a single main banner image at the top, followed by subcategories displayed as an elegant structured text list or accordion that reveals product types under each subcategory.",
-      "reqIds": [
-        "REQ-17"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-remove-subcategory-image-usage-across-the-frontend-by-deprecating-the-subcategorycard-component-and-adjusting-any-remaining-ui-copy-logic-that-assumes-subcategories-have-images-e-g-counts-or-labels-so-it-reflects-the-new-hierarchy-cleanly",
-      "title": "Remove subcategory image usage across the frontend by deprecating the `SubcategoryCard` component and adjusting any remaining UI copy/logic that assumes subcategories have images (e.g., counts or labels) so it reflects the new hierarchy cleanly.",
-      "reqIds": [
-        "REQ-18"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-apply-the-user-specified-dark-leather-premium-design-system-site-wide-including-the-exact-color-palette-premium-typography-pairing-serif-headings-clean-sans-body-subtle-rounded-corners-thin-gold-separators-soft-shadows-generous-spacing-and-slow-smooth-hover-transitions-avoid-bright-blue-buttons-and-avoid-pure-white-backgrounds",
-      "title": "Apply the user-specified “Dark Leather Premium” design system site-wide, including the exact color palette, premium typography pairing (serif headings + clean sans body), subtle rounded corners, thin gold separators, soft shadows, generous spacing, and slow/smooth hover transitions; avoid bright blue buttons and avoid pure white backgrounds.",
-      "reqIds": [
-        "REQ-19"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-home-page-styling-to-match-the-dark-leather-premium-layout-direction-dark-leather-hero-feel-with-a-prominent-saddle-image-and-gold-accent-primary-cta-a-slightly-lighter-brown-about-section-with-a-thin-gold-divider-and-premium-dark-cards-with-gold-hover-effects-for-the-product-category-section-styling-where-applicable-while-keeping-all-existing-home-page-content-and-navigation-intact",
-      "title": "Update the Home page styling to match the “Dark Leather Premium” layout direction: dark leather hero feel with a prominent saddle image and gold-accent primary CTA, a slightly lighter brown About section with a thin gold divider, and premium dark cards with gold hover effects for the product category section styling (where applicable) while keeping all existing Home page content and navigation intact.",
-      "reqIds": [
-        "REQ-20"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-replace-the-current-site-wide-dark-leather-premium-design-tokens-with-the-new-logo-aligned-navy-gold-luxury-palette-across-the-entire-frontend-using-the-exact-colors-background-0f1b2d-secondary-dark-141f33-gold-accent-c8a24d-soft-cream-text-f4efe6-muted-gold-divider-b9933c-update-global-css-variables-and-tailwind-theme-usage-so-existing-components-header-footer-pages-cards-forms-automatically-inherit-the-new-palette-without-introducing-bright-blue-ui",
-      "title": "Replace the current site-wide “Dark Leather Premium” design tokens with the new logo-aligned Navy + Gold luxury palette across the entire frontend, using the exact colors: Background #0F1B2D, Secondary Dark #141F33, Gold Accent #C8A24D, Soft Cream Text #F4EFE6, Muted Gold Divider #B9933C. Update global CSS variables and Tailwind theme usage so existing components (header, footer, pages, cards, forms) automatically inherit the new palette without introducing bright blue UI.",
-      "reqIds": [
-        "REQ-21"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-upgrade-the-header-into-a-more-premium-luxury-style-navigation-make-the-header-visually-lighter-and-more-refined-by-using-a-transparent-overlay-treatment-on-the-home-hero-with-subtle-blur-increased-spacing-thinner-nav-typography-and-replace-the-current-active-state-filled-pill-with-a-gold-underline-or-similarly-subtle-gold-indicator-keep-mobile-navigation-functional-and-consistent-with-the-new-premium-styling",
-      "title": "Upgrade the header into a more premium, luxury-style navigation: make the header visually lighter and more refined by using a transparent/overlay treatment on the Home hero (with subtle blur), increased spacing, thinner nav typography, and replace the current active-state “filled pill” with a gold underline (or similarly subtle gold indicator). Keep mobile navigation functional and consistent with the new premium styling.",
-      "reqIds": [
-        "REQ-22"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-integrate-the-provided-logo-into-the-top-left-of-the-header-in-place-of-or-alongside-the-plain-text-site-name-sized-appropriately-for-a-premium-look-not-oversized-with-adequate-padding-clear-space-ensure-the-logo-remains-sharp-on-retina-displays-and-visually-harmonizes-with-the-new-navy-gold-palette",
-      "title": "Integrate the provided logo into the top-left of the header in place of (or alongside) the plain text site name, sized appropriately for a premium look (not oversized), with adequate padding/clear space. Ensure the logo remains sharp on retina displays and visually harmonizes with the new navy+gold palette.",
-      "reqIds": [
-        "REQ-23"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-refine-buttons-site-wide-to-feel-more-premium-primary-buttons-should-use-gold-background-with-navy-text-secondary-outline-buttons-should-use-gold-borders-with-cream-text-hover-should-invert-gold-navy-with-smooth-transitions-and-subtle-elevation-apply-this-consistently-to-key-ctas-including-view-products-request-catalogue-send-inquiry-and-contact-us",
-      "title": "Refine buttons site-wide to feel more premium: primary buttons should use gold background with navy text; secondary/outline buttons should use gold borders with cream text; hover should invert (gold ↔ navy) with smooth transitions and subtle elevation. Apply this consistently to key CTAs including “View Products”, “Request Catalogue”, “Send Inquiry”, and “Contact Us”.",
-      "reqIds": [
-        "REQ-24"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-reduce-the-boxy-template-feel-on-product-category-cards-and-highlight-blocks-by-removing-heavy-borders-using-subtler-shadows-and-adding-refined-gold-detailing-thin-gold-divider-lines-under-section-titles-where-appropriate-add-a-restrained-hover-interaction-slight-zoom-soft-gold-glow-to-category-cards-and-key-cards-while-keeping-motion-subtle",
-      "title": "Reduce the “boxy template” feel on product/category cards and highlight blocks by removing heavy borders, using subtler shadows, and adding refined gold detailing (thin gold divider lines under section titles where appropriate). Add a restrained hover interaction (slight zoom + soft gold glow) to category cards and key cards while keeping motion subtle.",
-      "reqIds": [
-        "REQ-25"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-improve-typography-hierarchy-to-feel-more-luxury-increase-heading-presence-size-weight-letter-spacing-choices-while-keeping-body-text-lighter-with-increased-line-height-and-spacing-ensure-typography-is-consistent-across-pages-and-components-header-hero-section-titles-accordions-form-labels",
-      "title": "Improve typography hierarchy to feel more “luxury”: increase heading presence (size/weight/letter-spacing choices) while keeping body text lighter with increased line-height and spacing. Ensure typography is consistent across pages and components (header, hero, section titles, accordions, form labels).",
-      "reqIds": [
-        "REQ-26"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-subtle-luxury-detailing-and-depth-across-the-site-implement-thin-gold-separators-between-major-sections-and-optional-small-gold-accent-markers-for-bullet-like-lists-where-they-exist-without-clutter-add-a-very-subtle-leather-like-texture-overlay-on-the-main-dark-backgrounds-at-5-opacity-so-the-navy-is-not-perfectly-flat",
-      "title": "Add subtle luxury detailing and depth across the site: implement thin gold separators between major sections and optional small gold accent markers for bullet-like lists where they exist, without clutter. Add a very subtle leather-like texture overlay on the main dark backgrounds at ~5% opacity so the navy is not perfectly flat.",
-      "reqIds": [
-        "REQ-27"
       ],
       "version": 1
     }
@@ -228,63 +60,30 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Create main site structure and navigation (Home, About Us, Products, Catalogue, Contact) with clean export-focused design",
+      "summary": "Open centered premium modal on product card click (subcategory pages) instead of navigating; close via X, outside click, and ESC; smooth fade/scale animations; disable background scroll with blurred/darkened backdrop",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Homepage: hero section with equestrian product image, company name, tagline, CTA buttons (View Products / Request Catalogue), intro text, and highlights (Global Shipping, Custom Manufacturing, Bulk Orders)",
+      "summary": "Design/styling for modal: left image/right content (mobile stacks), dark navy background (#141F33), subtle gold border, soft glow shadow, gold CTA button (#C8A24D) with hover effects",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-3",
-      "summary": "Products: create category pages for specified equestrian/saddlery categories with representative image, structured subcategories list/grid, customization + bulk export mentions, and Send Inquiry button",
+      "summary": "Replace header and footer logos with provided high-resolution image; double header logo size while keeping header height unchanged; maintain aspect ratio, vertical centering, and spacing; no stretching",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-4",
-      "summary": "Contact page with inquiry form (Name, Company Name, Country, Email, WhatsApp, Product Category, Message) plus email/WhatsApp placeholders",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Ensure responsive design (desktop/mobile) with simple color scheme and professional typography; avoid heavy animations",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-14",
-      "summary": "Add backend support for storing inquiry submissions from the Contact form, including timestamp and all submitted fields. Expose a method the frontend can call to create an inquiry and receive a success/error response.",
-      "reqIds": [
-        "REQ-9"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-16",
-      "summary": "Replace entire centralized product taxonomy with the provided 3-level hierarchy (Main Category → Sub Category → Product Types) and remove all subcategory image paths (text-only hierarchy).",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-17",
-      "summary": "Update category pages to use one main banner image at top and display subcategories as a clean structured text list or accordion (remove subcategory image cards site-wide).",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-19",
-      "summary": "Replace the current dark-leather color direction with a site-wide Navy + Gold luxury branding system aligned to the logo (apply palette #0F1B2D/#141F33/#C8A24D/#F4EFE6/#B9933C; refine header, typography, buttons, cards, spacing, subtle gold details, and optional subtle leather texture overlay).",
+      "summary": "Preserve existing product cards, routing structure, and category hierarchy; only enhance interaction/branding per modal + logo updates",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "MeghRaj Exports",
+  "projectName": "Add premium product quick-view modal on subcategory product cards + update header/footer logo",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

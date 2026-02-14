@@ -12,6 +12,11 @@ export default function SiteFooter() {
         <div className="grid gap-8 md:grid-cols-3">
           {/* Company Info */}
           <div>
+            <img 
+              src="/assets/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png" 
+              alt="MeghRaj Exports" 
+              className="h-32 w-auto mb-6 object-contain"
+            />
             <h3 className="mb-4 text-lg font-serif font-semibold text-foreground">
               MeghRaj Exports
             </h3>

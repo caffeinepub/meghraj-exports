@@ -57,9 +57,9 @@ export default function CategoryPage() {
       </div>
 
       <div className="container mx-auto px-4 lg:px-6 py-16">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           {/* Navigation and CTA */}
-          <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <button
               onClick={() => navigate({ to: '/products' })}
               className="inline-flex items-center text-muted-foreground transition-colors hover:text-primary font-medium"
@@ -76,7 +76,7 @@ export default function CategoryPage() {
           </div>
 
           {/* Customization Note */}
-          <div className="mb-10 rounded-lg bg-card p-8 shadow-soft border-l-4 border-primary">
+          <div className="mb-12 rounded-lg bg-card p-8 shadow-soft border-l-2 border-primary">
             <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
               <span className="font-semibold text-foreground">Custom Manufacturing Available:</span>{' '}
               All products can be customized to your specifications. Contact us to discuss your
@@ -86,13 +86,13 @@ export default function CategoryPage() {
 
           {/* Category Hierarchy */}
           <div>
-            <div className="mb-8 flex items-center gap-4">
-              <h2 className="text-3xl font-serif font-semibold text-foreground">
+            <div className="mb-10 flex items-center gap-4">
+              <h2 className="text-3xl md:text-4xl font-serif font-semibold text-foreground">
                 Product Categories
               </h2>
               <div className="flex-1 gold-divider-muted" />
             </div>
-            <CategoryHierarchy subcategories={category.subcategories} />
+            <CategoryHierarchy subcategories={category.subcategories} categorySlug={categorySlug} />
           </div>
         </div>
       </div>

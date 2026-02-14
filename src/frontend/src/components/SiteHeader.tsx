@@ -38,15 +38,15 @@ export default function SiteHeader() {
     >
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
+          {/* Logo - Updated to new asset and doubled in size */}
           <button
             onClick={() => handleNavigation('/')}
             className="flex items-center gap-3 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
           >
             <img 
-              src="/assets/generated/meghraj-logo-gold.dim_800x800.png" 
+              src="/assets/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png" 
               alt="MeghRaj Exports" 
-              className="h-12 w-auto md:h-14"
+              className="h-24 w-auto md:h-28 object-contain"
             />
           </button>
 

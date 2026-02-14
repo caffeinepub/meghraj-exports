@@ -44,11 +44,11 @@ export default function HomePage() {
       </section>
 
       {/* Introduction Section */}
-      <section className="bg-card py-20 md:py-28">
+      <section className="bg-card py-24 md:py-32">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-4xl">
             <div className="mb-10 gold-divider" />
-            <h2 className="mb-8 text-center font-serif font-bold text-foreground">
+            <h2 className="mb-10 text-center font-serif font-bold text-foreground">
               Crafting Quality Since Inception
             </h2>
             <p className="text-center text-lg md:text-xl leading-relaxed text-muted-foreground">
@@ -64,7 +64,7 @@ export default function HomePage() {
       </section>
 
       {/* Highlights Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="grid gap-8 md:grid-cols-3">
             <div className="group rounded-lg bg-card p-8 shadow-soft transition-all duration-300 hover:shadow-gold-glow hover:scale-[1.02]">
@@ -110,7 +110,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-card py-20 md:py-28">
+      <section className="bg-card py-24 md:py-32">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="mb-8 font-serif font-bold text-foreground">

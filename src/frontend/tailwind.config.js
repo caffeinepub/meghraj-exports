@@ -63,8 +63,22 @@ export default {
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
                 soft: '0 4px 12px rgba(0,0,0,0.15)',
-                premium: '0 8px 24px rgba(0,0,0,0.25)',
-                'gold-glow': '0 0 20px rgba(200, 162, 77, 0.15)',
+                premium: '0 8px 24px rgba(0,0,0,0.2)',
+                'gold-glow': '0 8px 24px rgba(200, 162, 77, 0.25)',
+            },
+            keyframes: {
+                'accordion-down': {
+                    from: { height: '0' },
+                    to: { height: 'var(--radix-accordion-content-height)' }
+                },
+                'accordion-up': {
+                    from: { height: 'var(--radix-accordion-content-height)' },
+                    to: { height: '0' }
+                }
+            },
+            animation: {
+                'accordion-down': 'accordion-down 0.2s ease-out',
+                'accordion-up': 'accordion-up 0.2s ease-out'
             }
         }
     },

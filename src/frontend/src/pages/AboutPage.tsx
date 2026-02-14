@@ -4,7 +4,7 @@ export default function AboutPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="py-20 md:py-28">
+    <div className="py-24 md:py-32">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="mx-auto max-w-4xl">
           <h1 className="mb-10 font-serif font-bold text-foreground">
@@ -12,7 +12,7 @@ export default function AboutPage() {
           </h1>
           <div className="mb-10 gold-divider" />
 
-          <div className="space-y-8 text-lg md:text-xl leading-relaxed text-muted-foreground">
+          <div className="space-y-10 text-lg md:text-xl leading-relaxed text-muted-foreground">
             <p>
               MeghRaj Exports is a premier international trading and export company specializing in
               equestrian and saddlery products. With years of experience in the industry, we have
@@ -27,7 +27,7 @@ export default function AboutPage() {
               maintaining competitive pricing for our global clientele.
             </p>
 
-            <div className="my-12 rounded-lg bg-card p-10 shadow-soft border-l-4 border-primary">
+            <div className="my-16 rounded-lg bg-card p-10 shadow-soft border-l-2 border-primary">
               <h2 className="mb-6 text-3xl font-serif font-semibold text-foreground">Our Mission</h2>
               <p className="text-lg leading-relaxed">
                 To provide exceptional equestrian and saddlery products that combine traditional
@@ -36,11 +36,11 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <h2 className="pt-8 text-3xl font-serif font-semibold text-foreground">
+            <h2 className="pt-8 text-3xl md:text-4xl font-serif font-semibold text-foreground">
               What Sets Us Apart
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div>
                 <h3 className="mb-3 text-2xl font-serif font-semibold text-foreground">
                   Quality Manufacturing
@@ -92,7 +92,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="my-12 rounded-lg bg-card p-10 shadow-soft border-l-4 border-primary">
+            <div className="my-16 rounded-lg bg-card p-10 shadow-soft border-l-2 border-primary">
               <h2 className="mb-6 text-3xl font-serif font-semibold text-foreground">
                 Our Commitment to You
               </h2>

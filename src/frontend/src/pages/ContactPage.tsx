@@ -87,7 +87,7 @@ export default function ContactPage() {
 
   if (submitted) {
     return (
-      <div className="py-20 md:py-28">
+      <div className="py-24 md:py-32">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <div className="mb-8 flex justify-center">
@@ -113,10 +113,10 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="py-20 md:py-28">
+    <div className="py-24 md:py-32">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-16 text-center">
+          <div className="mb-20 text-center">
             <h1 className="mb-6 font-serif font-bold text-foreground">
               Contact Us
             </h1>

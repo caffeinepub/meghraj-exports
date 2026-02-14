@@ -1,179 +1,155 @@
 {
   "kind": "build_request",
-  "title": "Replace Dark Leather theme with logo-aligned Navy + Gold luxury branding (header, typography, cards, buttons, texture, logo)",
+  "title": "Add premium product quick-view modal on subcategory product cards + update header/footer logo",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-21",
-      "text": "Replace the current site-wide “Dark Leather Premium” design tokens with the new logo-aligned Navy + Gold luxury palette across the entire frontend, using the exact colors: Background #0F1B2D, Secondary Dark #141F33, Gold Accent #C8A24D, Soft Cream Text #F4EFE6, Muted Gold Divider #B9933C. Update global CSS variables and Tailwind theme usage so existing components (header, footer, pages, cards, forms) automatically inherit the new palette without introducing bright blue UI.",
+      "id": "REQ-1",
+      "text": "On subcategory pages (route pattern `/products/$categorySlug/$subcategorySlug`), change the product card interaction so clicking any product card opens a centered modal (quick-view) instead of navigating to a new page, while keeping the existing routing structure intact.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-user-1"
         ],
         "quotes": [
-          "The user has uploaded 1 image(s): image.png.",
-          "Apply the exact color palette you listed (#0F1B2D, #141F33, #C8A24D, #F4EFE6, #B9933C) as the new global theme",
-          "yes proceed"
+          "When any product card is clicked on subcategory pages (example: /products/saddles/english-saddles): Instead of navigating to another page, open a centered modal popup.",
+          "Do not remove: Product cards Routing structure Category hierarchy Only enhance interaction and branding."
         ]
       },
       "acceptanceCriteria": [
-        "Global background renders as dark navy (not brown/maroon) and primary accent renders as gold across all pages (Home, Products, Category, Catalogue, About, Contact).",
-        "Text is soft-cream on dark backgrounds with sufficient contrast; muted text is visibly subdued but readable.",
-        "Borders/dividers use muted gold tones rather than heavy/bright outlines.",
-        "No UI elements default to bright blue (links, focus states, buttons) unless explicitly part of the navy/gold system."
+        "On `/products/:categorySlug/:subcategorySlug`, clicking a product card does not change the URL and does not navigate away.",
+        "A modal opens centered on top of the current page content.",
+        "All existing product cards remain visible/unchanged when the modal is closed.",
+        "No changes are made to the overall routing table in `frontend/src/App.tsx` beyond what is required for the modal behavior (i.e., routes remain present and functional)."
       ]
     },
     {
-      "id": "REQ-22",
-      "text": "Upgrade the header into a more premium, luxury-style navigation: make the header visually lighter and more refined by using a transparent/overlay treatment on the Home hero (with subtle blur), increased spacing, thinner nav typography, and replace the current active-state “filled pill” with a gold underline (or similarly subtle gold indicator). Keep mobile navigation functional and consistent with the new premium styling.",
+      "id": "REQ-2",
+      "text": "Implement the modal backdrop and open/close behavior: apply a semi-transparent dark overlay with `backdrop-filter: blur(6px)`, disable background scroll while open, and support closing via (1) a close button in the top-right, (2) clicking outside the modal, and (3) pressing the ESC key.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-user-1"
         ],
         "quotes": [
-          "Transparent header over hero",
-          "Add subtle blur effect",
-          "Make navigation thinner",
-          "Highlight “Products” with gold underline instead of filled box"
+          "Background page should: Blur (backdrop blur effect) Darken slightly with semi-transparent overlay",
+          "Close button (top right corner)",
+          "Close when clicking outside modal",
+          "Close on ESC key press",
+          "Apply: backdrop-filter: blur(6px) Semi-transparent dark overlay Disable background scroll This is mandatory for premium feel."
         ]
       },
       "acceptanceCriteria": [
-        "On the Home page, the header overlays the hero image with a subtle blur and does not appear as a flat opaque bar.",
-        "Active nav item is indicated via a subtle gold underline/marker (not a solid filled background) on both desktop and mobile menus.",
-        "Mobile menu open/close remains accessible (aria-label preserved) and readable on dark navy background.",
-        "Logo area and navigation have noticeably more breathing room than current header height/spacing."
+        "When the modal is open, the page behind it is visibly blurred and darkened by an overlay.",
+        "When the modal is open, the document/body does not scroll (scroll is restored when the modal closes).",
+        "Clicking the overlay (outside the modal panel) closes the modal.",
+        "Pressing ESC closes the modal.",
+        "A visible close (X) control exists in the modal’s top-right and closes the modal."
       ]
     },
     {
-      "id": "REQ-23",
-      "text": "Integrate the provided logo into the top-left of the header in place of (or alongside) the plain text site name, sized appropriately for a premium look (not oversized), with adequate padding/clear space. Ensure the logo remains sharp on retina displays and visually harmonizes with the new navy+gold palette.",
+      "id": "REQ-3",
+      "text": "Match the requested premium modal layout and responsive behavior: desktop/tablet shows a two-column layout with a large product image on the left and content on the right; mobile stacks with the image on top and content below. Content must include: product title (large serif), a 3–5 line description, a bullet feature list, and a “Send Inquiry” button.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-user-1"
         ],
         "quotes": [
-          "My logo is",
-          "Add your logo in top left",
-          "Reduce size slightly",
-          "Add spacing around it",
-          "Keep header clean"
+          "Layout: Left side: Large product image Right side: Product title (large serif font) Full product description (3–5 lines) Bullet features list “Send Inquiry” button",
+          "Responsive behavior: On mobile: Image on top Content below"
         ]
       },
       "acceptanceCriteria": [
-        "Header shows the MeghRaj Exports logo at top-left on desktop and mobile.",
-        "Logo is not cramped: padding/clear space is present around it, and it does not collide with nav/menu button.",
-        "Logo remains readable on dark background and does not appear as a white rectangle pasted on the page (transparent/clean edge handling)."
+        "On >= md breakpoints, the modal presents image-left / content-right.",
+        "On small screens, the modal stacks content vertically with the image above the text content.",
+        "The modal shows: title (serif, prominent), a multi-line description, a bulleted list of features, and a “Send Inquiry” CTA button.",
+        "The modal image uses a non-stretched `object-fit` style (e.g., contain/cover as appropriate) and maintains aspect ratio."
       ]
     },
     {
-      "id": "REQ-24",
-      "text": "Refine buttons site-wide to feel more premium: primary buttons should use gold background with navy text; secondary/outline buttons should use gold borders with cream text; hover should invert (gold ↔ navy) with smooth transitions and subtle elevation. Apply this consistently to key CTAs including “View Products”, “Request Catalogue”, “Send Inquiry”, and “Contact Us”.",
+      "id": "REQ-4",
+      "text": "Apply the exact modal styling and animation: modal background `#141F33`, subtle 1px gold border, soft glow shadow, and open/close animation using a subtle fade + scale (duration 0.3s ease; scale 0.95→1 and opacity 0→1 on open; reverse on close). The “Send Inquiry” button must use gold `#C8A24D` with dark navy text and hover effects (slight lift + slight darkening).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-user-1"
         ],
         "quotes": [
-          "Make it: Gold background, Dark navy text",
-          "On hover → invert colors",
-          "Luxury effect comes from interaction"
+          "Background: Dark navy (#141F33)",
+          "Border: Subtle gold border (1px)",
+          "Shadow: Soft glow",
+          "Button: Gold background (#C8A24D) Dark navy text Hover: Slight lift Slight darkening",
+          "Animation: Duration 0.3s ease Scale from 0.95 → 1 Opacity 0 → 1 Keep interaction subtle and premium."
         ]
       },
       "acceptanceCriteria": [
-        "Primary CTA buttons render with gold fill and navy text by default.",
-        "Hover/focus states invert colors smoothly (no jarring animations) and maintain accessibility (visible focus ring aligned to the theme).",
-        "Buttons across Home, Category, Catalogue, Contact pages follow a consistent style system (shape, radius, typography, shadow)."
+        "Modal panel background color is `#141F33`.",
+        "Modal panel has a 1px gold-toned border and a soft glow shadow (not harsh or overly large).",
+        "Modal open transition uses fade+scale and completes in ~0.3s with ease timing; closing animates smoothly as well.",
+        "The “Send Inquiry” button uses `#C8A24D` background with dark navy text, and on hover both lifts slightly and darkens slightly."
       ]
     },
     {
-      "id": "REQ-25",
-      "text": "Reduce the “boxy template” feel on product/category cards and highlight blocks by removing heavy borders, using subtler shadows, and adding refined gold detailing (thin gold divider lines under section titles where appropriate). Add a restrained hover interaction (slight zoom + soft gold glow) to category cards and key cards while keeping motion subtle.",
+      "id": "REQ-5",
+      "text": "Wire the modal “Send Inquiry” button to navigate to the existing contact page route (`/contact`) and prefill the category in the same way the current subcategory page CTA does (keeping existing inquiry flow intact).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-user-1"
         ],
         "quotes": [
-          "Remove borders",
-          "Add subtle shadow",
-          "Add gold divider line under section title",
-          "Add hover effect: Slight zoom, Soft gold glow"
+          "“Send Inquiry” button",
+          "Keep existing content Do not remove: ... Routing structure ... Only enhance interaction and branding."
         ]
       },
       "acceptanceCriteria": [
-        "Cards (e.g., Home highlights, Products category cards) no longer rely on thick borders to define shape; they use shadow and background separation instead.",
-        "Hover interactions are subtle and consistent (no large scaling); visual emphasis is via soft gold glow/accent.",
-        "Section titles that represent major content blocks can show thin gold dividers/separators consistent with #B9933C/#C8A24D."
+        "Clicking “Send Inquiry” in the modal navigates to `/contact`.",
+        "The navigation includes the same category prefill behavior currently used by the subcategory page’s “Send Inquiry” button.",
+        "No backend changes are required for this wiring."
       ]
     },
     {
-      "id": "REQ-26",
-      "text": "Improve typography hierarchy to feel more “luxury”: increase heading presence (size/weight/letter-spacing choices) while keeping body text lighter with increased line-height and spacing. Ensure typography is consistent across pages and components (header, hero, section titles, accordions, form labels).",
+      "id": "REQ-6",
+      "text": "Replace the current site logo in both header and footer with the uploaded image file `Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png`, ensuring: high-resolution usage, the header logo renders at ~2× the current size while keeping the header height unchanged, aspect ratio is preserved (no stretching), the logo remains vertically centered, and spacing around the logo is maintained. Update the footer logo to match the new asset as well.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-user-1"
         ],
         "quotes": [
-          "Typography Upgrade",
-          "Headings: Use a refined serif font",
-          "Make headings larger.",
-          "Body text: Slightly lighter weight. More spacing between lines.",
-          "Spacing = premium."
+          "Replace current logo with the newly provided image file.",
+          "Use high resolution version",
+          "Double current size in header",
+          "Maintain aspect ratio Ensure logo remains vertically centered No stretching",
+          "Footer logo also updated",
+          "Maintain spacing around logo",
+          "Header height should not increase.",
+          "Logo: Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png"
         ]
       },
       "acceptanceCriteria": [
-        "Headings read as premium editorial serif (existing serif is acceptable) with stronger hierarchy than current (more differentiation between H1/H2/H3).",
-        "Body copy has improved readability via line-height and spacing; no cramped paragraphs.",
-        "Navigation typography appears thinner/more refined than current while remaining readable."
-      ]
-    },
-    {
-      "id": "REQ-27",
-      "text": "Add subtle luxury detailing and depth across the site: implement thin gold separators between major sections and optional small gold accent markers for bullet-like lists where they exist, without clutter. Add a very subtle leather-like texture overlay on the main dark backgrounds at ~5% opacity so the navy is not perfectly flat.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "recent-messages"
-        ],
-        "quotes": [
-          "Add Subtle Gold Details",
-          "Thin gold line under “Our Products”",
-          "Gold separators between sections",
-          "Small gold accent dot before bullet points",
-          "Background Texture Trick (Very Powerful)",
-          "Use a very subtle leather texture overlay at 5% opacity"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Major page sections can be visually separated with thin gold lines/gradients consistent with the theme (not heavy rules).",
-        "Backgrounds show subtle texture depth (barely visible) and do not reduce text readability.",
-        "Texture overlay is subtle and not distracting; it remains consistent across pages using the main background."
+        "`frontend/src/components/SiteHeader.tsx` and `frontend/src/components/SiteFooter.tsx` both reference `Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png` (served from a static public path).",
+        "Header container height remains `h-20` (or otherwise unchanged), and nav items remain vertically centered.",
+        "Header logo appears visually ~2× larger than before without causing header growth; image remains vertically centered and not stretched.",
+        "Footer logo is updated to the same new image asset and maintains clean spacing (no distortion)."
       ]
     }
   ],
   "constraints": [
-    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui (compose only).",
-    "Keep the app as a B2B inquiry/catalogue site: do not add pricing, cart, checkout, or e-commerce flows.",
-    "Do not serve images through the backend; use static assets under frontend/public/assets/generated."
+    "Do not remove or restructure existing product cards, category hierarchy, or TanStack Router routing; only enhance interaction on subcategory pages by using a modal quick-view instead of navigation.",
+    "Do not edit files under `frontend/src/components/ui` or any other immutable paths listed in SYSTEM_CONTEXT.",
+    "Backend must remain single-actor; no backend changes are required for this request.",
+    "Use English for any user-facing text."
   ],
   "nonGoals": [
-    "Backend changes to inquiry storage/validation.",
-    "Changing the product taxonomy hierarchy or category content structure.",
-    "Adding third-party auth beyond Internet Identity or adding external integrations."
+    "Creating new product detail pages or changing existing URLs beyond preventing navigation on card click.",
+    "Adding new authentication methods or third-party integrations.",
+    "Changing the product taxonomy structure or removing any existing catalogue content."
   ],
   "imageRequirements": {
-    "required": [
-      "Seamless subtle leather texture tile, dark navy-toned (leather-texture-tile.dim_1024x1024.png)"
-    ],
-    "edits": [
-      "Remove background to make a clean transparent logo (image.png > meghraj-logo-transparent.dim_800x800.png)",
-      "Create a gold-only logo variant suitable for dark navy backgrounds (image.png > meghraj-logo-gold.dim_800x800.png)",
-      "Create a simplified square mark for small usage (image.png > meghraj-mark-square.dim_512x512.png)"
-    ]
+    "required": [],
+    "edits": []
   },
   "userProfileUpdate": {
     "goalsToAdd": [],

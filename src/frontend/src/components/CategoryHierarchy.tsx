@@ -1,48 +1,66 @@
+import { useNavigate } from '@tanstack/react-router';
 import { Subcategory } from '../data/productTaxonomy';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { toSlug } from '../utils/slug';
+import { ChevronRight } from 'lucide-react';
 
 interface CategoryHierarchyProps {
   subcategories: Subcategory[];
+  categorySlug: string;
 }
 
-export default function CategoryHierarchy({ subcategories }: CategoryHierarchyProps) {
+export default function CategoryHierarchy({ subcategories, categorySlug }: CategoryHierarchyProps) {
+  const navigate = useNavigate();
+
+  const handleSubcategoryClick = (subcategoryName: string) => {
+    const subcategorySlug = toSlug(subcategoryName);
+    navigate({ 
+      to: '/products/$categorySlug/$subcategorySlug', 
+      params: { categorySlug, subcategorySlug } 
+    });
+  };
+
   return (
-    <div className="space-y-4">
-      <Accordion type="multiple" className="w-full space-y-4">
-        {subcategories.map((subcategory, index) => (
-          <AccordionItem
-            key={index}
-            value={`item-${index}`}
-            className="rounded-lg bg-card overflow-hidden shadow-soft border-none"
-          >
-            <AccordionTrigger className="px-6 py-5 hover:no-underline hover:bg-muted/30 transition-colors [&[data-state=open]]:bg-muted/20">
-              <span className="text-lg md:text-xl font-serif font-medium text-foreground">
-                {subcategory.name}
-              </span>
-            </AccordionTrigger>
-            <AccordionContent className="px-6 pb-6 pt-2">
-              <div className="pt-2 border-t border-gold-muted/30">
-                <ul className="space-y-3 mt-4">
-                  {subcategory.productTypes.map((productType, ptIndex) => (
-                    <li
-                      key={ptIndex}
-                      className="flex items-start text-muted-foreground hover:text-foreground transition-colors group"
-                    >
-                      <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0 group-hover:shadow-gold-glow" />
-                      <span className="text-base leading-relaxed">{productType.name}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {subcategories.map((subcategory, index) => (
+        <button
+          key={index}
+          onClick={() => handleSubcategoryClick(subcategory.name)}
+          className="group relative overflow-hidden rounded-lg bg-card p-6 shadow-soft border-t border-gold-muted/30 transition-all duration-300 hover:shadow-gold-glow hover:-translate-y-1 text-left"
+        >
+          <div className="flex items-start justify-between mb-4">
+            <h3 className="text-lg md:text-xl font-serif font-medium text-foreground group-hover:text-primary transition-colors">
+              {subcategory.name}
+            </h3>
+            <ChevronRight className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-all group-hover:translate-x-1 flex-shrink-0 mt-1" />
+          </div>
+          
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">
+              {subcategory.productTypes.length} product {subcategory.productTypes.length === 1 ? 'type' : 'types'}
+            </p>
+            
+            {/* Show first few product types as preview */}
+            <div className="pt-2 border-t border-border/50">
+              <ul className="space-y-1.5">
+                {subcategory.productTypes.slice(0, 3).map((productType, ptIndex) => (
+                  <li
+                    key={ptIndex}
+                    className="flex items-start text-sm text-muted-foreground"
+                  >
+                    <span className="mr-2 mt-1.5 h-1 w-1 rounded-full bg-primary/60 flex-shrink-0 group-hover:shadow-gold-glow" />
+                    <span className="leading-relaxed">{productType.name}</span>
+                  </li>
+                ))}
+                {subcategory.productTypes.length > 3 && (
+                  <li className="text-sm text-primary font-medium pt-1">
+                    + {subcategory.productTypes.length - 3} more
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
+        </button>
+      ))}
     </div>
   );
 }

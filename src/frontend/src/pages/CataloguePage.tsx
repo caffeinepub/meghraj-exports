@@ -9,10 +9,10 @@ export default function CataloguePage() {
   };
 
   return (
-    <div className="py-20 md:py-28">
+    <div className="py-24 md:py-32">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-16 text-center">
+          <div className="mb-20 text-center">
             <h1 className="mb-6 font-serif font-bold text-foreground">
               Product Catalogue
             </h1>
@@ -23,7 +23,7 @@ export default function CataloguePage() {
             </p>
           </div>
 
-          <div className="mb-16 grid gap-10 md:grid-cols-3">
+          <div className="mb-20 grid gap-10 md:grid-cols-3">
             <div className="text-center">
               <div className="mb-6 flex justify-center">
                 <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
@@ -65,7 +65,7 @@ export default function CataloguePage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-card p-10 md:p-14 shadow-soft border-l-4 border-primary">
+          <div className="rounded-lg bg-card p-10 md:p-14 shadow-soft border-l-2 border-primary">
             <h2 className="mb-6 text-3xl font-serif font-semibold text-foreground">
               What's Included in Our Catalogue?
             </h2>

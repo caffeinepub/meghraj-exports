@@ -1,133 +1,94 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-13T20:27:16.599Z",
+  "generatedAt": "2026-02-14T22:15:02.605Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 7,
-    "implemented": 7,
+    "total": 6,
+    "implemented": 6,
     "items": [
       {
-        "id": "REQ-21",
-        "summary": "Replace the current site-wide “Dark Leather Premium” design tokens with the new logo-aligned Navy + Gold luxury palette across the entire frontend, using the exact colors: Background #0F1B2D, Secondary Dark #141F33, Gold Accent #C8A24D, Soft Cream Text #F4EFE6, Muted Gold Divider #B9933C. Update global CSS variables and Tailwind theme usage so existing components (header, footer, pages, cards, forms) automatically inherit the new palette without introducing bright blue UI.",
+        "id": "REQ-1",
+        "summary": "On subcategory pages (route pattern `/products/$categorySlug/$subcategorySlug`), change the product card interaction so clicking any product card opens a centered modal (quick-view) instead of navigating to a new page, while keeping the existing routing structure intact.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/index.css"
+          "frontend/src/pages/SubcategoryPage.tsx",
+          "frontend/src/components/SubcategoryCard.tsx",
+          "frontend/src/components/ProductQuickViewModal.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js"
+          "frontend/src/pages/SubcategoryPage.tsx",
+          "frontend/src/components/SubcategoryCard.tsx",
+          "frontend/src/components/ProductQuickViewModal.tsx"
         ]
       },
       {
-        "id": "REQ-22",
-        "summary": "Upgrade the header into a more premium, luxury-style navigation: make the header visually lighter and more refined by using a transparent/overlay treatment on the Home hero (with subtle blur), increased spacing, thinner nav typography, and replace the current active-state “filled pill” with a gold underline (or similarly subtle gold indicator). Keep mobile navigation functional and consistent with the new premium styling.",
+        "id": "REQ-2",
+        "summary": "Implement the modal backdrop and open/close behavior: apply a semi-transparent dark overlay with `backdrop-filter: blur(6px)`, disable background scroll while open, and support closing via (1) a close button in the top-right, (2) clicking outside the modal, and (3) pressing the ESC key.",
         "status": "implemented",
         "plannedFiles": [
+          "frontend/src/components/ProductQuickViewModal.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ProductQuickViewModal.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Match the requested premium modal layout and responsive behavior: desktop/tablet shows a two-column layout with a large product image on the left and content on the right; mobile stacks with the image on top and content below. Content must include: product title (large serif), a 3–5 line description, a bullet feature list, and a “Send Inquiry” button.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ProductQuickViewModal.tsx",
+          "frontend/src/pages/SubcategoryPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ProductQuickViewModal.tsx",
+          "frontend/src/pages/SubcategoryPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Apply the exact modal styling and animation: modal background `#141F33`, subtle 1px gold border, soft glow shadow, and open/close animation using a subtle fade + scale (duration 0.3s ease; scale 0.95→1 and opacity 0→1 on open; reverse on close). The “Send Inquiry” button must use gold `#C8A24D` with dark navy text and hover effects (slight lift + slight darkening).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ProductQuickViewModal.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ProductQuickViewModal.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Wire the modal “Send Inquiry” button to navigate to the existing contact page route (`/contact`) and prefill the category in the same way the current subcategory page CTA does (keeping existing inquiry flow intact).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/SubcategoryPage.tsx",
+          "frontend/src/components/ProductQuickViewModal.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/SubcategoryPage.tsx",
+          "frontend/src/components/ProductQuickViewModal.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Replace the current site logo in both header and footer with the uploaded image file `Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png`, ensuring: high-resolution usage, the header logo renders at ~2× the current size while keeping the header height unchanged, aspect ratio is preserved (no stretching), the logo remains vertically centered, and spacing around the logo is maintained. Update the footer logo to match the new asset as well.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png",
           "frontend/src/components/SiteHeader.tsx",
-          "frontend/src/pages/HomePage.tsx"
+          "frontend/src/components/SiteFooter.tsx"
         ],
         "matchedFiles": [
           "frontend/src/components/SiteHeader.tsx",
-          "frontend/src/pages/HomePage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-23",
-        "summary": "Integrate the provided logo into the top-left of the header in place of (or alongside) the plain text site name, sized appropriately for a premium look (not oversized), with adequate padding/clear space. Ensure the logo remains sharp on retina displays and visually harmonizes with the new navy+gold palette.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/public/assets/generated/meghraj-logo-transparent.dim_800x800.png",
-          "frontend/public/assets/generated/meghraj-logo-gold.dim_800x800.png",
-          "frontend/public/assets/generated/meghraj-mark-square.dim_512x512.png",
-          "frontend/src/components/SiteHeader.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/public/assets/generated/meghraj-logo-transparent.dim_800x800.png",
-          "frontend/public/assets/generated/meghraj-logo-gold.dim_800x800.png",
-          "frontend/public/assets/generated/meghraj-mark-square.dim_512x512.png",
-          "frontend/src/components/SiteHeader.tsx"
-        ]
-      },
-      {
-        "id": "REQ-24",
-        "summary": "Refine buttons site-wide to feel more premium: primary buttons should use gold background with navy text; secondary/outline buttons should use gold borders with cream text; hover should invert (gold ↔ navy) with smooth transitions and subtle elevation. Apply this consistently to key CTAs including “View Products”, “Request Catalogue”, “Send Inquiry”, and “Contact Us”.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/CategoryPage.tsx",
-          "frontend/src/pages/CataloguePage.tsx",
-          "frontend/src/pages/ContactPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/CategoryPage.tsx",
-          "frontend/src/pages/CataloguePage.tsx",
-          "frontend/src/pages/ContactPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-25",
-        "summary": "Reduce the “boxy template” feel on product/category cards and highlight blocks by removing heavy borders, using subtler shadows, and adding refined gold detailing (thin gold divider lines under section titles where appropriate). Add a restrained hover interaction (slight zoom + soft gold glow) to category cards and key cards while keeping motion subtle.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/tailwind.config.js",
-          "frontend/src/pages/ProductsPage.tsx",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/CategoryPage.tsx",
-          "frontend/src/components/CategoryHierarchy.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/tailwind.config.js",
-          "frontend/src/pages/ProductsPage.tsx",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/CategoryPage.tsx",
-          "frontend/src/components/CategoryHierarchy.tsx"
-        ]
-      },
-      {
-        "id": "REQ-26",
-        "summary": "Improve typography hierarchy to feel more “luxury”: increase heading presence (size/weight/letter-spacing choices) while keeping body text lighter with increased line-height and spacing. Ensure typography is consistent across pages and components (header, hero, section titles, accordions, form labels).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/SiteHeader.tsx",
-          "frontend/src/pages/AboutPage.tsx",
-          "frontend/src/pages/ContactPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/SiteHeader.tsx",
-          "frontend/src/pages/AboutPage.tsx",
-          "frontend/src/pages/ContactPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-27",
-        "summary": "Add subtle luxury detailing and depth across the site: implement thin gold separators between major sections and optional small gold accent markers for bullet-like lists where they exist, without clutter. Add a very subtle leather-like texture overlay on the main dark backgrounds at ~5% opacity so the navy is not perfectly flat.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/public/assets/generated/leather-texture-tile.dim_1024x1024.png",
-          "frontend/src/index.css",
-          "frontend/src/components/SiteLayout.tsx",
-          "frontend/src/pages/ProductsPage.tsx",
-          "frontend/src/pages/CataloguePage.tsx",
-          "frontend/src/components/CategoryHierarchy.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/public/assets/generated/leather-texture-tile.dim_1024x1024.png",
-          "frontend/src/index.css",
-          "frontend/src/components/SiteLayout.tsx",
-          "frontend/src/pages/ProductsPage.tsx",
-          "frontend/src/pages/CataloguePage.tsx",
-          "frontend/src/components/CategoryHierarchy.tsx"
+          "frontend/src/components/SiteFooter.tsx"
         ]
       }
     ]
@@ -137,21 +98,12 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/leather-texture-tile.dim_1024x1024.png",
-    "frontend/public/assets/generated/meghraj-logo-gold.dim_800x800.png",
-    "frontend/public/assets/generated/meghraj-logo-transparent.dim_800x800.png",
-    "frontend/public/assets/generated/meghraj-mark-square.dim_512x512.png",
-    "frontend/src/components/CategoryHierarchy.tsx",
+    "frontend/src/components/ProductQuickViewModal.tsx",
+    "frontend/src/components/SiteFooter.tsx",
     "frontend/src/components/SiteHeader.tsx",
-    "frontend/src/components/SiteLayout.tsx",
+    "frontend/src/components/SubcategoryCard.tsx",
     "frontend/src/index.css",
-    "frontend/src/pages/AboutPage.tsx",
-    "frontend/src/pages/CataloguePage.tsx",
-    "frontend/src/pages/CategoryPage.tsx",
-    "frontend/src/pages/ContactPage.tsx",
-    "frontend/src/pages/HomePage.tsx",
-    "frontend/src/pages/ProductsPage.tsx",
-    "frontend/tailwind.config.js",
+    "frontend/src/pages/SubcategoryPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -5,9 +5,9 @@ export default function ProductsPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="py-20 md:py-28">
+    <div className="py-24 md:py-32">
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="mb-16 text-center">
+        <div className="mb-20 text-center">
           <h1 className="mb-6 font-serif font-bold text-foreground">
             Our Products
           </h1>
