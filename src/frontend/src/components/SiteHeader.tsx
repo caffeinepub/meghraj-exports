@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
 import { Menu, X } from 'lucide-react';
 
 export default function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
@@ -16,6 +17,14 @@ export default function SiteHeader() {
     { label: 'Contact', path: '/contact' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const handleNavigation = (path: string) => {
     navigate({ to: path });
     setMobileMenuOpen(false);
@@ -27,9 +36,9 @@ export default function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50 transition-all duration-300">
+    <header className={`sticky top-0 z-50 transition-all duration-500 ${scrolled ? 'header-glass-scrolled' : 'header-glass'}`}>
       <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-24 items-center justify-between">
           {/* Logo */}
           <button
             onClick={() => handleNavigation('/')}
@@ -38,7 +47,7 @@ export default function SiteHeader() {
             <img 
               src="/assets/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png" 
               alt="MeghRaj Exports" 
-              className="h-24 w-auto md:h-28 object-contain"
+              className="h-36 w-auto md:h-40 object-contain"
             />
           </button>
 
@@ -50,13 +59,13 @@ export default function SiteHeader() {
                 onClick={() => handleNavigation(item.path)}
                 className={`relative px-6 py-2 text-[15px] font-medium tracking-wide transition-colors ${
                   isActive(item.path)
-                    ? 'text-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? 'text-white'
+                    : 'text-white/90 hover:text-white'
                 }`}
               >
                 {item.label}
                 {isActive(item.path) && (
-                  <span className="absolute bottom-0 left-1/2 h-0.5 w-12 -translate-x-1/2 bg-primary rounded-full" />
+                  <span className="absolute bottom-0 left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-full bg-primary" />
                 )}
               </button>
             ))}
@@ -65,7 +74,8 @@ export default function SiteHeader() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-md p-2 text-muted-foreground hover:bg-muted/20 hover:text-foreground transition-colors md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="rounded-md p-2 text-white/90 hover:text-white transition-colors md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            style={{ background: mobileMenuOpen ? 'rgba(255, 255, 255, 0.1)' : 'transparent' }}
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -74,7 +84,7 @@ export default function SiteHeader() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="border-t border-border/50 py-4 md:hidden">
+          <nav className="py-4 md:hidden border-t border-white/10">
             <div className="flex flex-col gap-1">
               {navItems.map((item) => (
                 <button
@@ -82,13 +92,13 @@ export default function SiteHeader() {
                   onClick={() => handleNavigation(item.path)}
                   className={`relative rounded-md px-4 py-3 text-left text-base font-medium transition-all ${
                     isActive(item.path)
-                      ? 'text-foreground bg-muted/10'
-                      : 'text-muted-foreground hover:bg-muted/5 hover:text-foreground'
+                      ? 'text-white bg-white/10'
+                      : 'text-white/90 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {item.label}
                   {isActive(item.path) && (
-                    <span className="absolute left-0 top-1/2 h-6 w-0.5 -translate-y-1/2 bg-primary rounded-r" />
+                    <span className="absolute left-0 top-1/2 h-6 w-0.5 -translate-y-1/2 rounded-r bg-primary" />
                   )}
                 </button>
               ))}

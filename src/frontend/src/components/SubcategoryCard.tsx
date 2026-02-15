@@ -94,7 +94,7 @@ export default function SubcategoryCard({ title, categorySlug, subcategorySlug, 
       aria-label={`View details for ${title}`}
     >
       {/* Image Container with Zoom Effect */}
-      <div className="aspect-[4/3] overflow-hidden bg-muted/10">
+      <div className="aspect-[4/3] overflow-hidden" style={{ background: 'rgba(199, 154, 82, 0.05)' }}>
         <img
           src={imageError ? placeholderImage : placeholderImage}
           alt={title}

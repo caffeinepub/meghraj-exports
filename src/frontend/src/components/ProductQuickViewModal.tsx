@@ -47,18 +47,19 @@ export default function ProductQuickViewModal({
       className="fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay"
       onClick={onClose}
     >
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
+      {/* Premium backdrop with stronger blur */}
+      <div className="absolute inset-0 modal-backdrop" />
 
-      {/* Modal Panel */}
+      {/* Premium modal panel with stronger glass effect */}
       <div
-        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto glass-card modal-panel border border-primary/30"
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto modal-glass-panel modal-panel"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted/20 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          className="absolute right-4 top-4 z-10 rounded-full p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          style={{ background: 'rgba(198, 167, 94, 0.15)', color: 'oklch(0.16 0.03 240)' }}
           aria-label="Close modal"
         >
           <X className="h-6 w-6" />
@@ -66,7 +67,7 @@ export default function ProductQuickViewModal({
 
         <div className="grid gap-8 md:grid-cols-2 p-8">
           {/* Image */}
-          <div className="aspect-square overflow-hidden rounded-lg bg-muted/10">
+          <div className="aspect-square overflow-hidden rounded-lg" style={{ background: 'rgba(198, 167, 94, 0.08)' }}>
             <img
               src={product.image}
               alt={product.name}
@@ -76,40 +77,39 @@ export default function ProductQuickViewModal({
 
           {/* Content */}
           <div className="flex flex-col">
-            <h2 className="mb-4 text-3xl font-serif font-bold text-foreground">
+            <h2 className="mb-4 text-3xl font-serif font-bold" style={{ color: 'oklch(0.16 0.03 240)' }}>
               {product.name}
             </h2>
 
-            <div className="mb-6 h-px gold-divider" />
+            <div className="mb-6 gold-divider" />
 
-            <p className="mb-8 text-base leading-relaxed text-muted-foreground">
+            <p className="mb-6 text-base leading-relaxed" style={{ color: 'oklch(0.45 0.02 240)' }}>
               {product.description}
             </p>
 
-            <div className="mb-8">
-              <h3 className="mb-4 text-xl font-serif font-semibold text-foreground">
-                Key Features
-              </h3>
-              <ul className="space-y-3">
-                {product.features.map((feature, index) => (
-                  <li key={index} className="flex items-start text-sm text-muted-foreground">
-                    <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
-                    <span className="leading-relaxed">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {product.features.length > 0 && (
+              <div className="mb-8">
+                <h3 className="mb-3 text-lg font-serif font-semibold" style={{ color: 'oklch(0.16 0.03 240)' }}>
+                  Key Features
+                </h3>
+                <ul className="space-y-2">
+                  {product.features.map((feature, index) => (
+                    <li key={index} className="flex items-start text-sm" style={{ color: 'oklch(0.45 0.02 240)' }}>
+                      <span className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ background: 'oklch(0.70 0.10 70)' }} />
+                      <span className="leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-            <div className="mt-auto">
+            <div className="mt-auto pt-6">
               <button
                 onClick={onSendInquiry}
                 className="btn-primary w-full"
               >
                 Send Inquiry
               </button>
-              <p className="mt-4 text-center text-sm text-muted-foreground">
-                Contact us for pricing, customization options, and bulk orders
-              </p>
             </div>
           </div>
         </div>

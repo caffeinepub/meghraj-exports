@@ -60,9 +60,10 @@ export default {
                 sm: 'calc(var(--radius) - 4px)'
             },
             boxShadow: {
-                xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
+                xs: '0 1px 2px 0 rgba(0,0,0,0.1)',
                 soft: '0 2px 8px rgba(0,0,0,0.08)',
-                premium: '0 4px 12px rgba(0,0,0,0.10)',
+                premium: '0 8px 24px rgba(0,0,0,0.15)',
+                'card-hover': '0 6px 16px rgba(0,0,0,0.12)',
             },
             keyframes: {
                 'accordion-down': {

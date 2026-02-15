@@ -5,13 +5,13 @@ export default function ProductsPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="py-32 md:py-40">
+    <div className="section-ivory py-32 md:py-40">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="mb-20 text-center">
           <h1 className="mb-6 font-serif font-bold text-foreground">
             Our Products
           </h1>
-          <div className="mx-auto mb-6 w-24 gold-divider" />
+          <div className="mx-auto mb-6 w-24 gold-divider-thick" />
           <p className="mx-auto max-w-2xl text-lg md:text-xl leading-relaxed text-muted-foreground">
             Explore our comprehensive range of equestrian and saddlery products. Each category
             offers extensive customization options to meet your specific requirements.

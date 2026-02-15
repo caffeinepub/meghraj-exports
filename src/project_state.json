@@ -1,74 +1,70 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Refine the existing MeghRaj Exports website visual design (no structural/layout changes) to a soft luxury theme using the provided navy/warm/off-white/blue tint/gold palette, adding subtle glassmorphism to all cards and improving typography, spacing, navigation, hero, and modal styling.",
+  "summary": "Luxury, minimal, cinematic home page visual redesign emphasizing glassmorphism navigation and feature cards, refined hero imagery/typography, and consistent dark navy/charcoal backgrounds.",
   "architectural_notes": [
-    "Do not change site structure/layout; apply styling-only updates (CSS/theme) while preserving existing components and markup."
+    "Home page visual direction: minimal, premium, cinematic, modern luxury/editorial; not colorful, not template-like, not busy.",
+    "Hero image guidance: premium placeholder allowed (to be replaced later); must be sharp, lightly graded, not overly darkened/filtered.",
+    "Nav scroll behavior: transparent at top; on scroll increase blur/opacity and add very subtle deep navy/charcoal tint while remaining glassy.",
+    "Features cards section background: solid deep navy/charcoal (no background image) to emphasize glass card depth."
   ],
   "known_issues": [],
   "isFixRequest": false,
+  "imageRequirements": "## Edit Images\n- Generate a sharper, luxury editorial equestrian close-up (warm brown leather saddle/bridle detail, shallow depth of field, natural lighting; not overly dark or filtered) (hero-equestrian.dim_1600x900.png > hero-equestrian-editorial.dim_1600x900.png)",
   "existing_features": [
     {
-      "id": "feature-update-the-global-theme-tokens-and-base-styles-to-match-the-provided-soft-luxury-palette-and-reduce-the-current-overly-dark-flat-look-while-avoiding-pure-white-as-the-dominant-background-apply-primary-navy-0e1a2b-warm-background-f4f1ea-light-bluish-section-tint-eef2f7-accent-gold-c5a24d-primary-text-1f2a3a-muted-text-5c677d-ensure-body-background-defaults-card-popover-colors-border-input-colors-and-text-colors-produce-strong-readability-no-white-on-white",
-      "title": "Update the global theme tokens and base styles to match the provided soft-luxury palette and reduce the current overly-dark/flat look, while avoiding pure white as the dominant background. Apply: Primary Navy #0E1A2B, Warm Background #F4F1EA, Light Bluish Section Tint #EEF2F7, Accent Gold #C5A24D, Primary Text #1F2A3A, Muted Text #5C677D. Ensure body/background defaults, card/popover colors, border/input colors, and text colors produce strong readability (no white-on-white).",
+      "id": "feature-update-the-global-navigation-header-to-be-fully-transparent-with-a-premium-glassmorphism-effect-at-the-top-of-the-page-backdrop-blur-10-15px-very-subtle-white-tint-rgba-255-255-255-0-08-thin-soft-border-rgba-255-255-255-0-1-and-white-navigation-text-remove-the-current-solid-dark-filled-header-background",
+      "title": "Update the global navigation header to be fully transparent with a premium glassmorphism effect at the top of the page: backdrop blur 10–15px, very subtle white tint (rgba(255,255,255,0.08)), thin soft border (rgba(255,255,255,0.1)), and white navigation text. Remove the current solid/dark filled header background.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-implement-a-consistent-glassmorphism-card-style-and-apply-it-to-all-cards-product-cards-subcategory-cards-feature-cards-and-modal-content-container-glass-style-must-use-background-rgba-255-255-255-0-65-backdrop-blur-12px-border-radius-12px-1px-border-rgba-197-162-77-0-25-and-a-soft-subtle-shadow-no-heavy-shadows-no-glow-no-strong-gradients",
-      "title": "Implement a consistent glassmorphism card style and apply it to all cards: product cards, subcategory cards, feature cards, and modal content container. Glass style must use: background rgba(255,255,255,0.65), backdrop blur 12px, border-radius 12px, 1px border rgba(197,162,77,0.25), and a soft subtle shadow (no heavy shadows, no glow, no strong gradients).",
+      "id": "feature-implement-scroll-based-header-styling-when-the-page-is-scrolled-slightly-increase-blur-and-opacity-and-add-a-very-subtle-darker-tint-deep-navy-charcoal-at-low-opacity-while-keeping-the-header-glassy-not-a-solid-bar",
+      "title": "Implement scroll-based header styling: when the page is scrolled, slightly increase blur and opacity and add a very subtle darker tint (deep navy/charcoal at low opacity) while keeping the header glassy (not a solid bar).",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-fix-typography-spacing-and-contrast-site-wide-to-improve-readability-while-preserving-existing-structure-increase-body-text-line-height-where-needed-ensure-headings-feel-elegant-strong-remove-any-cases-of-white-text-on-near-white-backgrounds-and-increase-section-padding-to-create-breathing-space-without-changing-layout-composition",
-      "title": "Fix typography, spacing, and contrast site-wide to improve readability while preserving existing structure: increase body text line-height where needed, ensure headings feel elegant/strong, remove any cases of white text on near-white backgrounds, and increase section padding to create breathing space without changing layout composition.",
+      "id": "feature-increase-the-header-logo-size-to-approximately-1-5-the-current-size-while-keeping-alignment-clean-across-breakpoints-and-ensuring-it-does-not-overlap-navigation-or-push-layout-awkwardly",
+      "title": "Increase the header logo size to approximately 1.5× the current size while keeping alignment clean across breakpoints and ensuring it does not overlap navigation or push layout awkwardly.",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-restrict-accent-gold-usage-to-premium-highlights-only-button-backgrounds-thin-divider-lines-card-hover-borders-and-active-navigation-underline-remove-avoid-other-decorative-gold-usage-so-it-remains-minimal-and-premium",
-      "title": "Restrict Accent Gold usage to premium highlights only: button backgrounds, thin divider lines, card hover borders, and active navigation underline. Remove/avoid other decorative gold usage so it remains minimal and premium.",
+      "id": "feature-refine-the-home-page-hero-section-to-match-a-cinematic-but-clean-luxury-editorial-style-use-a-sharp-high-resolution-equestrian-placeholder-image-close-up-leather-saddle-bridle-detail-warm-brown-tones-shallow-depth-of-field-natural-lighting-remove-heavy-dark-overlays-and-apply-only-a-very-subtle-top-gradient-for-text-readability-while-keeping-the-image-crisp-and-visible",
+      "title": "Refine the Home page hero section to match a cinematic-but-clean luxury editorial style: use a sharp, high-resolution equestrian placeholder image (close-up leather saddle/bridle detail, warm brown tones, shallow depth of field, natural lighting), remove heavy/dark overlays, and apply only a very subtle top gradient for text readability while keeping the image crisp and visible.",
       "reqIds": [
         "REQ-4"
       ],
       "version": 1
     },
     {
-      "id": "feature-refine-the-navigation-header-styling-to-a-soft-translucent-white-look-with-blur-and-dark-navy-text-not-white-including-a-thin-gold-underline-for-the-active-link-remove-heavy-fills-strong-backgrounds-for-both-desktop-and-mobile-navigation-states-while-keeping-the-same-navigation-structure-and-behavior",
-      "title": "Refine the navigation/header styling to a soft translucent white look with blur and dark navy text (not white), including a thin gold underline for the active link. Remove heavy fills/strong backgrounds for both desktop and mobile navigation states while keeping the same navigation structure and behavior.",
+      "id": "feature-update-hero-typography-and-cta-button-styling-to-match-the-requested-direction-large-elegant-serif-headline-in-white-soft-warm-white-with-a-slight-text-shadow-generous-spacing-primary-button-in-warm-gold-secondary-button-transparent-with-a-white-border-both-buttons-have-a-subtle-hover-lift-animation-2-4px-with-smooth-transitions-avoid-heavy-scaling",
+      "title": "Update hero typography and CTA button styling to match the requested direction: large elegant serif headline in white/soft warm white with a slight text shadow; generous spacing; primary button in warm gold; secondary button transparent with a white border; both buttons have a subtle hover lift animation (2–4px) with smooth transitions (avoid heavy scaling).",
       "reqIds": [
         "REQ-5"
       ],
       "version": 1
     },
     {
-      "id": "feature-refine-the-home-page-hero-section-styling-keep-the-hero-image-strong-add-a-subtle-overlay-gradient-behind-the-text-area-only-not-across-the-entire-hero-and-ensure-hero-text-remains-highly-readable-with-the-new-palette-avoid-overly-dark-full-screen-overlays",
-      "title": "Refine the Home page hero section styling: keep the hero image strong, add a subtle overlay gradient behind the text area only (not across the entire hero), and ensure hero text remains highly readable with the new palette (avoid overly dark full-screen overlays).",
+      "id": "feature-restyle-the-home-page-features-highlights-cards-as-floating-glass-panels-over-a-deep-navy-charcoal-section-background-card-background-rgba-255-255-255-0-08-backdrop-blur-thin-soft-border-subtle-shadow-rounded-corners-and-a-smooth-hover-lift-of-2-4px-remove-avoid-heavy-beige-grey-blocks-and-avoid-switching-to-ivory-or-light-sections-for-this-features-area",
+      "title": "Restyle the Home page features/highlights cards as floating glass panels over a deep navy/charcoal section background: card background rgba(255,255,255,0.08), backdrop blur, thin soft border, subtle shadow, rounded corners, and a smooth hover lift of 2–4px. Remove/avoid heavy beige/grey blocks and avoid switching to ivory or light sections for this features area.",
       "reqIds": [
         "REQ-6"
       ],
       "version": 1
     },
     {
-      "id": "feature-refine-modal-styling-to-match-the-soft-luxury-theme-modal-content-container-uses-an-off-white-surface-with-slight-blur-a-thin-gold-border-elegant-spacing-and-the-same-glassmorphism-card-treatment-keep-the-existing-modal-structure-and-interactions-esc-click-outside-scroll-lock",
-      "title": "Refine modal styling to match the soft luxury theme: modal content container uses an off-white surface with slight blur, a thin gold border, elegant spacing, and the same glassmorphism card treatment; keep the existing modal structure and interactions (ESC, click outside, scroll lock).",
+      "id": "feature-enforce-home-page-section-background-consistency-and-spacing-reduce-replace-alternating-light-backgrounds-so-the-page-uses-mostly-deep-dark-navy-charcoal-with-restrained-transparent-overlays-avoid-white-heavy-sections-and-flat-grey-sections-increase-vertical-spacing-breathing-room-between-sections-and-slightly-increase-heading-sizes-where-needed-to-maintain-an-editorial-premium-feel",
+      "title": "Enforce Home page section background consistency and spacing: reduce/replace alternating light backgrounds so the page uses mostly deep dark navy/charcoal with restrained transparent overlays; avoid white-heavy sections and flat grey sections; increase vertical spacing/breathing room between sections and slightly increase heading sizes where needed to maintain an editorial premium feel.",
       "reqIds": [
         "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-footer-styling-to-match-the-soft-luxury-theme-and-readability-rules-avoid-dark-only-footer-treatment-with-white-headings-on-a-light-background-ensure-footer-headings-and-links-use-the-correct-foreground-muted-colors-and-keep-gold-accents-minimal-links-dividers-only",
-      "title": "Update the footer styling to match the soft luxury theme and readability rules: avoid dark-only footer treatment with white headings on a light background, ensure footer headings and links use the correct foreground/muted colors, and keep gold accents minimal (links/dividers only).",
-      "reqIds": [
-        "REQ-8"
       ],
       "version": 1
     }
@@ -76,13 +72,36 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Implement soft luxury visual styling for MeghRaj Exports site without changing structure (color system, glassmorphism cards, typography/contrast, spacing, nav/hero/modal refinements, restrained gold accents).",
+      "summary": "Redesign navigation bar: fully transparent glassmorphism (blur 10–15px, subtle white tint/border), white text, larger logo (~1.5x), floating premium feel; on scroll increase blur/opacity and add subtle dark navy/charcoal tint while staying glassy",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Update hero section: use sharp high-res cinematic equestrian placeholder image (saddle/bridle detail, warm browns, shallow DOF, natural light), remove heavy overlay, add only subtle top gradient; elegant large serif headline in soft white with slight shadow; generous spacing; primary warm gold button + secondary transparent with white border; subtle hover lift transitions",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Restyle features section cards with glassmorphism: rgba(255,255,255,0.08) background, backdrop blur, thin soft border, subtle shadow, rounded corners, smooth hover lift (2–4px); avoid heavy beige/grey blocks; cards appear like floating glass panels",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Enforce section background consistency: mostly deep dark navy/charcoal with transparent overlays; avoid alternating many colors, white-heavy sections, and flat greys; maintain restrained luxury aesthetic",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Typography & spacing refinement: increase vertical spacing/breathing room between sections, slightly larger headings, clean elegant typography, avoid overcrowding for editorial premium look",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "MeghRaj Exports Website",
+  "projectName": "Apply luxury glassmorphism navigation + cinematic hero + dark section consistency on Home page",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

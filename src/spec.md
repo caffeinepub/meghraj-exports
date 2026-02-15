@@ -1,16 +1,15 @@
 # Specification
 
 ## Summary
-**Goal:** Refine the MeghRaj Exports site visuals into a soft luxury theme (palette, glass cards, typography/contrast, and polished nav/hero/modal/footer styling) without changing layout or structure.
+**Goal:** Update the Home page to a premium dark-luxury look with a transparent glassmorphism header, cinematic editorial hero, and consistent dark section styling.
 
 **Planned changes:**
-- Update global theme tokens/base styles to the specified palette (Navy #0E1A2B, Warm Background #F4F1EA, Section Tint #EEF2F7, Gold #C5A24D, Primary Text #1F2A3A, Muted #5C677D), ensuring readable defaults for backgrounds, surfaces, borders/inputs, and text.
-- Add/apply a reusable glassmorphism card style (rgba(255,255,255,0.65), blur 12px, radius 12px, 1px gold border at low opacity, subtle shadow) across all card-like surfaces including modal content.
-- Improve site-wide typography and spacing for readability (line-height, heading presence, contrast fixes, increased section padding) without altering component structure.
-- Constrain Accent Gold usage to premium highlights only (primary buttons, thin dividers, subtle hover borders, active nav underline).
-- Refine header/navigation styling to a translucent light surface with blur and dark navy text, including a thin gold underline for the active link (desktop and mobile), keeping existing nav behavior.
-- Refine Home hero styling with a localized, subtle gradient overlay behind the text area only, preserving a strong hero image and readable hero text/buttons.
-- Refine modal styling to match the theme (off-white/glass surface, thin gold border, elegant spacing) while keeping existing interactions (ESC, click outside, scroll lock).
-- Update footer styling for consistent theme contrast and minimal gold accents while keeping footer content/structure unchanged.
+- Restyle the global navigation header to be fully transparent with a subtle glassmorphism effect (blur, light tint, thin border) and white navigation text across desktop and mobile (including the opened mobile menu).
+- Add scroll-based header styling that smoothly increases blur/opacity and introduces a subtle deep navy/charcoal tint while staying glassy (never a solid bar).
+- Increase the header logo size to ~1.5× while keeping alignment clean across breakpoints and avoiding overlap/clipping.
+- Refine the Home hero background to use a sharp, high-resolution luxury editorial equestrian close-up image; remove heavy/dark overlays and apply only a subtle top gradient for readability.
+- Update hero typography and CTAs: large elegant serif headline in white/soft warm white with slight text shadow; primary warm gold button; secondary transparent button with white border; subtle hover lift (2–4px) with smooth transitions.
+- Restyle the features/highlights cards into floating glass panels over a deep navy/charcoal section background (no background image), with subtle borders/shadows, rounded corners, and a 2–4px hover lift.
+- Adjust Home page section background consistency and spacing to reduce alternating light sections, favor deep dark navy/charcoal with restrained transparent overlays, and increase vertical spacing and heading sizes where needed (styling/layout adjustments only).
 
-**User-visible outcome:** The site retains the same pages and layout, but appears more premium and readable with a warm off-white base, soft tinted sections, consistent glass cards, restrained gold accents, and polished navigation, hero, modal, and footer styling.
+**User-visible outcome:** The Home page presents a cohesive dark, premium aesthetic with a floating glass navigation (including on scroll), a crisp cinematic hero with luxury typography/CTAs, and glass feature cards on a consistent deep navy/charcoal background.

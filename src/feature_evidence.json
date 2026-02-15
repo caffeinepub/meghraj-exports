@@ -2,14 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-global-theme-tokens-and-base-styles-to-match-the-provided-soft-luxury-palette-and-reduce-the-current-overly-dark-flat-look-while-avoiding-pure-white-as-the-dominant-background-apply-primary-navy-0e1a2b-warm-background-f4f1ea-light-bluish-section-tint-eef2f7-accent-gold-c5a24d-primary-text-1f2a3a-muted-text-5c677d-ensure-body-background-defaults-card-popover-colors-border-input-colors-and-text-colors-produce-strong-readability-no-white-on-white",
-      "featureTitle": "Update the global theme tokens and base styles to match the provided soft-luxury palette and reduce the current overly-dark/flat look, while avoiding pure white as the dominant background. Apply: Primary Navy #0E1A2B, Warm Background #F4F1EA, Light Bluish Section Tint #EEF2F7, Accent Gold #C5A24D, Primary Text #1F2A3A, Muted Text #5C677D. Ensure body/background defaults, card/popover colors, border/input colors, and text colors produce strong readability (no white-on-white).",
+      "featureId": "feature-update-the-global-navigation-header-to-be-fully-transparent-with-a-premium-glassmorphism-effect-at-the-top-of-the-page-backdrop-blur-10-15px-very-subtle-white-tint-rgba-255-255-255-0-08-thin-soft-border-rgba-255-255-255-0-1-and-white-navigation-text-remove-the-current-solid-dark-filled-header-background",
+      "featureTitle": "Update the global navigation header to be fully transparent with a premium glassmorphism effect at the top of the page: backdrop blur 10–15px, very subtle white tint (rgba(255,255,255,0.08)), thin soft border (rgba(255,255,255,0.1)), and white navigation text. Remove the current solid/dark filled header background.",
       "files": [
-        "frontend/src/index.css",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/CataloguePage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/ProductsPage.tsx"
+        "frontend/src/components/SiteHeader.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -24,18 +21,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-a-consistent-glassmorphism-card-style-and-apply-it-to-all-cards-product-cards-subcategory-cards-feature-cards-and-modal-content-container-glass-style-must-use-background-rgba-255-255-255-0-65-backdrop-blur-12px-border-radius-12px-1px-border-rgba-197-162-77-0-25-and-a-soft-subtle-shadow-no-heavy-shadows-no-glow-no-strong-gradients",
-      "featureTitle": "Implement a consistent glassmorphism card style and apply it to all cards: product cards, subcategory cards, feature cards, and modal content container. Glass style must use: background rgba(255,255,255,0.65), backdrop blur 12px, border-radius 12px, 1px border rgba(197,162,77,0.25), and a soft subtle shadow (no heavy shadows, no glow, no strong gradients).",
+      "featureId": "feature-implement-scroll-based-header-styling-when-the-page-is-scrolled-slightly-increase-blur-and-opacity-and-add-a-very-subtle-darker-tint-deep-navy-charcoal-at-low-opacity-while-keeping-the-header-glassy-not-a-solid-bar",
+      "featureTitle": "Implement scroll-based header styling: when the page is scrolled, slightly increase blur and opacity and add a very subtle darker tint (deep navy/charcoal at low opacity) while keeping the header glassy (not a solid bar).",
       "files": [
-        "frontend/src/components/CategoryHierarchy.tsx",
-        "frontend/src/components/ProductQuickViewModal.tsx",
-        "frontend/src/components/SubcategoryCard.tsx",
-        "frontend/src/index.css",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/CataloguePage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/ProductsPage.tsx"
+        "frontend/src/components/SiteHeader.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -50,17 +40,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-fix-typography-spacing-and-contrast-site-wide-to-improve-readability-while-preserving-existing-structure-increase-body-text-line-height-where-needed-ensure-headings-feel-elegant-strong-remove-any-cases-of-white-text-on-near-white-backgrounds-and-increase-section-padding-to-create-breathing-space-without-changing-layout-composition",
-      "featureTitle": "Fix typography, spacing, and contrast site-wide to improve readability while preserving existing structure: increase body text line-height where needed, ensure headings feel elegant/strong, remove any cases of white text on near-white backgrounds, and increase section padding to create breathing space without changing layout composition.",
+      "featureId": "feature-increase-the-header-logo-size-to-approximately-1-5-the-current-size-while-keeping-alignment-clean-across-breakpoints-and-ensuring-it-does-not-overlap-navigation-or-push-layout-awkwardly",
+      "featureTitle": "Increase the header logo size to approximately 1.5× the current size while keeping alignment clean across breakpoints and ensuring it does not overlap navigation or push layout awkwardly.",
       "files": [
-        "frontend/src/index.css",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/CataloguePage.tsx",
-        "frontend/src/pages/CategoryPage.tsx",
-        "frontend/src/pages/ContactPage.tsx",
-        "frontend/src/pages/HomePage.tsx",
-        "frontend/src/pages/ProductsPage.tsx",
-        "frontend/src/pages/SubcategoryPage.tsx"
+        "frontend/src/components/SiteHeader.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -75,15 +58,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-restrict-accent-gold-usage-to-premium-highlights-only-button-backgrounds-thin-divider-lines-card-hover-borders-and-active-navigation-underline-remove-avoid-other-decorative-gold-usage-so-it-remains-minimal-and-premium",
-      "featureTitle": "Restrict Accent Gold usage to premium highlights only: button backgrounds, thin divider lines, card hover borders, and active navigation underline. Remove/avoid other decorative gold usage so it remains minimal and premium.",
+      "featureId": "feature-refine-the-home-page-hero-section-to-match-a-cinematic-but-clean-luxury-editorial-style-use-a-sharp-high-resolution-equestrian-placeholder-image-close-up-leather-saddle-bridle-detail-warm-brown-tones-shallow-depth-of-field-natural-lighting-remove-heavy-dark-overlays-and-apply-only-a-very-subtle-top-gradient-for-text-readability-while-keeping-the-image-crisp-and-visible",
+      "featureTitle": "Refine the Home page hero section to match a cinematic-but-clean luxury editorial style: use a sharp, high-resolution equestrian placeholder image (close-up leather saddle/bridle detail, warm brown tones, shallow depth of field, natural lighting), remove heavy/dark overlays, and apply only a very subtle top gradient for text readability while keeping the image crisp and visible.",
       "files": [
-        "frontend/src/components/CategoryHierarchy.tsx",
-        "frontend/src/components/ProductQuickViewModal.tsx",
-        "frontend/src/components/SiteHeader.tsx",
         "frontend/src/index.css",
-        "frontend/src/pages/AboutPage.tsx",
-        "frontend/src/pages/CataloguePage.tsx",
         "frontend/src/pages/HomePage.tsx"
       ],
       "components": [
@@ -99,10 +77,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-refine-the-navigation-header-styling-to-a-soft-translucent-white-look-with-blur-and-dark-navy-text-not-white-including-a-thin-gold-underline-for-the-active-link-remove-heavy-fills-strong-backgrounds-for-both-desktop-and-mobile-navigation-states-while-keeping-the-same-navigation-structure-and-behavior",
-      "featureTitle": "Refine the navigation/header styling to a soft translucent white look with blur and dark navy text (not white), including a thin gold underline for the active link. Remove heavy fills/strong backgrounds for both desktop and mobile navigation states while keeping the same navigation structure and behavior.",
+      "featureId": "feature-update-hero-typography-and-cta-button-styling-to-match-the-requested-direction-large-elegant-serif-headline-in-white-soft-warm-white-with-a-slight-text-shadow-generous-spacing-primary-button-in-warm-gold-secondary-button-transparent-with-a-white-border-both-buttons-have-a-subtle-hover-lift-animation-2-4px-with-smooth-transitions-avoid-heavy-scaling",
+      "featureTitle": "Update hero typography and CTA button styling to match the requested direction: large elegant serif headline in white/soft warm white with a slight text shadow; generous spacing; primary button in warm gold; secondary button transparent with a white border; both buttons have a subtle hover lift animation (2–4px) with smooth transitions (avoid heavy scaling).",
       "files": [
-        "frontend/src/components/SiteHeader.tsx"
+        "frontend/src/index.css",
+        "frontend/src/pages/HomePage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -117,8 +96,8 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-refine-the-home-page-hero-section-styling-keep-the-hero-image-strong-add-a-subtle-overlay-gradient-behind-the-text-area-only-not-across-the-entire-hero-and-ensure-hero-text-remains-highly-readable-with-the-new-palette-avoid-overly-dark-full-screen-overlays",
-      "featureTitle": "Refine the Home page hero section styling: keep the hero image strong, add a subtle overlay gradient behind the text area only (not across the entire hero), and ensure hero text remains highly readable with the new palette (avoid overly dark full-screen overlays).",
+      "featureId": "feature-restyle-the-home-page-features-highlights-cards-as-floating-glass-panels-over-a-deep-navy-charcoal-section-background-card-background-rgba-255-255-255-0-08-backdrop-blur-thin-soft-border-subtle-shadow-rounded-corners-and-a-smooth-hover-lift-of-2-4px-remove-avoid-heavy-beige-grey-blocks-and-avoid-switching-to-ivory-or-light-sections-for-this-features-area",
+      "featureTitle": "Restyle the Home page features/highlights cards as floating glass panels over a deep navy/charcoal section background: card background rgba(255,255,255,0.08), backdrop blur, thin soft border, subtle shadow, rounded corners, and a smooth hover lift of 2–4px. Remove/avoid heavy beige/grey blocks and avoid switching to ivory or light sections for this features area.",
       "files": [
         "frontend/src/index.css",
         "frontend/src/pages/HomePage.tsx"
@@ -136,11 +115,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-refine-modal-styling-to-match-the-soft-luxury-theme-modal-content-container-uses-an-off-white-surface-with-slight-blur-a-thin-gold-border-elegant-spacing-and-the-same-glassmorphism-card-treatment-keep-the-existing-modal-structure-and-interactions-esc-click-outside-scroll-lock",
-      "featureTitle": "Refine modal styling to match the soft luxury theme: modal content container uses an off-white surface with slight blur, a thin gold border, elegant spacing, and the same glassmorphism card treatment; keep the existing modal structure and interactions (ESC, click outside, scroll lock).",
+      "featureId": "feature-enforce-home-page-section-background-consistency-and-spacing-reduce-replace-alternating-light-backgrounds-so-the-page-uses-mostly-deep-dark-navy-charcoal-with-restrained-transparent-overlays-avoid-white-heavy-sections-and-flat-grey-sections-increase-vertical-spacing-breathing-room-between-sections-and-slightly-increase-heading-sizes-where-needed-to-maintain-an-editorial-premium-feel",
+      "featureTitle": "Enforce Home page section background consistency and spacing: reduce/replace alternating light backgrounds so the page uses mostly deep dark navy/charcoal with restrained transparent overlays; avoid white-heavy sections and flat grey sections; increase vertical spacing/breathing room between sections and slightly increase heading sizes where needed to maintain an editorial premium feel.",
       "files": [
-        "frontend/src/components/ProductQuickViewModal.tsx",
-        "frontend/src/index.css"
+        "frontend/src/index.css",
+        "frontend/src/pages/HomePage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -151,25 +130,6 @@
       ],
       "testIds": [
         "REQ-7"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-footer-styling-to-match-the-soft-luxury-theme-and-readability-rules-avoid-dark-only-footer-treatment-with-white-headings-on-a-light-background-ensure-footer-headings-and-links-use-the-correct-foreground-muted-colors-and-keep-gold-accents-minimal-links-dividers-only",
-      "featureTitle": "Update the footer styling to match the soft luxury theme and readability rules: avoid dark-only footer treatment with white headings on a light background, ensure footer headings and links use the correct foreground/muted colors, and keep gold accents minimal (links/dividers only).",
-      "files": [
-        "frontend/src/components/SiteFooter.tsx",
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-8"
       ],
       "confidence": "high"
     }

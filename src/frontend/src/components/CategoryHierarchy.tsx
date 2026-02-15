@@ -40,14 +40,14 @@ export default function CategoryHierarchy({ subcategories, categorySlug }: Categ
             </p>
             
             {/* Show first few product types as preview */}
-            <div className="pt-2 border-t border-border/50">
+            <div className="pt-2" style={{ borderTop: '1px solid rgba(199, 154, 82, 0.2)' }}>
               <ul className="space-y-1.5">
                 {subcategory.productTypes.slice(0, 3).map((productType, ptIndex) => (
                   <li
                     key={ptIndex}
                     className="flex items-start text-sm text-muted-foreground"
                   >
-                    <span className="mr-2 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
+                    <span className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ background: '#C79A52' }} />
                     <span className="leading-relaxed">{productType.name}</span>
                   </li>
                 ))}

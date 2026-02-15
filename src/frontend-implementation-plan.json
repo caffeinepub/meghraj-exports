@@ -1,275 +1,151 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Soft-luxury visual refinement for MeghRaj Exports (tokens, glass cards, typography, nav/hero/modal/footer)",
+  "title": "Luxury glass navigation + cinematic hero + dark-section consistency on Home",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Update global theme tokens and base styles to the provided soft-luxury palette with warm/blue-tint surfaces and readable text contrast.",
+      "summary": "Restyle the global header to a fully transparent, premium glassmorphism treatment with white navigation text (including mobile menu).",
       "acceptanceCriteria": [
-        "Global CSS variables in frontend/src/index.css reflect the specified palette (either directly as hex or as equivalent OKLCH values) and the default page background is warm/off-white rather than pure white or deep navy.",
-        "Foreground/body text uses #1F2A3A-equivalent (theme foreground) and muted text uses #5C677D-equivalent (theme muted-foreground), with readable contrast across all pages.",
-        "At least two section background treatments exist (warm off-white and very soft bluish tint) and are used across pages without altering layout/structure."
+        "Header no longer renders with an opaque background at page top (no solid fill).",
+        "Header uses blur and subtle tint/border consistent with the provided RGBA values (or visually equivalent), and nav link text renders in white.",
+        "Desktop and mobile header states both follow the transparent glass styling (including the opened mobile menu area)."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Remove the current solid/dark inline header background and gold border styling; apply a reusable glass header class (transparent with backdrop blur 10–15px, subtle white tint rgba(255,255,255,0.08), thin soft border rgba(255,255,255,0.1)) and ensure nav text renders white in both desktop and mobile menu states."
+        },
+        {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Update :root theme tokens to match the soft-luxury palette (Primary Navy #0E1A2B, Warm Background #F4F1EA, Light Bluish Section Tint #EEF2F7, Accent Gold #C5A24D, Primary Text #1F2A3A, Muted Text #5C677D). Ensure body defaults use the warm background (not pure white), and update card/popover/border/input tokens to avoid white-on-white."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Apply both section background treatments across the Home page by switching existing section surface classes (e.g., some sections to warm background and others to the bluish tint) without changing structure."
-        },
-        {
-          "path": "frontend/src/pages/ProductsPage.tsx",
-          "operation": "modify",
-          "description": "Ensure the Products page uses the updated warm/blue-tint section surfaces (not flat white), via class adjustments only (no layout changes)."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Adjust About page section/callout surface classes to align with the warm/blue-tint theme while keeping all existing content and structure intact."
-        },
-        {
-          "path": "frontend/src/pages/CataloguePage.tsx",
-          "operation": "modify",
-          "description": "Adjust Catalogue page surface classes to use the new warm/blue-tint section treatments and avoid pure-white blocks, without changing layout."
+          "description": "Add/adjust global CSS utility classes for the premium glass header (baseline state): transparent glass background, blur, subtle border, and white text/link styling for header + opened mobile menu area."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Create a reusable glass card style and apply it consistently to all card-like UI and the modal content container.",
+      "summary": "Add scroll-based header styling that subtly increases blur/opacity and adds a low-opacity deep navy/charcoal tint while remaining glassy.",
       "acceptanceCriteria": [
-        "A reusable glass card class/utility exists (e.g., in frontend/src/index.css Tailwind layer) matching the specified background/blur/border/radius/shadow constraints.",
-        "Cards in ProductsPage (category cards), CategoryHierarchy (subcategory cards), HomePage highlights cards, About/Catalogue info callouts, and SubcategoryCard all render with the glass card styling without changing their structure or content.",
-        "Hover states remain subtle (no heavy shadow jumps); any hover border emphasis uses gold at low opacity."
+        "When at top of page, header uses the baseline transparent glass style.",
+        "After scrolling down, header transitions (smoothly) to a slightly stronger blur/opacity with a subtle dark tint; it never becomes an opaque/solid bar.",
+        "Scroll state transitions are animated and do not cause layout shift."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Implement a scroll position state (e.g., window scrollY threshold) to toggle a 'scrolled' header style class; ensure the transition is smooth, glassy, and does not change layout dimensions."
+        },
+        {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Add a reusable glass card utility/class (e.g., .glass-card and a subtle hover variant) that matches: background rgba(255,255,255,0.65), backdrop blur 12px, border-radius 12px, 1px border rgba(197,162,77,0.25), and a soft subtle shadow (no glow/heavy shadows/strong gradients)."
-        },
-        {
-          "path": "frontend/src/pages/ProductsPage.tsx",
-          "operation": "modify",
-          "description": "Apply the new glass card class/utility to product category cards (retain existing structure/content and interactions)."
-        },
-        {
-          "path": "frontend/src/components/CategoryHierarchy.tsx",
-          "operation": "modify",
-          "description": "Apply the new glass card class/utility to subcategory cards (retain existing structure/content and interactions)."
-        },
-        {
-          "path": "frontend/src/components/SubcategoryCard.tsx",
-          "operation": "modify",
-          "description": "Apply the new glass card class/utility to the subcategory/product cards (retain existing structure/content and interactions)."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Apply the new glass card class/utility to the Home page highlight/feature cards while preserving layout and copy."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Apply the new glass card class/utility to About page info callouts currently styled as cards (preserve structure/content)."
-        },
-        {
-          "path": "frontend/src/pages/CataloguePage.tsx",
-          "operation": "modify",
-          "description": "Apply the new glass card class/utility to Catalogue page callouts/cards (preserve structure/content)."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Apply the new glass card class/utility to Contact page side info cards and any other card-like containers (preserve structure/content)."
-        },
-        {
-          "path": "frontend/src/components/ProductQuickViewModal.tsx",
-          "operation": "modify",
-          "description": "Apply the glass card styling to the modal content container/panel, matching the specified glass constraints while keeping modal structure/behavior unchanged."
+          "description": "Define the header 'scrolled' glass variant (slightly higher blur and opacity plus a very subtle deep navy/charcoal tint) and transition properties so it remains translucent (not a solid bar)."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Improve site-wide typography, spacing, and contrast for readability while preserving the existing layout structure.",
+      "summary": "Increase the header logo size ~1.5× while keeping header alignment and navigation accessibility intact across breakpoints.",
       "acceptanceCriteria": [
-        "No section with light background uses white text for headings/body copy; text colors follow the new foreground/muted palette.",
-        "Body copy line-height is consistently comfortable (no cramped paragraphs) across Home/About/Catalogue/Products/Subcategory/Contact pages.",
-        "Section padding increases are implemented via styling only (class changes), with no route/component restructuring."
+        "Logo height/visual prominence increases ~1.5× compared to current sizing on both mobile and desktop.",
+        "Header height and spacing remain balanced; navigation remains accessible and not clipped at common viewport sizes."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/components/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Refine base typography for readability (comfortable body line-height and elegant headings) and ensure default text colors are readable on warm/blue-tint surfaces; keep changes styling-only."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Increase section padding/breathing room via class changes only, and ensure text colors are not white-on-light in any non-hero areas."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Adjust padding and text color classes for improved readability (no layout restructuring)."
-        },
-        {
-          "path": "frontend/src/pages/CataloguePage.tsx",
-          "operation": "modify",
-          "description": "Adjust padding and text color classes for improved readability (no layout restructuring)."
-        },
-        {
-          "path": "frontend/src/pages/ProductsPage.tsx",
-          "operation": "modify",
-          "description": "Adjust padding and text color classes for improved readability (no layout restructuring)."
-        },
-        {
-          "path": "frontend/src/pages/CategoryPage.tsx",
-          "operation": "modify",
-          "description": "Ensure any banner/overlay text remains readable and non-banner sections use foreground/muted palette (no white text on light backgrounds) and apply spacing-only refinements."
-        },
-        {
-          "path": "frontend/src/pages/SubcategoryPage.tsx",
-          "operation": "modify",
-          "description": "Ensure any banner/overlay text remains readable and non-banner sections use foreground/muted palette (no white text on light backgrounds) and apply spacing-only refinements."
-        },
-        {
-          "path": "frontend/src/pages/ContactPage.tsx",
-          "operation": "modify",
-          "description": "Ensure form labels/inputs/messages maintain strong contrast using the updated palette; adjust spacing for readability without changing structure."
+          "description": "Adjust logo sizing classes to increase visual prominence by ~1.5× across breakpoints, and tune header inner layout (heights/padding/gaps) to prevent overlap or awkward pushing of navigation."
         }
       ]
     },
     {
       "id": "REQ-4",
-      "summary": "Limit Accent Gold usage to premium highlights only (primary buttons, thin dividers, subtle hover borders, and active nav underline).",
+      "summary": "Refine the Home hero to a crisp luxury editorial look with a sharper equestrian image, minimal overlay, and only a subtle top gradient for readability.",
       "acceptanceCriteria": [
-        "Buttons that are primary actions use gold as the background, with readable text color.",
-        "Dividers remain thin and subtle; gold is not used as large fills or broad backgrounds.",
-        "Card hover effects use a subtle gold border emphasis rather than strong glow/gradient.",
-        "Navigation active state uses a thin gold underline (not a filled pill/tab)."
+        "Hero background image appears sharp and not overly filtered; overlay does not significantly darken the image.",
+        "Hero overlay is limited to a subtle top gradient for readability (lighter than the current heavy overlay).",
+        "Hero still maintains adequate text contrast/readability over the image."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Refine global button/divider utilities so gold is reserved for premium accents (primary button background, thin dividers, subtle hover borders, active nav underline). Update hover shadows to remain subtle (avoid heavy jumps)."
+          "path": "frontend/public/assets/generated/hero-equestrian-editorial.dim_1600x900.png",
+          "operation": "create",
+          "description": "Add the generated sharper luxury editorial equestrian hero placeholder image per imageRequirements.edits (hero-equestrian.dim_1600x900.png -> hero-equestrian-editorial.dim_1600x900.png) so it can be used as the Home hero background."
         },
         {
           "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Replace decorative gold usage (e.g., icon colors/fills or large gold-tinted areas) with foreground/muted styling, keeping gold only where specified (buttons/dividers/subtle card hover)."
+          "description": "Swap the hero background image reference to frontend/public/assets/generated/hero-equestrian-editorial.dim_1600x900.png and replace the current heavy full overlay with a subtle top-only gradient that preserves crisp visibility while keeping text readable."
         },
         {
-          "path": "frontend/src/components/CategoryHierarchy.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Remove decorative gold bullets/markers and ensure any gold usage is limited to subtle hover border emphasis only; keep structure unchanged."
-        },
-        {
-          "path": "frontend/src/pages/AboutPage.tsx",
-          "operation": "modify",
-          "description": "Replace decorative gold bullet dots/accents used in lists/callouts with muted/foreground alternatives; keep gold limited to allowed use cases."
-        },
-        {
-          "path": "frontend/src/pages/CataloguePage.tsx",
-          "operation": "modify",
-          "description": "Replace decorative gold bullet dots/accents used in lists/callouts with muted/foreground alternatives; keep gold limited to allowed use cases."
-        },
-        {
-          "path": "frontend/src/components/ProductQuickViewModal.tsx",
-          "operation": "modify",
-          "description": "Replace decorative gold bullets/markers inside the modal (e.g., feature list dots) with muted/foreground alternatives; keep gold only for the primary action button and thin borders/dividers where applicable."
-        },
-        {
-          "path": "frontend/src/components/SiteHeader.tsx",
-          "operation": "modify",
-          "description": "Ensure the only gold usage in navigation is the thin active underline (no filled gold backgrounds/pills)."
+          "description": "Reduce/remove heavy hero text panel/overlay styling (e.g., current hero text backdrop) and introduce lighter hero readability helpers (subtle text shadow and restrained gradient usage) consistent with a cinematic-but-clean editorial direction."
         }
       ]
     },
     {
       "id": "REQ-5",
-      "summary": "Refine header/navigation to a translucent light surface with blur and dark navy text, using a thin gold underline for active links (desktop + mobile).",
+      "summary": "Update hero typography and CTA styling: elegant serif headline in warm white with subtle shadow, warm-gold primary, transparent white-bordered secondary, and hover lift (no scaling).",
       "acceptanceCriteria": [
-        "Header uses a translucent light surface with backdrop blur on all routes (including the home page) and uses dark text by default.",
-        "Active desktop nav item shows a thin gold underline; inactive items use muted text and become foreground on hover.",
-        "Mobile nav avoids heavy filled active backgrounds; active state is indicated primarily via thin gold accent/underline/border.",
-        "No changes to nav items, routes, or header layout structure."
+        "Hero headline renders as an elegant serif with increased prominence and a subtle text shadow; spacing around hero elements feels more spacious than current.",
+        "Primary hero CTA uses a warm gold fill; secondary hero CTA is transparent with a white border and white text.",
+        "On hover, hero CTAs lift subtly (translateY) with smooth transitions; no aggressive scaling."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/SiteHeader.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Update header surface styling so it is consistently translucent light with blur (including on home), switch default nav text to dark navy/foreground, and keep active state as a thin gold underline. Remove heavy fills for both desktop and mobile active states while preserving current nav structure/behavior."
+          "description": "Adjust .btn-primary and .btn-secondary to match requested palette (warm gold primary; transparent secondary with white border/text) and replace scale-based hover with a subtle translateY lift (2–4px) and smooth transitions; add a subtle hero headline text-shadow utility/class."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Apply updated hero typography classes (serif headline styling, warm white tone, subtle text shadow, more generous spacing) and ensure the CTA buttons use the updated primary/secondary button classes."
         }
       ]
     },
     {
       "id": "REQ-6",
-      "summary": "Polish the Home hero styling with a localized text-area overlay gradient and improved readability (no overly dark full-hero wash).",
+      "summary": "Restyle Home highlights/features into floating glass panels over a deep navy/charcoal background with subtle hover lift and no light/beige/grey blocks.",
       "acceptanceCriteria": [
-        "Hero overlay is localized to the text region (e.g., a positioned gradient panel), not a full-width full-opacity dark wash over the entire hero image.",
-        "Hero heading and subheading maintain high contrast and readability without relying on pure white-on-white combinations.",
-        "Hero buttons follow the gold/secondary styling rules and remain legible over the image."
+        "The highlights/features section background is deep navy/charcoal (solid, minimal) with no additional background image.",
+        "Feature cards use the specified glass look (rgba(255,255,255,0.08) + blur + thin border + subtle shadow) and appear as floating panels.",
+        "Hover on cards lifts them by ~2–4px with smooth transition; no heavy glow or thick borders."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Adjust hero overlay implementation so the gradient is localized behind the text region only (not an across-hero wash). Update hero text and button surface styles to remain readable and aligned to the palette and gold accent rules."
-        },
-        {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "If needed, add a small reusable utility for the hero text backdrop/overlay panel styling to keep the effect consistent and subtle (no strong gradients)."
+          "description": "Introduce/adjust a dark-glass card style for the highlights section to match rgba(255,255,255,0.08) background + backdrop blur + thin soft border + subtle shadow + rounded corners; tune hover lift to 2–4px (not larger)."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Change the highlights/features section to a deep navy/charcoal background and apply the updated dark-glass card styling to all highlight cards; ensure no background image is introduced for this section."
         }
       ]
     },
     {
       "id": "REQ-7",
-      "summary": "Update modal styling to match the soft luxury theme while preserving existing modal structure and interactions.",
+      "summary": "Make Home page section backgrounds consistently dark luxury and increase editorial spacing/typographic breathing room without changing structure.",
       "acceptanceCriteria": [
-        "ProductQuickViewModal panel uses the glass card style (or a modal-specific glass variant) with a thin gold border and soft shadow; no heavy glow/gradients.",
-        "Modal backdrop remains subtle and does not darken the screen excessively; blur remains present.",
-        "Close button styling remains accessible and consistent with the new palette."
+        "Home page no longer alternates multiple distinct light section backgrounds (e.g., ivory/blue-tint) in a way that feels busy; overall reads as restrained dark luxury.",
+        "Section spacing is increased and consistent; content does not feel cramped.",
+        "No new sections/components are introduced; changes are styling and light layout spacing adjustments only."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/ProductQuickViewModal.tsx",
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Refine modal panel to use the glass card treatment (off-white surface with slight blur, thin gold border, elegant spacing) and adjust backdrop to be subtle (retain ESC/click outside/scroll lock behaviors)."
+          "description": "Adjust existing section background classes so Home reads mostly deep navy/charcoal (with restrained transparent overlays only where needed), reduce/remap light sections (ivory/blue tint) to dark equivalents, and increase vertical spacing between existing sections while keeping the same structure and content."
         },
         {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Ensure modal-related utilities/animations support the new soft-luxury look (subtle shadowing and surfaces), avoiding heavy shadows/glow/strong gradients."
-        }
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "summary": "Update footer styling to align with the soft luxury theme and readability rules while keeping content unchanged.",
-      "acceptanceCriteria": [
-        "Footer background and text colors are consistent with the global theme and maintain strong contrast.",
-        "Footer headings are not forced to white on a light background; link hover states remain subtle and premium.",
-        "Existing footer content/structure (company info, quick links, contact, caffeine.ai referral) remains unchanged."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/SiteFooter.tsx",
-          "operation": "modify",
-          "description": "Update footer surface and typography classes to use foreground/muted colors (no white headings on light surfaces) and keep gold accents minimal (links/dividers only), without changing footer content/structure."
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Adjust any shared footer-related utilities (e.g., divider/link hover styling) so they match the soft luxury palette and the restricted gold usage rules."
+          "description": "Refine section background utility classes (favor deep navy/charcoal) and spacing/typography defaults (slightly larger headings where needed, more vertical rhythm) to support a restrained premium editorial feel without introducing new sections."
         }
       ]
     }
