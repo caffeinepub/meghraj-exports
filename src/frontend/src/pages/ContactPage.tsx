@@ -87,7 +87,7 @@ export default function ContactPage() {
 
   if (submitted) {
     return (
-      <div className="py-24 md:py-32">
+      <div className="py-32 md:py-40">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <div className="mb-8 flex justify-center">
@@ -113,7 +113,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="py-24 md:py-32">
+    <div className="py-32 md:py-40">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="mx-auto max-w-4xl">
           <div className="mb-20 text-center">
@@ -141,7 +141,7 @@ export default function ContactPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full rounded-md border ${
+                      className={`w-full rounded-xl border ${
                         errors.name ? 'border-destructive' : 'border-input'
                       } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                     />
@@ -161,7 +161,7 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                 </div>
@@ -180,7 +180,7 @@ export default function ContactPage() {
                       name="country"
                       value={formData.country}
                       onChange={handleChange}
-                      className={`w-full rounded-md border ${
+                      className={`w-full rounded-xl border ${
                         errors.country ? 'border-destructive' : 'border-input'
                       } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                     />
@@ -197,7 +197,7 @@ export default function ContactPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full rounded-md border ${
+                      className={`w-full rounded-xl border ${
                         errors.email ? 'border-destructive' : 'border-input'
                       } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                     />
@@ -220,7 +220,7 @@ export default function ContactPage() {
                       value={formData.whatsapp}
                       onChange={handleChange}
                       placeholder="+1234567890"
-                      className="w-full rounded-md border border-input bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
 
@@ -236,7 +236,7 @@ export default function ContactPage() {
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
-                      className={`w-full rounded-md border ${
+                      className={`w-full rounded-xl border ${
                         errors.category ? 'border-destructive' : 'border-input'
                       } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                     >
@@ -263,23 +263,23 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={6}
-                    className={`w-full rounded-md border ${
+                    className={`w-full rounded-xl border ${
                       errors.message ? 'border-destructive' : 'border-input'
-                    } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                    } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary resize-none`}
                   />
                   {errors.message && <p className="mt-1 text-sm text-destructive">{errors.message}</p>}
                 </div>
 
                 {errors.submit && (
-                  <div className="rounded-md bg-destructive/10 p-4 text-sm text-destructive">
-                    {errors.submit}
+                  <div className="rounded-xl bg-destructive/10 border border-destructive/20 p-4">
+                    <p className="text-sm text-destructive">{errors.submit}</p>
                   </div>
                 )}
 
                 <button
                   type="submit"
                   disabled={submitInquiry.isPending}
-                  className="btn-primary w-full"
+                  className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {submitInquiry.isPending ? 'Sending...' : 'Send Inquiry'}
                 </button>
@@ -287,22 +287,24 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-6">
-              <div className="rounded-lg bg-card p-8 shadow-soft">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <Mail className="h-7 w-7 text-primary" />
+              <div className="glass-card p-6">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <Mail className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="mb-3 text-xl font-serif font-semibold text-foreground">Email Us</h3>
-                <p className="text-base text-muted-foreground">info@meghrajexports.com</p>
+                <h3 className="mb-2 text-lg font-serif font-semibold text-foreground">Email Us</h3>
+                <p className="text-sm text-muted-foreground">
+                  info@meghrajexports.com
+                </p>
               </div>
 
-              <div className="rounded-lg bg-card p-8 shadow-soft">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
-                  <MessageSquare className="h-7 w-7 text-primary" />
+              <div className="glass-card p-6">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                  <MessageSquare className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="mb-3 text-xl font-serif font-semibold text-foreground">
+                <h3 className="mb-2 text-lg font-serif font-semibold text-foreground">
                   Response Time
                 </h3>
-                <p className="text-base text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   We typically respond within 24 hours during business days.
                 </p>
               </div>

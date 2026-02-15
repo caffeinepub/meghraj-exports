@@ -86,7 +86,7 @@ export default function SubcategoryCard({ title, categorySlug, subcategorySlug, 
 
   return (
     <div 
-      className="group relative overflow-hidden rounded-lg bg-card/80 border border-primary/20 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:shadow-gold-glow cursor-pointer"
+      className="glass-card glass-card-hover group relative overflow-hidden cursor-pointer"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
@@ -94,7 +94,7 @@ export default function SubcategoryCard({ title, categorySlug, subcategorySlug, 
       aria-label={`View details for ${title}`}
     >
       {/* Image Container with Zoom Effect */}
-      <div className="aspect-[4/3] overflow-hidden bg-muted/30">
+      <div className="aspect-[4/3] overflow-hidden bg-muted/10">
         <img
           src={imageError ? placeholderImage : placeholderImage}
           alt={title}

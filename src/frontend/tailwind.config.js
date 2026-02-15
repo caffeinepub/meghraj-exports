@@ -53,7 +53,6 @@ export default {
                     DEFAULT: 'oklch(var(--card))',
                     foreground: 'oklch(var(--card-foreground))'
                 },
-                'gold-muted': 'oklch(var(--gold-muted))',
             },
             borderRadius: {
                 lg: 'var(--radius)',
@@ -62,9 +61,8 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                soft: '0 4px 12px rgba(0,0,0,0.15)',
-                premium: '0 8px 24px rgba(0,0,0,0.2)',
-                'gold-glow': '0 8px 24px rgba(200, 162, 77, 0.25)',
+                soft: '0 2px 8px rgba(0,0,0,0.08)',
+                premium: '0 4px 12px rgba(0,0,0,0.10)',
             },
             keyframes: {
                 'accordion-down': {

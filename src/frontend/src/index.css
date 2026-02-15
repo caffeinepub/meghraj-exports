@@ -4,48 +4,60 @@
 
 @layer base {
   :root {
-    --background: oklch(0.15 0.02 240);
-    --foreground: oklch(0.98 0.01 240);
-    --card: oklch(0.18 0.025 240);
-    --card-foreground: oklch(0.98 0.01 240);
-    --popover: oklch(0.18 0.025 240);
-    --popover-foreground: oklch(0.98 0.01 240);
-    --primary: oklch(0.72 0.12 65);
-    --primary-foreground: oklch(0.15 0.02 240);
-    --secondary: oklch(0.25 0.03 240);
-    --secondary-foreground: oklch(0.98 0.01 240);
-    --muted: oklch(0.22 0.025 240);
-    --muted-foreground: oklch(0.65 0.015 240);
-    --accent: oklch(0.72 0.12 65);
-    --accent-foreground: oklch(0.15 0.02 240);
+    /* Primary Navy: #0E1A2B */
+    --background: oklch(0.96 0.01 75);
+    /* Warm Background: #F4F1EA */
+    --foreground: oklch(0.20 0.02 240);
+    /* Primary Text: #1F2A3A */
+    --card: oklch(1.0 0 0 / 0.65);
+    /* Glass card with transparency */
+    --card-foreground: oklch(0.20 0.02 240);
+    --popover: oklch(0.96 0.01 75);
+    --popover-foreground: oklch(0.20 0.02 240);
+    /* Accent Gold: #C5A24D */
+    --primary: oklch(0.72 0.10 75);
+    --primary-foreground: oklch(0.14 0.025 240);
+    /* Light Bluish Section Tint: #EEF2F7 */
+    --secondary: oklch(0.95 0.005 240);
+    --secondary-foreground: oklch(0.20 0.02 240);
+    /* Muted Text: #5C677D */
+    --muted: oklch(0.28 0.03 240);
+    --muted-foreground: oklch(0.48 0.03 240);
+    --accent: oklch(0.72 0.10 75);
+    --accent-foreground: oklch(0.14 0.025 240);
     --destructive: oklch(0.55 0.22 25);
     --destructive-foreground: oklch(0.98 0.01 240);
-    --border: oklch(0.25 0.03 240);
-    --input: oklch(0.25 0.03 240);
-    --ring: oklch(0.72 0.12 65);
-    --radius: 0.5rem;
+    /* Subtle borders */
+    --border: oklch(0.88 0.01 240);
+    --input: oklch(0.88 0.01 240);
+    --ring: oklch(0.72 0.10 75);
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: oklch(0.15 0.02 240);
+    /* Primary Navy: #0E1A2B */
+    --background: oklch(0.14 0.025 240);
+    /* White text on dark */
     --foreground: oklch(0.98 0.01 240);
-    --card: oklch(0.18 0.025 240);
+    /* Dark cards */
+    --card: oklch(0.18 0.025 240 / 0.65);
     --card-foreground: oklch(0.98 0.01 240);
     --popover: oklch(0.18 0.025 240);
     --popover-foreground: oklch(0.98 0.01 240);
-    --primary: oklch(0.72 0.12 65);
-    --primary-foreground: oklch(0.15 0.02 240);
-    --secondary: oklch(0.25 0.03 240);
+    /* Accent Gold: #C5A24D */
+    --primary: oklch(0.72 0.10 75);
+    --primary-foreground: oklch(0.14 0.025 240);
+    --secondary: oklch(0.22 0.025 240);
     --secondary-foreground: oklch(0.98 0.01 240);
     --muted: oklch(0.22 0.025 240);
     --muted-foreground: oklch(0.65 0.015 240);
-    --accent: oklch(0.72 0.12 65);
-    --accent-foreground: oklch(0.15 0.02 240);
+    --accent: oklch(0.72 0.10 75);
+    --accent-foreground: oklch(0.14 0.025 240);
     --destructive: oklch(0.55 0.22 25);
     --destructive-foreground: oklch(0.98 0.01 240);
     --border: oklch(0.25 0.03 240);
     --input: oklch(0.25 0.03 240);
-    --ring: oklch(0.72 0.12 65);
+    --ring: oklch(0.72 0.10 75);
   }
 }
 
@@ -54,33 +66,69 @@
     @apply border-border;
   }
   body {
-    @apply bg-gradient-to-br from-[#0F1B2D] to-[#12243D] text-foreground;
+    @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.75;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+    font-weight: 700;
+  }
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl;
   }
 }
 
 @layer components {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px;
+    border: 1px solid rgba(197, 162, 77, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .glass-card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .glass-card-hover:hover {
+    border-color: rgba(197, 162, 77, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-md transition-all duration-200 hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-gold-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl transition-all duration-200 hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-secondary text-secondary-foreground font-semibold rounded-md transition-all duration-200 hover:bg-secondary/80 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-secondary text-secondary-foreground font-semibold rounded-xl transition-all duration-200 hover:bg-secondary/90 hover:-translate-y-0.5 hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 
   .gold-divider {
-    @apply h-px bg-gradient-to-r from-transparent via-primary to-transparent;
+    @apply h-px bg-primary/30;
   }
 
   .gold-divider-muted {
-    @apply h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent;
+    @apply h-px bg-primary/20;
   }
 
   .shadow-soft {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-card-hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
   /* Modal animations */
@@ -110,6 +158,15 @@
       opacity: 1;
       transform: scale(1);
     }
+  }
+
+  /* Hero text backdrop */
+  .hero-text-backdrop {
+    background: linear-gradient(to right, rgba(14, 26, 43, 0.85), rgba(14, 26, 43, 0.4));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 2rem;
   }
 }
 

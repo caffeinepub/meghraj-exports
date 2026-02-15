@@ -26,19 +26,11 @@ export default function SiteHeader() {
     return currentPath.startsWith(path);
   };
 
-  const isHomePage = currentPath === '/';
-
   return (
-    <header 
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isHomePage 
-          ? 'bg-background/60 backdrop-blur-md border-b border-border/50' 
-          : 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90 border-b border-border shadow-soft'
-      }`}
-    >
+    <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50 transition-all duration-300">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex h-20 items-center justify-between">
-          {/* Logo - Updated to new asset and doubled in size */}
+          {/* Logo */}
           <button
             onClick={() => handleNavigation('/')}
             className="flex items-center gap-3 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
@@ -51,14 +43,14 @@ export default function SiteHeader() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:items-center md:gap-2">
+          <nav className="hidden md:flex md:items-center md:gap-1">
             {navItems.map((item) => (
               <button
                 key={item.path}
                 onClick={() => handleNavigation(item.path)}
-                className={`relative px-5 py-2 text-[15px] font-medium tracking-wide transition-colors ${
+                className={`relative px-6 py-2 text-[15px] font-medium tracking-wide transition-colors ${
                   isActive(item.path)
-                    ? 'text-primary'
+                    ? 'text-foreground'
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -73,7 +65,7 @@ export default function SiteHeader() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="rounded-md p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="rounded-md p-2 text-muted-foreground hover:bg-muted/20 hover:text-foreground transition-colors md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -90,13 +82,13 @@ export default function SiteHeader() {
                   onClick={() => handleNavigation(item.path)}
                   className={`relative rounded-md px-4 py-3 text-left text-base font-medium transition-all ${
                     isActive(item.path)
-                      ? 'text-primary bg-primary/5'
-                      : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                      ? 'text-foreground bg-muted/10'
+                      : 'text-muted-foreground hover:bg-muted/5 hover:text-foreground'
                   }`}
                 >
                   {item.label}
                   {isActive(item.path) && (
-                    <span className="absolute left-0 top-1/2 h-6 w-1 -translate-y-1/2 bg-primary rounded-r" />
+                    <span className="absolute left-0 top-1/2 h-6 w-0.5 -translate-y-1/2 bg-primary rounded-r" />
                   )}
                 </button>
               ))}

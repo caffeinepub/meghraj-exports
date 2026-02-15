@@ -20,12 +20,12 @@ export default function CategoryHierarchy({ subcategories, categorySlug }: Categ
   };
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {subcategories.map((subcategory, index) => (
         <button
           key={index}
           onClick={() => handleSubcategoryClick(subcategory.name)}
-          className="group relative overflow-hidden rounded-lg bg-card p-6 shadow-soft border-t border-gold-muted/30 transition-all duration-300 hover:shadow-gold-glow hover:-translate-y-1 text-left"
+          className="glass-card glass-card-hover group relative overflow-hidden p-6 text-left"
         >
           <div className="flex items-start justify-between mb-4">
             <h3 className="text-lg md:text-xl font-serif font-medium text-foreground group-hover:text-primary transition-colors">
@@ -47,7 +47,7 @@ export default function CategoryHierarchy({ subcategories, categorySlug }: Categ
                     key={ptIndex}
                     className="flex items-start text-sm text-muted-foreground"
                   >
-                    <span className="mr-2 mt-1.5 h-1 w-1 rounded-full bg-primary/60 flex-shrink-0 group-hover:shadow-gold-glow" />
+                    <span className="mr-2 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                     <span className="leading-relaxed">{productType.name}</span>
                   </li>
                 ))}

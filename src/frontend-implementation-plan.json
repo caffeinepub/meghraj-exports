@@ -1,147 +1,275 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Premium quick-view modal on subcategory product cards + header/footer logo update",
+  "title": "Soft-luxury visual refinement for MeghRaj Exports (tokens, glass cards, typography, nav/hero/modal/footer)",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "On subcategory pages, open a centered quick-view modal when a product card is clicked, without changing the URL or removing existing routes.",
+      "summary": "Update global theme tokens and base styles to the provided soft-luxury palette with warm/blue-tint surfaces and readable text contrast.",
       "acceptanceCriteria": [
-        "On `/products/:categorySlug/:subcategorySlug`, clicking a product card does not change the URL and does not navigate away.",
-        "A modal opens centered on top of the current page content.",
-        "All existing product cards remain visible/unchanged when the modal is closed.",
-        "No changes are made to the overall routing table in `frontend/src/App.tsx` beyond what is required for the modal behavior (i.e., routes remain present and functional)."
+        "Global CSS variables in frontend/src/index.css reflect the specified palette (either directly as hex or as equivalent OKLCH values) and the default page background is warm/off-white rather than pure white or deep navy.",
+        "Foreground/body text uses #1F2A3A-equivalent (theme foreground) and muted text uses #5C677D-equivalent (theme muted-foreground), with readable contrast across all pages.",
+        "At least two section background treatments exist (warm off-white and very soft bluish tint) and are used across pages without altering layout/structure."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/SubcategoryPage.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Add local state to track the selected product type and render a centered quick-view modal on subcategory pages; intercept product card clicks to open the modal instead of navigating while leaving the TanStack Router route structure intact."
+          "description": "Update :root theme tokens to match the soft-luxury palette (Primary Navy #0E1A2B, Warm Background #F4F1EA, Light Bluish Section Tint #EEF2F7, Accent Gold #C5A24D, Primary Text #1F2A3A, Muted Text #5C677D). Ensure body defaults use the warm background (not pure white), and update card/popover/border/input tokens to avoid white-on-white."
         },
         {
-          "path": "frontend/src/components/SubcategoryCard.tsx",
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Extend the product card to support a click handler and keyboard accessibility (so the card can trigger quick-view opening) without changing the card’s visual structure."
+          "description": "Apply both section background treatments across the Home page by switching existing section surface classes (e.g., some sections to warm background and others to the bluish tint) without changing structure."
         },
         {
-          "path": "frontend/src/components/ProductQuickViewModal.tsx",
-          "operation": "create",
-          "description": "Create a dedicated quick-view modal component that can be rendered from SubcategoryPage and receives product data + open/close callbacks."
+          "path": "frontend/src/pages/ProductsPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the Products page uses the updated warm/blue-tint section surfaces (not flat white), via class adjustments only (no layout changes)."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Adjust About page section/callout surface classes to align with the warm/blue-tint theme while keeping all existing content and structure intact."
+        },
+        {
+          "path": "frontend/src/pages/CataloguePage.tsx",
+          "operation": "modify",
+          "description": "Adjust Catalogue page surface classes to use the new warm/blue-tint section treatments and avoid pure-white blocks, without changing layout."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Implement modal overlay, close controls, ESC/outside click close, and disable background scroll with blur/dim backdrop.",
+      "summary": "Create a reusable glass card style and apply it consistently to all card-like UI and the modal content container.",
       "acceptanceCriteria": [
-        "When the modal is open, the page behind it is visibly blurred and darkened by an overlay.",
-        "When the modal is open, the document/body does not scroll (scroll is restored when the modal closes).",
-        "Clicking the overlay (outside the modal panel) closes the modal.",
-        "Pressing ESC closes the modal.",
-        "A visible close (X) control exists in the modal’s top-right and closes the modal."
+        "A reusable glass card class/utility exists (e.g., in frontend/src/index.css Tailwind layer) matching the specified background/blur/border/radius/shadow constraints.",
+        "Cards in ProductsPage (category cards), CategoryHierarchy (subcategory cards), HomePage highlights cards, About/Catalogue info callouts, and SubcategoryCard all render with the glass card styling without changing their structure or content.",
+        "Hover states remain subtle (no heavy shadow jumps); any hover border emphasis uses gold at low opacity."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/ProductQuickViewModal.tsx",
-          "operation": "modify",
-          "description": "Implement the backdrop overlay with semi-transparent darkening and `backdrop-filter: blur(6px)`, close behaviors (X button, overlay click, ESC key), and body scroll locking while the modal is open."
-        },
-        {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Add minimal global CSS utilities (if needed) to support reliable `backdrop-filter: blur(6px)` and modal open/close animation behavior without editing any immutable UI component files."
+          "description": "Add a reusable glass card utility/class (e.g., .glass-card and a subtle hover variant) that matches: background rgba(255,255,255,0.65), backdrop blur 12px, border-radius 12px, 1px border rgba(197,162,77,0.25), and a soft subtle shadow (no glow/heavy shadows/strong gradients)."
+        },
+        {
+          "path": "frontend/src/pages/ProductsPage.tsx",
+          "operation": "modify",
+          "description": "Apply the new glass card class/utility to product category cards (retain existing structure/content and interactions)."
+        },
+        {
+          "path": "frontend/src/components/CategoryHierarchy.tsx",
+          "operation": "modify",
+          "description": "Apply the new glass card class/utility to subcategory cards (retain existing structure/content and interactions)."
+        },
+        {
+          "path": "frontend/src/components/SubcategoryCard.tsx",
+          "operation": "modify",
+          "description": "Apply the new glass card class/utility to the subcategory/product cards (retain existing structure/content and interactions)."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Apply the new glass card class/utility to the Home page highlight/feature cards while preserving layout and copy."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Apply the new glass card class/utility to About page info callouts currently styled as cards (preserve structure/content)."
+        },
+        {
+          "path": "frontend/src/pages/CataloguePage.tsx",
+          "operation": "modify",
+          "description": "Apply the new glass card class/utility to Catalogue page callouts/cards (preserve structure/content)."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Apply the new glass card class/utility to Contact page side info cards and any other card-like containers (preserve structure/content)."
+        },
+        {
+          "path": "frontend/src/components/ProductQuickViewModal.tsx",
+          "operation": "modify",
+          "description": "Apply the glass card styling to the modal content container/panel, matching the specified glass constraints while keeping modal structure/behavior unchanged."
         }
       ]
     },
     {
       "id": "REQ-3",
-      "summary": "Build the premium quick-view content layout with responsive two-column/stacked design and required content sections.",
+      "summary": "Improve site-wide typography, spacing, and contrast for readability while preserving the existing layout structure.",
       "acceptanceCriteria": [
-        "On >= md breakpoints, the modal presents image-left / content-right.",
-        "On small screens, the modal stacks content vertically with the image above the text content.",
-        "The modal shows: title (serif, prominent), a multi-line description, a bulleted list of features, and a “Send Inquiry” CTA button.",
-        "The modal image uses a non-stretched `object-fit` style (e.g., contain/cover as appropriate) and maintains aspect ratio."
+        "No section with light background uses white text for headings/body copy; text colors follow the new foreground/muted palette.",
+        "Body copy line-height is consistently comfortable (no cramped paragraphs) across Home/About/Catalogue/Products/Subcategory/Contact pages.",
+        "Section padding increases are implemented via styling only (class changes), with no route/component restructuring."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/ProductQuickViewModal.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Implement the responsive modal panel layout: image-left/content-right on md+, stacked on mobile; include title (serif), 3–5 line description text, a bulleted feature list, and a “Send Inquiry” button; ensure the image preserves aspect ratio via appropriate object-fit styling."
+          "description": "Refine base typography for readability (comfortable body line-height and elegant headings) and ensure default text colors are readable on warm/blue-tint surfaces; keep changes styling-only."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Increase section padding/breathing room via class changes only, and ensure text colors are not white-on-light in any non-hero areas."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Adjust padding and text color classes for improved readability (no layout restructuring)."
+        },
+        {
+          "path": "frontend/src/pages/CataloguePage.tsx",
+          "operation": "modify",
+          "description": "Adjust padding and text color classes for improved readability (no layout restructuring)."
+        },
+        {
+          "path": "frontend/src/pages/ProductsPage.tsx",
+          "operation": "modify",
+          "description": "Adjust padding and text color classes for improved readability (no layout restructuring)."
+        },
+        {
+          "path": "frontend/src/pages/CategoryPage.tsx",
+          "operation": "modify",
+          "description": "Ensure any banner/overlay text remains readable and non-banner sections use foreground/muted palette (no white text on light backgrounds) and apply spacing-only refinements."
         },
         {
           "path": "frontend/src/pages/SubcategoryPage.tsx",
           "operation": "modify",
-          "description": "Provide the modal with the correct product information from the current subcategory productTypes (title/description/features/image) so the quick-view content renders consistently for any card clicked."
+          "description": "Ensure any banner/overlay text remains readable and non-banner sections use foreground/muted palette (no white text on light backgrounds) and apply spacing-only refinements."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Ensure form labels/inputs/messages maintain strong contrast using the updated palette; adjust spacing for readability without changing structure."
         }
       ]
     },
     {
       "id": "REQ-4",
-      "summary": "Apply exact modal styling (navy background, gold border, glow shadow) and 0.3s ease fade+scale animations; style “Send Inquiry” button to gold spec with hover effects.",
+      "summary": "Limit Accent Gold usage to premium highlights only (primary buttons, thin dividers, subtle hover borders, and active nav underline).",
       "acceptanceCriteria": [
-        "Modal panel background color is `#141F33`.",
-        "Modal panel has a 1px gold-toned border and a soft glow shadow (not harsh or overly large).",
-        "Modal open transition uses fade+scale and completes in ~0.3s with ease timing; closing animates smoothly as well.",
-        "The “Send Inquiry” button uses `#C8A24D` background with dark navy text, and on hover both lifts slightly and darkens slightly."
+        "Buttons that are primary actions use gold as the background, with readable text color.",
+        "Dividers remain thin and subtle; gold is not used as large fills or broad backgrounds.",
+        "Card hover effects use a subtle gold border emphasis rather than strong glow/gradient.",
+        "Navigation active state uses a thin gold underline (not a filled pill/tab)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/ProductQuickViewModal.tsx",
-          "operation": "modify",
-          "description": "Apply the specified premium styling to the modal panel (`#141F33` background, 1px gold border, soft glow shadow) and implement the subtle fade+scale open/close animation (0.3s ease; scale 0.95→1 and opacity 0→1 on open; reverse on close)."
-        },
-        {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Add/adjust shared styling helpers (if needed) so the modal animation and gold button hover effects (slight lift + slight darkening) match the requested premium feel while keeping existing global theme intact."
+          "description": "Refine global button/divider utilities so gold is reserved for premium accents (primary button background, thin dividers, subtle hover borders, active nav underline). Update hover shadows to remain subtle (avoid heavy jumps)."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Replace decorative gold usage (e.g., icon colors/fills or large gold-tinted areas) with foreground/muted styling, keeping gold only where specified (buttons/dividers/subtle card hover)."
+        },
+        {
+          "path": "frontend/src/components/CategoryHierarchy.tsx",
+          "operation": "modify",
+          "description": "Remove decorative gold bullets/markers and ensure any gold usage is limited to subtle hover border emphasis only; keep structure unchanged."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "modify",
+          "description": "Replace decorative gold bullet dots/accents used in lists/callouts with muted/foreground alternatives; keep gold limited to allowed use cases."
+        },
+        {
+          "path": "frontend/src/pages/CataloguePage.tsx",
+          "operation": "modify",
+          "description": "Replace decorative gold bullet dots/accents used in lists/callouts with muted/foreground alternatives; keep gold limited to allowed use cases."
+        },
+        {
+          "path": "frontend/src/components/ProductQuickViewModal.tsx",
+          "operation": "modify",
+          "description": "Replace decorative gold bullets/markers inside the modal (e.g., feature list dots) with muted/foreground alternatives; keep gold only for the primary action button and thin borders/dividers where applicable."
+        },
+        {
+          "path": "frontend/src/components/SiteHeader.tsx",
+          "operation": "modify",
+          "description": "Ensure the only gold usage in navigation is the thin active underline (no filled gold backgrounds/pills)."
         }
       ]
     },
     {
       "id": "REQ-5",
-      "summary": "Make the modal “Send Inquiry” button navigate to `/contact` and prefill category exactly like the existing subcategory CTA.",
+      "summary": "Refine header/navigation to a translucent light surface with blur and dark navy text, using a thin gold underline for active links (desktop + mobile).",
       "acceptanceCriteria": [
-        "Clicking “Send Inquiry” in the modal navigates to `/contact`.",
-        "The navigation includes the same category prefill behavior currently used by the subcategory page’s “Send Inquiry” button.",
-        "No backend changes are required for this wiring."
+        "Header uses a translucent light surface with backdrop blur on all routes (including the home page) and uses dark text by default.",
+        "Active desktop nav item shows a thin gold underline; inactive items use muted text and become foreground on hover.",
+        "Mobile nav avoids heavy filled active backgrounds; active state is indicated primarily via thin gold accent/underline/border.",
+        "No changes to nav items, routes, or header layout structure."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/SubcategoryPage.tsx",
+          "path": "frontend/src/components/SiteHeader.tsx",
           "operation": "modify",
-          "description": "Wire the modal “Send Inquiry” action to reuse the same navigation/search prefill behavior as the existing subcategory page CTA (navigate to `/contact` with the same category prefill)."
-        },
-        {
-          "path": "frontend/src/components/ProductQuickViewModal.tsx",
-          "operation": "modify",
-          "description": "Invoke the provided “Send Inquiry” callback from the modal CTA button and close the modal as appropriate without changing routing structure."
+          "description": "Update header surface styling so it is consistently translucent light with blur (including on home), switch default nav text to dark navy/foreground, and keep active state as a thin gold underline. Remove heavy fills for both desktop and mobile active states while preserving current nav structure/behavior."
         }
       ]
     },
     {
       "id": "REQ-6",
-      "summary": "Replace header and footer logos with the provided PNG asset, enlarge the header logo ~2× without increasing header height, preserve aspect ratio and centering.",
+      "summary": "Polish the Home hero styling with a localized text-area overlay gradient and improved readability (no overly dark full-hero wash).",
       "acceptanceCriteria": [
-        "`frontend/src/components/SiteHeader.tsx` and `frontend/src/components/SiteFooter.tsx` both reference `Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png` (served from a static public path).",
-        "Header container height remains `h-20` (or otherwise unchanged), and nav items remain vertically centered.",
-        "Header logo appears visually ~2× larger than before without causing header growth; image remains vertically centered and not stretched.",
-        "Footer logo is updated to the same new image asset and maintains clean spacing (no distortion)."
+        "Hero overlay is localized to the text region (e.g., a positioned gradient panel), not a full-width full-opacity dark wash over the entire hero image.",
+        "Hero heading and subheading maintain high contrast and readability without relying on pure white-on-white combinations.",
+        "Hero buttons follow the gold/secondary styling rules and remain legible over the image."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png",
-          "operation": "create",
-          "description": "Add the provided high-resolution logo image as a static public asset to be referenced by header and footer."
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Adjust hero overlay implementation so the gradient is localized behind the text region only (not an across-hero wash). Update hero text and button surface styles to remain readable and aligned to the palette and gold accent rules."
         },
         {
-          "path": "frontend/src/components/SiteHeader.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Update the header logo image source to the new static asset and adjust sizing so it appears ~2× larger while keeping the header container height (`h-20`) unchanged, preserving aspect ratio (object-contain), vertical centering, and surrounding spacing."
+          "description": "If needed, add a small reusable utility for the hero text backdrop/overlay panel styling to keep the effect consistent and subtle (no strong gradients)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Update modal styling to match the soft luxury theme while preserving existing modal structure and interactions.",
+      "acceptanceCriteria": [
+        "ProductQuickViewModal panel uses the glass card style (or a modal-specific glass variant) with a thin gold border and soft shadow; no heavy glow/gradients.",
+        "Modal backdrop remains subtle and does not darken the screen excessively; blur remains present.",
+        "Close button styling remains accessible and consistent with the new palette."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductQuickViewModal.tsx",
+          "operation": "modify",
+          "description": "Refine modal panel to use the glass card treatment (off-white surface with slight blur, thin gold border, elegant spacing) and adjust backdrop to be subtle (retain ESC/click outside/scroll lock behaviors)."
         },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Ensure modal-related utilities/animations support the new soft-luxury look (subtle shadowing and surfaces), avoiding heavy shadows/glow/strong gradients."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Update footer styling to align with the soft luxury theme and readability rules while keeping content unchanged.",
+      "acceptanceCriteria": [
+        "Footer background and text colors are consistent with the global theme and maintain strong contrast.",
+        "Footer headings are not forced to white on a light background; link hover states remain subtle and premium.",
+        "Existing footer content/structure (company info, quick links, contact, caffeine.ai referral) remains unchanged."
+      ],
+      "file_operations": [
         {
           "path": "frontend/src/components/SiteFooter.tsx",
           "operation": "modify",
-          "description": "Update the footer logo image source to the same new static asset and ensure clean spacing, no distortion, and preserved aspect ratio."
+          "description": "Update footer surface and typography classes to use foreground/muted colors (no white headings on light surfaces) and keep gold accents minimal (links/dividers only), without changing footer content/structure."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Adjust any shared footer-related utilities (e.g., divider/link hover styling) so they match the soft luxury palette and the restricted gold usage rules."
         }
       ]
     }

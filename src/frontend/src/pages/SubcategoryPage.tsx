@@ -25,7 +25,7 @@ export default function SubcategoryPage() {
 
   if (!category || !subcategory) {
     return (
-      <div className="py-20 md:py-28">
+      <div className="py-32 md:py-40">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="mb-6 font-serif font-bold text-foreground">
@@ -61,7 +61,7 @@ export default function SubcategoryPage() {
   };
 
   return (
-    <div className="pb-20 md:pb-28">
+    <div className="pb-32 md:pb-40">
       {/* Category Banner Image */}
       <div className="relative h-72 md:h-96 overflow-hidden">
         <img
@@ -69,20 +69,20 @@ export default function SubcategoryPage() {
           alt={category.name}
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="container mx-auto">
-            <h1 className="font-serif font-bold text-foreground">
+            <h1 className="font-serif font-bold text-white">
               {subcategory.name}
             </h1>
-            <p className="mt-3 text-lg text-muted-foreground">
+            <p className="mt-3 text-lg text-white/80">
               {category.name}
             </p>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 lg:px-6 py-16">
+      <div className="container mx-auto px-4 lg:px-6 py-20">
         <div className="mx-auto max-w-7xl">
           {/* Navigation and CTA */}
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -110,7 +110,7 @@ export default function SubcategoryPage() {
               <div className="flex-1 gold-divider-muted" />
             </div>
             
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {subcategory.productTypes.map((productType, index) => (
                 <SubcategoryCard
                   key={index}
@@ -159,89 +159,52 @@ function getProductDetails(productName: string, categorySlug: string): {
     'Trail Saddle': 'Engineered for comfort during long hours on the trail, our trail saddles feature deep, secure seats and multiple attachment points for gear. Durable construction ensures reliability on extended wilderness adventures.',
     'Pleasure Saddle': 'Combining comfort with elegance, our pleasure saddles are perfect for leisurely rides and show ring presentations. Luxurious padding and refined styling make every ride a pleasure.',
     'Barrel Racing Saddle': 'Built for speed and agility, our barrel racing saddles feature deep seats and high cantles that keep riders secure through tight turns. Reinforced construction withstands the intense demands of competitive barrel racing.',
-    'Roping Saddle': 'Heavy-duty construction designed to handle the stress of roping work. Our roping saddles feature reinforced trees, strong horns, and durable rigging that can withstand the forces of ranch work and rodeo competition.',
-    'Ranch Saddle': 'Built for all-day comfort during working cattle operations, our ranch saddles combine durability with functionality. Multiple rigging options and practical design make these saddles the choice of working cowboys.',
-    'Cutting Saddle': 'Specialized design allows freedom of movement for cutting maneuvers while keeping the rider secure. Deep seats and tall swells provide stability during quick stops and turns required in cutting competition.',
-    'Reining Saddle': 'Precision-crafted for reining patterns, these saddles feature deep seats and high cantles that support the rider during sliding stops and spins. Quality construction ensures consistent performance in the show pen.',
-    'Wade Saddle': 'Traditional working saddle design offering exceptional balance and durability. Our Wade saddles feature a slick fork and minimal tooling, preferred by working cowboys for their all-day comfort and functionality.',
-    'Western Show Saddle': 'Stunning visual appeal meets functional design in our Western show saddles. Intricate hand-tooling and silver accents make these saddles stand out in the show ring while maintaining the comfort and balance needed for competition.',
-    'Mexican Western Saddle': 'Authentic traditional styling with intricate hand-tooled details characterize our Mexican Western saddles. Rich cultural heritage combined with quality craftsmanship creates saddles that are both beautiful and functional.',
-    'Polo Saddle': 'Lightweight and agile, our polo saddles are designed for the fast-paced demands of polo competition. Minimal padding and forward-cut flaps allow quick movements and precise control during play.',
-    'Endurance Saddle': 'Ergonomically designed for both horse and rider comfort over long distances, our endurance saddles feature lightweight construction and multiple attachment points for gear. Built to support multi-day rides and competitive endurance events.',
-    'Treeless Saddle': 'Flexible design conforms to your horse\'s unique back shape, distributing weight evenly without a rigid tree. Our treeless saddles offer freedom of movement while maintaining rider security and comfort.',
-    'Stock Saddle (Australian)': 'Distinctive Australian design perfect for stock work and trail riding. Deep, comfortable seats and practical features make these saddles ideal for long days working livestock or exploring the outback.',
-    'Half-Breed Saddle': 'Unique hybrid design combining the best features of English and Western saddles. Our half-breed saddles offer versatility for riders who appreciate elements from both riding traditions.',
-    'Trooper Saddle': 'Military-inspired design offering durability and all-day comfort. Our trooper saddles feature practical construction and reliable performance, perfect for long rides and demanding conditions.',
-    'Vaquera Saddle': 'Traditional Spanish working saddle with elegant styling and functional design. Our vaquera saddles honor centuries of horsemanship tradition while incorporating modern materials and construction techniques.',
-    'Icelandic Saddle': 'Specially designed for the unique gaits of Icelandic horses, these saddles provide comfort and security during tölt and other smooth gaits. Authentic construction respects Icelandic riding traditions.',
-    'Racing Saddle': 'Ultra-lightweight construction minimizes weight while maintaining strength and security. Our racing saddles are designed for maximum speed with minimal interference, perfect for flat racing and steeplechase.',
   };
 
   const features: Record<string, string[]> = {
     'Dressage Saddle': [
       'Deep seat for optimal rider position',
-      'Long, straight flaps for extended leg position',
+      'Long, straight flaps for extended leg contact',
       'Premium leather construction',
       'Adjustable girth straps',
       'Available in multiple sizes and colors'
     ],
-    'Monoflap Dressage Saddle': [
-      'Single-flap design for closer contact',
-      'Reduced bulk between rider and horse',
-      'Enhanced feel and communication',
-      'Modern ergonomic design',
-      'Premium quality materials'
-    ],
     'Jumping Saddle': [
       'Forward-cut flaps for jumping position',
-      'Supportive knee and thigh rolls',
-      'Durable leather construction',
-      'Secure seat design',
-      'Competition-ready finish'
-    ],
-    'Close Contact Saddle': [
-      'Minimal padding for maximum feel',
-      'Flat seat design',
-      'Close contact with horse',
-      'Lightweight construction',
-      'Ideal for show jumping'
-    ],
-    'Eventing / Cross Country Saddle': [
-      'Versatile multi-phase design',
-      'Secure seat for cross-country',
-      'Forward flaps for jumping',
-      'Durable construction',
-      'Competition tested'
+      'Padded knee rolls for security',
+      'Reinforced stirrup bars',
+      'Premium quality leather',
+      'Custom sizing available'
     ],
   };
 
-  const placeholderImages: Record<string, string> = {
-    'saddles': '/assets/generated/prod-placeholder-saddle.dim_1200x800.png',
-    'bridles-headgear': '/assets/generated/prod-placeholder-bridle.dim_1200x800.png',
-    'halters-leads': '/assets/generated/prod-placeholder-bridle.dim_1200x800.png',
-    'bags-leather-goods': '/assets/generated/prod-placeholder-leather.dim_1200x800.png',
-    'stirrups-accessories': '/assets/generated/prod-placeholder-leather.dim_1200x800.png',
-    'horse-care-stable-accessories': '/assets/generated/prod-placeholder-grooming.dim_1200x800.png',
-    'saddle-pads-blankets': '/assets/generated/prod-placeholder-textile.dim_1200x800.png',
-    'horse-rugs-clothing': '/assets/generated/prod-placeholder-textile.dim_1200x800.png',
-    'bits-spurs-control-gear': '/assets/generated/prod-placeholder-hardware.dim_1200x800.png',
-    'harness-driving-equipment': '/assets/generated/prod-placeholder-hardware.dim_1200x800.png',
+  const getPlaceholderImage = (categorySlug: string): string => {
+    if (categorySlug === 'saddles') {
+      return '/assets/generated/prod-placeholder-saddle.dim_1200x800.png';
+    } else if (categorySlug === 'bridles-headgear' || categorySlug === 'halters-leads') {
+      return '/assets/generated/prod-placeholder-bridle.dim_1200x800.png';
+    } else if (categorySlug === 'bags-leather-goods' || categorySlug === 'stirrups-accessories') {
+      return '/assets/generated/prod-placeholder-leather.dim_1200x800.png';
+    } else if (categorySlug === 'horse-care-stable-accessories') {
+      return '/assets/generated/prod-placeholder-grooming.dim_1200x800.png';
+    } else if (categorySlug === 'saddle-pads-blankets' || categorySlug === 'horse-rugs-clothing') {
+      return '/assets/generated/prod-placeholder-textile.dim_1200x800.png';
+    } else if (categorySlug === 'bits-spurs-control-gear' || categorySlug === 'harness-driving-equipment') {
+      return '/assets/generated/prod-placeholder-hardware.dim_1200x800.png';
+    }
+    return '/assets/generated/prod-placeholder-saddle.dim_1200x800.png';
   };
-
-  const defaultDescription = `Premium ${productName.toLowerCase()} crafted with quality materials and expert attention to detail. Our ${productName.toLowerCase()} combines traditional craftsmanship with modern design principles to deliver exceptional performance and durability. Each piece is carefully constructed to meet the demanding standards of equestrian professionals and enthusiasts alike.`;
-
-  const defaultFeatures = [
-    'Premium quality materials',
-    'Expert craftsmanship',
-    'Durable construction',
-    'Available in multiple sizes',
-    'Customization options available'
-  ];
 
   return {
     name: productName,
-    description: descriptions[productName] || defaultDescription,
-    features: features[productName] || defaultFeatures,
-    image: placeholderImages[categorySlug] || '/assets/generated/prod-placeholder-saddle.dim_1200x800.png',
+    description: descriptions[productName] || `Premium ${productName.toLowerCase()} crafted with quality materials and expert attention to detail. Our manufacturing process ensures durability and performance that meets international standards.`,
+    features: features[productName] || [
+      'Premium quality materials',
+      'Expert craftsmanship',
+      'Customization available',
+      'International quality standards',
+      'Competitive pricing for bulk orders'
+    ],
+    image: getPlaceholderImage(categorySlug)
   };
 }

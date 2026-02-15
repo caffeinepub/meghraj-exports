@@ -1,63 +1,49 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T22:15:02.602Z",
-  "summary": "Quick-view modal component and subcategory page wiring appear to be added, and header/footer logos were updated to the requested asset. However, the diff also includes several unrelated UI/content refactors (taxonomy/category hierarchy, global typography/spacing, footer attribution) that were not requested. Additionally, the modal animation only defines the opening fade+scale; the requested smooth reverse animation on close is not evidenced.",
-  "missing_requirements": [
-    {
-      "id": "REQ-4",
-      "requirement": "Modal close animation should smoothly reverse (fade+scale back) with ~0.3s ease timing.",
-      "reason": "The diff shows only one-way CSS keyframe animations (`fadeIn`, `modalSlideIn`) applied on mount; there is no evidenced exit animation (reverse) when closing/unmounting the modal.",
-      "evidence": [
-        "frontend/src/index.css",
-        "frontend/src/components/ProductQuickViewModal.tsx"
-      ]
-    }
-  ],
+  "generatedAt": "2026-02-15T20:16:36.797Z",
+  "summary": "Most visual-styling requirements (palette tokens, glass card utility, typography, header/footer, and modal glass styling) appear implemented. However, the diff also introduces non-visual structural/data/routing changes that were explicitly out of scope.",
+  "missing_requirements": [],
   "hallucinated_features": [
     {
-      "description": "Refactor/change product taxonomy structure to a 3-level hierarchy and remove subcategory images.",
-      "reason": "The BuildRequest explicitly scoped changes to subcategory-page interaction (modal) and header/footer logos, and constrained not to change category hierarchy/taxonomy. Diff summary indicates taxonomy restructuring beyond the request.",
+      "description": "Routing/site structure changes (new nested Subcategory route and related routing updates) despite the constraint to not change site structure/routing.",
+      "reason": "BuildRequest explicitly requires visual styling refinements only and forbids changes to site structure and routing; the diff summary indicates new routing behavior.",
       "evidence": [
-        "frontend-file-summaries.txt (frontend/src/data/productTaxonomy.ts)"
+        "frontend-file-summaries.txt (mentions App.tsx adds Subcategory nested route)",
+        "frontend/src/pages/SubcategoryPage.tsx",
+        "frontend/src/utils/slug.ts"
       ]
     },
     {
-      "description": "Refactor CategoryHierarchy component behavior (e.g., removing accordion behavior) and change subcategory navigation presentation.",
-      "reason": "Not requested; also conflicts with the constraint to not restructure existing category hierarchy behavior beyond modal interaction changes.",
+      "description": "Product taxonomy/data model restructuring to a 3-level hierarchy and removal of subcategory image fields.",
+      "reason": "BuildRequest non-goals include changing backend behavior or data models and constraints limit to styling-only changes; the diff summary indicates taxonomy restructuring.",
       "evidence": [
-        "frontend-file-summaries.txt (frontend/src/components/CategoryHierarchy.tsx)"
+        "frontend-file-summaries.txt (mentions frontend/src/data/productTaxonomy.ts changed to 3-level hierarchy, subcategories no longer have image fields)"
       ]
     },
     {
-      "description": "Global layout/typography/spacing changes across multiple pages (Home/About/Products/Catalogue/Contact) and global fonts setup.",
-      "reason": "Not requested; scope was limited to subcategory quick-view modal interaction and header/footer logo update.",
+      "description": "Added/generated professional one-line product descriptions and placeholder-image selection logic in SubcategoryCard (content/behavior enrichment beyond styling).",
+      "reason": "Not requested by any REQ; the request focuses on visual styling polish without changing structure/content.",
       "evidence": [
-        "frontend-file-summaries.txt (frontend/src/pages/HomePage.tsx)",
-        "frontend-file-summaries.txt (frontend/src/pages/AboutPage.tsx)",
-        "frontend-file-summaries.txt (frontend/src/pages/ProductsPage.tsx)",
-        "frontend-file-summaries.txt (frontend/src/pages/CataloguePage.tsx)",
-        "frontend-file-summaries.txt (frontend/src/pages/ContactPage.tsx)",
-        "frontend-file-summaries.txt (frontend/index.html)",
-        "frontend/src/index.css"
-      ]
-    },
-    {
-      "description": "Add/modify footer attribution link to caffeine.ai with UTM tracking.",
-      "reason": "Not requested in BuildRequest.",
-      "evidence": [
-        "frontend/src/components/SiteFooter.tsx"
+        "frontend/src/components/SubcategoryCard.tsx (adds getProductDescription and getPlaceholderImage helpers; truncated but clearly present)"
       ]
     }
   ],
-  "confidence": 0.66,
+  "confidence": 0.72,
   "changed_files": [
     "frontend-file-summaries.txt",
+    "frontend/src/components/CategoryHierarchy.tsx",
     "frontend/src/components/ProductQuickViewModal.tsx",
     "frontend/src/components/SiteFooter.tsx",
     "frontend/src/components/SiteHeader.tsx",
     "frontend/src/components/SubcategoryCard.tsx",
     "frontend/src/index.css",
+    "frontend/src/pages/AboutPage.tsx",
+    "frontend/src/pages/CataloguePage.tsx",
+    "frontend/src/pages/CategoryPage.tsx",
+    "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ProductsPage.tsx",
     "frontend/src/pages/SubcategoryPage.tsx",
     "project_state.json"
   ]

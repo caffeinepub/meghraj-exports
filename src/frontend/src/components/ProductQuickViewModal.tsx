@@ -19,105 +19,97 @@ export default function ProductQuickViewModal({
   product,
   onSendInquiry,
 }: ProductQuickViewModalProps) {
-  // Handle ESC key press
   useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
-        onClose();
-      }
+      if (e.key === 'Escape') onClose();
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      // Disable body scroll
-      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleEscape);
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      // Re-enable body scroll
-      document.body.style.overflow = '';
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleEscape);
     };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
-  const handleSendInquiryClick = () => {
-    onSendInquiry();
-    onClose();
-  };
-
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 modal-overlay"
-      onClick={handleOverlayClick}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay"
+      onClick={onClose}
     >
-      {/* Backdrop with blur and darkening */}
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-[6px]" />
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
 
       {/* Modal Panel */}
-      <div className="relative z-10 w-full max-w-5xl max-h-[90vh] overflow-y-auto modal-panel">
-        <div className="bg-[#141F33] border border-[#C8A24D] rounded-lg shadow-[0_0_40px_rgba(200,162,77,0.15)]">
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-background/10 text-muted-foreground hover:bg-background/20 hover:text-foreground transition-all duration-200"
-            aria-label="Close modal"
-          >
-            <X className="h-5 w-5" />
-          </button>
+      <div
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto glass-card modal-panel border border-primary/30"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 z-10 rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted/20 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          aria-label="Close modal"
+        >
+          <X className="h-6 w-6" />
+        </button>
 
-          {/* Content Layout */}
-          <div className="grid md:grid-cols-2 gap-0">
-            {/* Left: Image */}
-            <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[500px] overflow-hidden md:rounded-l-lg">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="absolute inset-0 h-full w-full object-cover"
-              />
+        <div className="grid gap-8 md:grid-cols-2 p-8">
+          {/* Image */}
+          <div className="aspect-square overflow-hidden rounded-lg bg-muted/10">
+            <img
+              src={product.image}
+              alt={product.name}
+              className="h-full w-full object-cover"
+            />
+          </div>
+
+          {/* Content */}
+          <div className="flex flex-col">
+            <h2 className="mb-4 text-3xl font-serif font-bold text-foreground">
+              {product.name}
+            </h2>
+
+            <div className="mb-6 h-px gold-divider" />
+
+            <p className="mb-8 text-base leading-relaxed text-muted-foreground">
+              {product.description}
+            </p>
+
+            <div className="mb-8">
+              <h3 className="mb-4 text-xl font-serif font-semibold text-foreground">
+                Key Features
+              </h3>
+              <ul className="space-y-3">
+                {product.features.map((feature, index) => (
+                  <li key={index} className="flex items-start text-sm text-muted-foreground">
+                    <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
+                    <span className="leading-relaxed">{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            {/* Right: Content */}
-            <div className="p-8 md:p-10 flex flex-col">
-              {/* Title */}
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
-                {product.name}
-              </h2>
-
-              {/* Description */}
-              <p className="text-base md:text-lg leading-relaxed text-muted-foreground mb-8">
-                {product.description}
-              </p>
-
-              {/* Features */}
-              {product.features.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-foreground mb-4">Key Features</h3>
-                  <ul className="space-y-2">
-                    {product.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3 text-muted-foreground">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#C8A24D] flex-shrink-0" />
-                        <span className="text-sm md:text-base">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Send Inquiry Button */}
+            <div className="mt-auto">
               <button
-                onClick={handleSendInquiryClick}
-                className="mt-auto inline-flex items-center justify-center px-8 py-3 bg-[#C8A24D] text-[#141F33] font-semibold rounded-md transition-all duration-200 hover:bg-[#B89240] hover:-translate-y-0.5 hover:shadow-lg"
+                onClick={onSendInquiry}
+                className="btn-primary w-full"
               >
                 Send Inquiry
               </button>
+              <p className="mt-4 text-center text-sm text-muted-foreground">
+                Contact us for pricing, customization options, and bulk orders
+              </p>
             </div>
           </div>
         </div>

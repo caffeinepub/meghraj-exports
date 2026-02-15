@@ -1,14 +1,16 @@
 # Specification
 
 ## Summary
-**Goal:** Add a premium quick-view modal for product cards on subcategory pages and update the header/footer logo to the provided new asset.
+**Goal:** Refine the MeghRaj Exports site visuals into a soft luxury theme (palette, glass cards, typography/contrast, and polished nav/hero/modal/footer styling) without changing layout or structure.
 
 **Planned changes:**
-- On subcategory routes (`/products/:categorySlug/:subcategorySlug`), change product card click behavior to open a centered quick-view modal (no URL change, no navigation), while keeping the existing routing structure intact.
-- Implement modal overlay and interaction behavior: semi-transparent dark backdrop with `backdrop-filter: blur(6px)`, disable background scroll while open, and allow closing via close button, outside click, and ESC key.
-- Build the modal layout and responsive behavior: desktop/tablet two-column (image left, content right); mobile stacks (image top, content below). Include title (large serif), 3–5 line description, bullet feature list, and a “Send Inquiry” button.
-- Apply the specified premium styling and animation: modal background `#141F33`, subtle 1px gold border, soft glow shadow, and fade+scale animation (0.3s ease, 0.95→1 and opacity 0→1; reverse on close). Style the “Send Inquiry” button with gold `#C8A24D`, dark navy text, and hover (slight lift + slight darkening).
-- Wire “Send Inquiry” in the modal to navigate to `/contact` and prefill the category using the same mechanism as the current subcategory page CTA.
-- Replace the site logo in both header and footer with `Screenshot_2026-02-15_at_3.36.48_AM-removebg-preview.png`, rendering the header logo at ~2× the current size while keeping header height unchanged, preserving aspect ratio, vertical centering, and spacing.
+- Update global theme tokens/base styles to the specified palette (Navy #0E1A2B, Warm Background #F4F1EA, Section Tint #EEF2F7, Gold #C5A24D, Primary Text #1F2A3A, Muted #5C677D), ensuring readable defaults for backgrounds, surfaces, borders/inputs, and text.
+- Add/apply a reusable glassmorphism card style (rgba(255,255,255,0.65), blur 12px, radius 12px, 1px gold border at low opacity, subtle shadow) across all card-like surfaces including modal content.
+- Improve site-wide typography and spacing for readability (line-height, heading presence, contrast fixes, increased section padding) without altering component structure.
+- Constrain Accent Gold usage to premium highlights only (primary buttons, thin dividers, subtle hover borders, active nav underline).
+- Refine header/navigation styling to a translucent light surface with blur and dark navy text, including a thin gold underline for the active link (desktop and mobile), keeping existing nav behavior.
+- Refine Home hero styling with a localized, subtle gradient overlay behind the text area only, preserving a strong hero image and readable hero text/buttons.
+- Refine modal styling to match the theme (off-white/glass surface, thin gold border, elegant spacing) while keeping existing interactions (ESC, click outside, scroll lock).
+- Update footer styling for consistent theme contrast and minimal gold accents while keeping footer content/structure unchanged.
 
-**User-visible outcome:** On subcategory product listings, clicking a product opens a premium quick-view modal with details and a “Send Inquiry” CTA (without leaving the page), and the site header/footer display the updated logo.
+**User-visible outcome:** The site retains the same pages and layout, but appears more premium and readable with a warm off-white base, soft tinted sections, consistent glass cards, restrained gold accents, and polished navigation, hero, modal, and footer styling.

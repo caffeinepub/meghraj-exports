@@ -7,7 +7,7 @@ export default function SiteFooter() {
     : 'meghraj-exports';
 
   return (
-    <footer className="border-t border-border bg-card">
+    <footer className="border-t border-border bg-secondary">
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 md:grid-cols-3">
           {/* Company Info */}
@@ -76,7 +76,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-8 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="mt-8 h-px gold-divider" />
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
           <p>© {currentYear} MeghRaj Exports. All rights reserved.</p>

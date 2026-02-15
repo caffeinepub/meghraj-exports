@@ -11,7 +11,7 @@ export default function CategoryPage() {
 
   if (!category) {
     return (
-      <div className="py-20 md:py-28">
+      <div className="py-32 md:py-40">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="mb-6 font-serif font-bold text-foreground">
@@ -38,7 +38,7 @@ export default function CategoryPage() {
   };
 
   return (
-    <div className="pb-20 md:pb-28">
+    <div className="pb-32 md:pb-40">
       {/* Category Banner Image */}
       <div className="relative h-72 md:h-96 overflow-hidden">
         <img
@@ -46,17 +46,17 @@ export default function CategoryPage() {
           alt={category.name}
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="container mx-auto">
-            <h1 className="font-serif font-bold text-foreground">
+            <h1 className="font-serif font-bold text-white">
               {category.name}
             </h1>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 lg:px-6 py-16">
+      <div className="container mx-auto px-4 lg:px-6 py-20">
         <div className="mx-auto max-w-7xl">
           {/* Navigation and CTA */}
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -65,7 +65,7 @@ export default function CategoryPage() {
               className="inline-flex items-center text-muted-foreground transition-colors hover:text-primary font-medium"
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to All Products
+              Back to Products
             </button>
             <button
               onClick={handleSendInquiry}
@@ -76,19 +76,22 @@ export default function CategoryPage() {
           </div>
 
           {/* Customization Note */}
-          <div className="mb-12 rounded-lg bg-card p-8 shadow-soft border-l-2 border-primary">
-            <p className="text-base md:text-lg leading-relaxed text-muted-foreground">
-              <span className="font-semibold text-foreground">Custom Manufacturing Available:</span>{' '}
-              All products can be customized to your specifications. Contact us to discuss your
-              requirements.
+          <div className="mb-16 glass-card p-8 border-l-2 border-primary">
+            <h2 className="mb-4 text-2xl font-serif font-semibold text-foreground">
+              Customization Available
+            </h2>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              All products in this category can be customized to your specifications. We offer
+              flexibility in materials, colors, dimensions, and branding to meet your exact
+              requirements. Contact us to discuss your customization needs.
             </p>
           </div>
 
-          {/* Category Hierarchy */}
+          {/* Subcategories */}
           <div>
             <div className="mb-10 flex items-center gap-4">
               <h2 className="text-3xl md:text-4xl font-serif font-semibold text-foreground">
-                Product Categories
+                Subcategories
               </h2>
               <div className="flex-1 gold-divider-muted" />
             </div>

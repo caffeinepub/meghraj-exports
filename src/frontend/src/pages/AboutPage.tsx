@@ -4,7 +4,7 @@ export default function AboutPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="py-24 md:py-32">
+    <div className="py-32 md:py-40">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="mx-auto max-w-4xl">
           <h1 className="mb-10 font-serif font-bold text-foreground">
@@ -27,7 +27,7 @@ export default function AboutPage() {
               maintaining competitive pricing for our global clientele.
             </p>
 
-            <div className="my-16 rounded-lg bg-card p-10 shadow-soft border-l-2 border-primary">
+            <div className="my-16 glass-card p-10 border-l-2 border-primary">
               <h2 className="mb-6 text-3xl font-serif font-semibold text-foreground">Our Mission</h2>
               <p className="text-lg leading-relaxed">
                 To provide exceptional equestrian and saddlery products that combine traditional
@@ -92,37 +92,37 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="my-16 rounded-lg bg-card p-10 shadow-soft border-l-2 border-primary">
+            <div className="my-16 glass-card p-10 border-l-2 border-primary">
               <h2 className="mb-6 text-3xl font-serif font-semibold text-foreground">
                 Our Commitment to You
               </h2>
               <ul className="space-y-4">
                 <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                   <span className="text-lg leading-relaxed">
                     Maintaining the highest quality standards in every product we manufacture
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                   <span className="text-lg leading-relaxed">
                     Providing competitive pricing without compromising on quality
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                   <span className="text-lg leading-relaxed">
                     Ensuring timely delivery and reliable logistics support
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                   <span className="text-lg leading-relaxed">
                     Offering flexible customization options to meet your specific needs
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                  <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                   <span className="text-lg leading-relaxed">
                     Building long-term partnerships based on trust and mutual success
                   </span>

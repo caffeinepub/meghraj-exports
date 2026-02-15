@@ -13,30 +13,31 @@ export default function HomePage() {
           alt="Premium equestrian equipment"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
         <div className="relative flex h-full items-center pt-20">
           <div className="container mx-auto px-4 lg:px-6">
             <div className="max-w-2xl">
-              <h1 className="mb-8 font-serif font-bold leading-[1.1] text-foreground">
-                Premium Equestrian Excellence
-              </h1>
-              <p className="mb-10 text-xl md:text-2xl text-foreground/90 leading-relaxed">
-                Your trusted partner for high-quality saddlery and equestrian products worldwide
-              </p>
-              <div className="flex flex-col gap-4 sm:flex-row">
-                <button
-                  onClick={() => navigate({ to: '/products' })}
-                  className="btn-primary"
-                >
-                  View Products
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </button>
-                <button
-                  onClick={() => navigate({ to: '/catalogue' })}
-                  className="btn-secondary"
-                >
-                  Request Catalogue
-                </button>
+              <div className="hero-text-backdrop">
+                <h1 className="mb-6 font-serif font-bold leading-[1.1] text-white">
+                  Premium Equestrian Excellence
+                </h1>
+                <p className="mb-8 text-xl md:text-2xl text-white/95 leading-relaxed">
+                  Your trusted partner for high-quality saddlery and equestrian products worldwide
+                </p>
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <button
+                    onClick={() => navigate({ to: '/products' })}
+                    className="btn-primary"
+                  >
+                    View Products
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={() => navigate({ to: '/catalogue' })}
+                    className="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white font-semibold rounded-xl backdrop-blur-sm border border-white/20 transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5 hover:shadow-soft"
+                  >
+                    Request Catalogue
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -44,7 +45,7 @@ export default function HomePage() {
       </section>
 
       {/* Introduction Section */}
-      <section className="bg-card py-24 md:py-32">
+      <section className="bg-secondary py-32 md:py-40">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-4xl">
             <div className="mb-10 gold-divider" />
@@ -64,10 +65,10 @@ export default function HomePage() {
       </section>
 
       {/* Highlights Section */}
-      <section className="py-24 md:py-32">
+      <section className="py-32 md:py-40">
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="group rounded-lg bg-card p-8 shadow-soft transition-all duration-300 hover:shadow-gold-glow hover:scale-[1.02]">
+          <div className="grid gap-10 md:grid-cols-3">
+            <div className="glass-card glass-card-hover p-8">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                 <Award className="h-8 w-8 text-primary" />
               </div>
@@ -80,7 +81,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="group rounded-lg bg-card p-8 shadow-soft transition-all duration-300 hover:shadow-gold-glow hover:scale-[1.02]">
+            <div className="glass-card glass-card-hover p-8">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                 <Wrench className="h-8 w-8 text-primary" />
               </div>
@@ -93,7 +94,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="group rounded-lg bg-card p-8 shadow-soft transition-all duration-300 hover:shadow-gold-glow hover:scale-[1.02]">
+            <div className="glass-card glass-card-hover p-8">
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
                 <Globe className="h-8 w-8 text-primary" />
               </div>
@@ -110,7 +111,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-card py-24 md:py-32">
+      <section className="bg-secondary py-32 md:py-40">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="mb-8 font-serif font-bold text-foreground">

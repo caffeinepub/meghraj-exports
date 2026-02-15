@@ -9,7 +9,7 @@ export default function CataloguePage() {
   };
 
   return (
-    <div className="py-24 md:py-32">
+    <div className="py-32 md:py-40">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="mx-auto max-w-4xl">
           <div className="mb-20 text-center">
@@ -65,29 +65,29 @@ export default function CataloguePage() {
             </div>
           </div>
 
-          <div className="rounded-lg bg-card p-10 md:p-14 shadow-soft border-l-2 border-primary">
+          <div className="glass-card p-10 md:p-14 border-l-2 border-primary">
             <h2 className="mb-6 text-3xl font-serif font-semibold text-foreground">
               What's Included in Our Catalogue?
             </h2>
             <ul className="mb-10 space-y-4 text-muted-foreground">
               <li className="flex items-start">
-                <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                 <span className="text-base md:text-lg leading-relaxed">Complete product range across all categories</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                 <span className="text-base md:text-lg leading-relaxed">High-quality product images and detailed descriptions</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                 <span className="text-base md:text-lg leading-relaxed">Material specifications and available customization options</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                 <span className="text-base md:text-lg leading-relaxed">Bulk order information and export capabilities</span>
               </li>
               <li className="flex items-start">
-                <span className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                <span className="mr-3 mt-1.5 h-1 w-1 rounded-full bg-muted-foreground flex-shrink-0" />
                 <span className="text-base md:text-lg leading-relaxed">Company information and contact details</span>
               </li>
             </ul>
