@@ -1,4 +1,4 @@
-import { useNavigate, useRouterState } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import { ArrowRight, Award, Globe, Wrench } from 'lucide-react';
 import { useRevealOnce } from '../hooks/useRevealOnce';
 import { useParallax } from '../hooks/useParallax';
@@ -15,40 +15,37 @@ export default function HomePage() {
 
   return (
     <div className="home-page-wrapper">
-      {/* Hero Section - Cinematic with parallax and vignette */}
+      {/* Hero Section */}
       <section className="relative h-[85vh] md:h-[90vh] overflow-hidden -mt-24">
         <div ref={parallaxRef} className="absolute inset-0 w-full h-[110vh]">
           <img
-            src="/assets/generated/hero-equestrian-editorial.dim_1600x900.png"
+            src="/assets/generated/home-hero-saddle-editorial.dim_1600x900.png"
             alt="Premium equestrian equipment"
             className="absolute inset-0 h-full w-full object-cover"
           />
         </div>
-        {/* Vignette overlay - very subtle */}
-        <div className="absolute inset-0 home-hero-vignette" />
-        {/* Left-to-right dark gradient overlay */}
-        <div className="absolute inset-0 home-hero-gradient" />
+        <div className="absolute inset-0 home-hero-overlay" />
         
         <div className="relative flex h-full items-center pt-24">
           <div className="container mx-auto px-4 lg:px-6">
             <div className="max-w-3xl">
-              <h1 className="mb-10 font-serif font-bold leading-[1.05] home-hero-headline home-hero-entrance-text">
+              <h1 className="mb-6 font-serif font-bold leading-tight home-hero-headline">
                 Premium Equestrian Excellence
               </h1>
-              <p className="mb-14 text-xl md:text-2xl leading-relaxed home-hero-subtext home-hero-entrance-text-delayed">
+              <p className="mb-10 text-lg md:text-xl leading-relaxed home-hero-subtext">
                 Your trusted partner for high-quality saddlery and equestrian products worldwide
               </p>
-              <div className="flex flex-col gap-5 sm:flex-row home-hero-entrance-buttons">
+              <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
                 <button
                   onClick={() => navigate({ to: '/products' })}
-                  className="home-btn-primary-hero"
+                  className="home-btn-primary group"
                 >
                   View Products
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </button>
                 <button
                   onClick={() => navigate({ to: '/catalogue' })}
-                  className="home-btn-secondary-hero"
+                  className="home-btn-secondary"
                 >
                   Request Catalogue
                 </button>
@@ -58,66 +55,51 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Smooth gradient transition from hero to content */}
-      <div className="home-hero-to-content-fade" />
-
-      {/* Introduction Section - Lighter Navy Gradient with Radial Glow and Animated Gold Lines */}
+      {/* Introduction Section */}
       <section
         ref={craftingSection.ref}
-        className={`home-section-crafting py-48 md:py-56 home-section-reveal ${
+        className={`home-section-intro py-24 md:py-32 home-section-reveal ${
           craftingSection.isRevealed ? 'home-section-revealed' : ''
         }`}
       >
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="mx-auto max-w-[680px]">
-            <div className="relative mb-10">
-              {/* Animated gold line above */}
-              <div className="home-gold-line-top" />
-            </div>
-            <div className="relative">
-              <div className="home-heading-spotlight" />
-              <h2 className="mb-10 text-center font-serif font-bold text-warm-white relative z-10 text-4xl md:text-5xl">
-                Crafting Quality Since Inception
-              </h2>
-            </div>
-            <p className="text-center text-lg md:text-xl text-warm-white/85 max-w-[680px] mx-auto" style={{ lineHeight: '1.85' }}>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-8 font-serif text-4xl md:text-5xl font-bold text-white leading-tight">
+              Crafting Quality Since Inception
+            </h2>
+            <p className="text-lg md:text-xl text-white/85 leading-relaxed">
               MeghRaj Exports specializes in manufacturing and exporting premium equestrian and
               saddlery products. We combine traditional craftsmanship with modern manufacturing
               techniques to deliver products that meet international quality standards. Our
               commitment to excellence and customer satisfaction has made us a preferred partner for
               businesses worldwide.
             </p>
-            <div className="relative mt-10">
-              {/* Animated gold line below */}
-              <div className="home-gold-line-bottom" />
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Highlights Section - Dark with Enhanced Glass Cards and Staggered Scroll Reveal */}
+      {/* Highlights Section */}
       <section
         ref={highlightsSection.ref}
-        className={`home-section-highlights py-48 md:py-56 relative home-section-reveal ${
+        className={`home-section-highlights py-24 md:py-32 home-section-reveal ${
           highlightsSection.isRevealed ? 'home-section-revealed' : ''
         }`}
       >
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="grid gap-16 md:grid-cols-3 relative">
+          <div className="grid gap-8 md:grid-cols-3 lg:gap-10">
             <div
               ref={card1.ref}
-              className={`home-glass-card home-glass-card-hover p-10 relative z-10 group home-card-reveal ${
+              className={`home-highlight-card p-10 home-card-reveal ${
                 card1.isRevealed ? 'home-card-revealed' : ''
               }`}
-              style={{ transitionDelay: '0ms' }}
             >
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/15 home-card-icon-wrapper">
-                <Award className="h-8 w-8 text-primary home-card-icon" />
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full home-icon-badge">
+                <Award className="h-8 w-8 home-icon-color" />
               </div>
-              <h3 className="mb-5 text-2xl font-serif font-semibold text-warm-white">
+              <h3 className="mb-5 text-2xl font-serif font-bold text-white">
                 Quality Assurance
               </h3>
-              <p className="text-base leading-relaxed text-warm-white/75">
+              <p className="text-base md:text-lg leading-relaxed home-card-text">
                 Every product undergoes rigorous quality control to ensure it meets international
                 standards and exceeds customer expectations.
               </p>
@@ -125,18 +107,18 @@ export default function HomePage() {
 
             <div
               ref={card2.ref}
-              className={`home-glass-card home-glass-card-hover p-10 relative z-10 group home-card-reveal ${
+              className={`home-highlight-card p-10 home-card-reveal ${
                 card2.isRevealed ? 'home-card-revealed' : ''
               }`}
-              style={{ transitionDelay: '150ms' }}
+              style={{ transitionDelay: '100ms' }}
             >
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/15 home-card-icon-wrapper">
-                <Wrench className="h-8 w-8 text-primary home-card-icon" />
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full home-icon-badge">
+                <Wrench className="h-8 w-8 home-icon-color" />
               </div>
-              <h3 className="mb-5 text-2xl font-serif font-semibold text-warm-white">
+              <h3 className="mb-5 text-2xl font-serif font-bold text-white">
                 Custom Manufacturing
               </h3>
-              <p className="text-base leading-relaxed text-warm-white/75">
+              <p className="text-base md:text-lg leading-relaxed home-card-text">
                 We offer comprehensive customization services to create products that perfectly
                 match your specifications and brand requirements.
               </p>
@@ -144,18 +126,18 @@ export default function HomePage() {
 
             <div
               ref={card3.ref}
-              className={`home-glass-card home-glass-card-hover p-10 relative z-10 group home-card-reveal ${
+              className={`home-highlight-card p-10 home-card-reveal ${
                 card3.isRevealed ? 'home-card-revealed' : ''
               }`}
-              style={{ transitionDelay: '300ms' }}
+              style={{ transitionDelay: '200ms' }}
             >
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary/15 home-card-icon-wrapper">
-                <Globe className="h-8 w-8 text-primary home-card-icon" />
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full home-icon-badge">
+                <Globe className="h-8 w-8 home-icon-color" />
               </div>
-              <h3 className="mb-5 text-2xl font-serif font-semibold text-warm-white">
+              <h3 className="mb-5 text-2xl font-serif font-bold text-white">
                 Global Export
               </h3>
-              <p className="text-base leading-relaxed text-warm-white/75">
+              <p className="text-base md:text-lg leading-relaxed home-card-text">
                 With extensive experience in international trade, we handle all aspects of export
                 logistics to ensure smooth delivery worldwide.
               </p>
@@ -164,36 +146,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Subtle gold divider between sections */}
-      <section className="home-section-transition py-24">
-        <div className="home-section-divider" />
-      </section>
+      {/* Transition Section */}
+      <section className="home-section-transition py-20" />
 
-      {/* CTA Section - Warmer Navy with Radial Glow and Increased Spacing */}
+      {/* CTA Section */}
       <section
         ref={ctaSection.ref}
-        className={`home-section-cta py-56 md:py-64 home-section-reveal ${
+        className={`home-section-cta py-28 md:py-36 home-section-reveal ${
           ctaSection.isRevealed ? 'home-section-revealed' : ''
         }`}
       >
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="relative mb-10">
-              <div className="home-cta-spotlight" />
-              <h2 className="font-serif font-bold text-warm-white relative z-10 text-4xl md:text-5xl">
-                Ready to Get Started?
-              </h2>
-            </div>
-            <p className="mb-12 text-lg md:text-xl text-warm-white/80 leading-relaxed">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="mb-8 font-serif text-4xl md:text-5xl font-bold text-white leading-tight">
+              Ready to Get Started?
+            </h2>
+            <p className="mb-10 text-lg md:text-xl text-white/85 leading-relaxed">
               Contact us today to discuss your requirements and discover how we can support your
               business with premium equestrian products.
             </p>
             <button
               onClick={() => navigate({ to: '/contact' })}
-              className="home-btn-cta"
+              className="home-btn-cta group"
             >
               Get in Touch
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
         </div>

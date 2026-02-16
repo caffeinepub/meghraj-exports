@@ -11,7 +11,7 @@ export default function CategoryPage() {
 
   if (!category) {
     return (
-      <div className="py-32 md:py-40">
+      <div className="product-page-wrapper py-32 md:py-40">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="mb-6 font-serif font-bold text-foreground">
@@ -38,18 +38,18 @@ export default function CategoryPage() {
   };
 
   return (
-    <div className="pb-32 md:pb-40">
-      {/* Category Banner Image */}
-      <div className="relative h-72 md:h-96 overflow-hidden">
+    <div className="product-page-wrapper pb-32 md:pb-40">
+      {/* Category Banner Image with Cinematic Overlay */}
+      <div className="relative h-72 md:h-96 overflow-hidden product-banner-fade-in">
         <img
           src={category.image}
           alt={category.name}
           className="h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent" />
+        <div className="absolute inset-0 product-banner-overlay" />
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
           <div className="container mx-auto">
-            <h1 className="font-serif font-bold text-white">
+            <h1 className="font-serif font-bold product-banner-heading">
               {category.name}
             </h1>
           </div>
@@ -75,12 +75,12 @@ export default function CategoryPage() {
             </button>
           </div>
 
-          {/* Customization Note */}
-          <div className="mb-16 glass-card p-8 border-l-2 border-primary">
+          {/* Customization Note - Premium Glass Card */}
+          <div className="mb-16 customization-card border-l-2 border-primary">
             <h2 className="mb-4 text-2xl font-serif font-semibold text-foreground">
               Customization Available
             </h2>
-            <p className="text-base leading-relaxed text-muted-foreground">
+            <p className="text-base leading-relaxed customization-card-text">
               All products in this category can be customized to your specifications. We offer
               flexibility in materials, colors, dimensions, and branding to meet your exact
               requirements. Contact us to discuss your customization needs.

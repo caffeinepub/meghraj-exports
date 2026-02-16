@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useRevealOnce } from '../hooks/useRevealOnce';
+import { useReducedMotion } from '../hooks/useReducedMotion';
 
 interface SubcategoryCardProps {
   title: string;
@@ -68,6 +70,8 @@ function getPlaceholderImage(categorySlug: string, subcategorySlug: string): str
 
 export default function SubcategoryCard({ title, categorySlug, subcategorySlug, onClick }: SubcategoryCardProps) {
   const [imageError, setImageError] = useState(false);
+  const { ref: cardRef, isRevealed } = useRevealOnce(0.1);
+  const prefersReducedMotion = useReducedMotion();
   const description = getProductDescription(title);
   const placeholderImage = getPlaceholderImage(categorySlug, subcategorySlug);
 
@@ -85,8 +89,11 @@ export default function SubcategoryCard({ title, categorySlug, subcategorySlug, 
   };
 
   return (
-    <div 
-      className="glass-card glass-card-hover group relative overflow-hidden cursor-pointer"
+    <div
+      ref={cardRef}
+      className={`product-luxury-card group relative overflow-hidden cursor-pointer ${
+        !prefersReducedMotion && !isRevealed ? 'product-card-reveal' : ''
+      } ${!prefersReducedMotion && isRevealed ? 'product-card-revealed' : ''}`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
@@ -105,7 +112,7 @@ export default function SubcategoryCard({ title, categorySlug, subcategorySlug, 
       
       {/* Content */}
       <div className="p-6">
-        <h3 className="mb-3 text-lg md:text-xl font-serif font-semibold text-foreground transition-colors duration-300 group-hover:text-primary">
+        <h3 className="mb-3 text-lg md:text-xl font-serif font-semibold text-foreground product-luxury-card-title">
           {title}
         </h3>
         <p className="text-sm md:text-base leading-relaxed text-muted-foreground line-clamp-2">

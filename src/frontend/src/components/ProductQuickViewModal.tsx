@@ -58,8 +58,7 @@ export default function ProductQuickViewModal({
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 rounded-full p-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          style={{ background: 'rgba(198, 167, 94, 0.15)', color: 'oklch(0.16 0.03 240)' }}
+          className="absolute right-4 top-4 z-10 rounded-full p-2 bg-primary/15 text-white hover:bg-primary/25 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           aria-label="Close modal"
         >
           <X className="h-6 w-6" />
@@ -67,7 +66,7 @@ export default function ProductQuickViewModal({
 
         <div className="grid gap-8 md:grid-cols-2 p-8">
           {/* Image */}
-          <div className="aspect-square overflow-hidden rounded-lg" style={{ background: 'rgba(198, 167, 94, 0.08)' }}>
+          <div className="aspect-square overflow-hidden rounded-lg bg-primary/10">
             <img
               src={product.image}
               alt={product.name}
@@ -77,25 +76,25 @@ export default function ProductQuickViewModal({
 
           {/* Content */}
           <div className="flex flex-col">
-            <h2 className="mb-4 text-3xl font-serif font-bold" style={{ color: 'oklch(0.16 0.03 240)' }}>
+            <h2 className="mb-4 text-3xl font-serif font-bold text-foreground">
               {product.name}
             </h2>
 
-            <div className="mb-6 gold-divider" />
+            <div className="mb-6 modal-divider" />
 
-            <p className="mb-6 text-base leading-relaxed" style={{ color: 'oklch(0.45 0.02 240)' }}>
+            <p className="mb-6 text-base leading-relaxed modal-description-text">
               {product.description}
             </p>
 
             {product.features.length > 0 && (
               <div className="mb-8">
-                <h3 className="mb-3 text-lg font-serif font-semibold" style={{ color: 'oklch(0.16 0.03 240)' }}>
+                <h3 className="mb-3 text-lg font-serif font-semibold text-foreground">
                   Key Features
                 </h3>
                 <ul className="space-y-2">
                   {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-start text-sm" style={{ color: 'oklch(0.45 0.02 240)' }}>
-                      <span className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ background: 'oklch(0.70 0.10 70)' }} />
+                    <li key={index} className="flex items-start text-sm modal-description-text">
+                      <span className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full flex-shrink-0 bg-primary" />
                       <span className="leading-relaxed">{feature}</span>
                     </li>
                   ))}

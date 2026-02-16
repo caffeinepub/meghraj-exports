@@ -2,48 +2,12 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-apply-visual-motion-refinements-only-to-the-existing-home-page-and-its-home-route-specific-styling-without-changing-routing-layout-structure-component-hierarchy-or-any-text-content-do-not-modify-the-visual-appearance-of-any-non-home-pages",
-      "featureTitle": "Apply visual + motion refinements ONLY to the existing Home page and its home-route-specific styling, without changing routing, layout/structure, component hierarchy, or any text/content. Do not modify the visual appearance of any non-Home pages.",
+      "featureId": "feature-ensure-the-backend-api-surface-supports-the-existing-frontend-integration-by-keeping-the-submitinquiry-signature-compatible-with-frontend-src-hooks-usequeries-ts-and-providing-a-query-method-to-retrieve-inquiries-e-g-getallinquiries-that-returns-stored-inquiries",
+      "featureTitle": "Ensure the backend API surface supports the existing frontend integration by keeping the submitInquiry signature compatible with frontend/src/hooks/useQueries.ts and providing a query method to retrieve inquiries (e.g., getAllInquiries) that returns stored inquiries.",
       "files": [
-        "frontend/src/index.css",
-        "frontend/src/pages/HomePage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-remove-all-white-light-backgrounds-from-the-home-page-by-implementing-a-cohesive-layered-deep-navy-background-system-with-smooth-blending-and-no-hard-breaks-matching-top-0b1622-middle-0f1f2f-lower-0b1622",
-      "featureTitle": "Remove all white/light backgrounds from the Home page by implementing a cohesive layered deep-navy background system with smooth blending and no hard breaks, matching: Top #0b1622, Middle #0f1f2f, Lower #0b1622.",
-      "files": [
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-upgrade-the-home-hero-section-for-readability-and-depth-while-keeping-the-current-hero-image-add-a-cinematic-dark-overlay-at-rgba-0-0-0-0-55-increase-headline-contrast-to-f5f2ea-add-a-soft-text-shadow-and-keep-the-parallax-effect-very-subtle-respect-prefers-reduced-motion",
-      "featureTitle": "Upgrade the Home Hero section for readability and depth while keeping the current hero image. Add a cinematic dark overlay at rgba(0,0,0,0.55), increase headline contrast to #f5f2ea, add a soft text shadow, and keep the parallax effect very subtle (respect prefers-reduced-motion).",
-      "files": [
-        "frontend/src/index.css",
-        "frontend/src/pages/HomePage.tsx"
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/CataloguePage.tsx",
+        "frontend/src/pages/ContactPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -54,98 +18,6 @@
       ],
       "testIds": [
         "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-adjust-home-hero-entrance-animations-to-match-the-specified-luxury-timing-headline-fade-rise-over-900ms-ease-out-subtext-uses-a-150ms-delay-buttons-use-a-300ms-delay-keep-motion-subtle-no-large-movement-and-disable-animations-under-prefers-reduced-motion",
-      "featureTitle": "Adjust Home hero entrance animations to match the specified luxury timing: Headline fade + rise over 900ms ease-out; subtext uses a 150ms delay; buttons use a 300ms delay. Keep motion subtle (no large movement), and disable animations under prefers-reduced-motion.",
-      "files": [
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-refine-the-home-crafting-quality-section-to-remove-any-light-background-and-continue-the-deep-navy-gradient-constrain-the-text-container-width-to-680px-increase-vertical-padding-add-a-thin-centered-gold-divider-line-with-animated-expansion-and-apply-scroll-reveal-fade-30px-rise-while-staying-subtle-optional-very-subtle-radial-glow-behind-the-heading",
-      "featureTitle": "Refine the Home Crafting Quality section to remove any light background and continue the deep-navy gradient. Constrain the text container width to 680px, increase vertical padding, add a thin centered gold divider line with animated expansion, and apply scroll reveal (fade + ~30px rise) while staying subtle. Optional: very subtle radial glow behind the heading.",
-      "files": [
-        "frontend/src/index.css",
-        "frontend/src/pages/HomePage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-home-feature-cards-to-a-premium-glass-style-with-the-exact-richer-card-background-and-hover-behavior-base-background-rgba-20-30-45-0-65-backdrop-blur-12px-border-1px-solid-rgba-212-175-55-0-15-on-hover-slight-lift-translatey-6px-brighter-gold-border-and-a-subtle-glow-shadow-entrance-animation-must-be-staggered-with-0-15s-delay-increments-between-cards-and-remain-subtle-respect-prefers-reduced-motion",
-      "featureTitle": "Update Home Feature Cards to a premium glass style with the exact richer card background and hover behavior: base background rgba(20,30,45,0.65), backdrop blur 12px, border 1px solid rgba(212,175,55,0.15). On hover: slight lift (translateY -6px), brighter gold border, and a subtle glow shadow. Entrance animation must be staggered with 0.15s delay increments between cards and remain subtle; respect prefers-reduced-motion.",
-      "files": [
-        "frontend/src/index.css",
-        "frontend/src/pages/HomePage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-upgrade-the-home-cta-section-and-the-divider-between-feature-cards-and-cta-add-a-subtle-thin-horizontal-gold-glow-line-centered-between-sections-very-thin-low-opacity-keep-cta-background-dark-add-a-soft-radial-warm-glow-behind-the-cta-heading-and-set-cta-button-gold-to-c9a14a-with-hover-glow-scale-1-03-and-smooth-250ms-transition",
-      "featureTitle": "Upgrade the Home CTA section and the divider between Feature Cards and CTA: add a subtle thin horizontal gold glow line centered between sections (very thin, low opacity), keep CTA background dark, add a soft radial warm glow behind the CTA heading, and set CTA button gold to #c9a14a with hover glow + scale 1.03 and smooth 250ms transition.",
-      "files": [
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-7"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-make-the-home-footer-fully-dark-luxury-no-white-while-ensuring-non-home-footers-are-unchanged-set-home-footer-background-to-08121a-or-current-home-footer-dark-token-updated-to-match-add-top-border-1px-solid-rgba-212-175-55-0-15-set-body-text-to-b8b8b8-and-keep-headings-in-soft-gold-footer-must-feel-like-a-continuation-of-the-home-page-no-abrupt-light-break",
-      "featureTitle": "Make the Home footer fully dark luxury (no white) while ensuring non-Home footers are unchanged: set Home footer background to #08121a (or current home-footer-dark token updated to match), add top border 1px solid rgba(212,175,55,0.15), set body text to #b8b8b8, and keep headings in soft gold. Footer must feel like a continuation of the Home page (no abrupt light break).",
-      "files": [
-        "frontend/src/index.css"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-8"
       ],
       "confidence": "high"
     }

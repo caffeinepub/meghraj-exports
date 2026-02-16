@@ -1,153 +1,164 @@
-import { useNavigate } from '@tanstack/react-router';
+import { Award, Globe, Users, Wrench } from 'lucide-react';
 
 export default function AboutPage() {
-  const navigate = useNavigate();
-
   return (
-    <div className="py-32 md:py-40">
-      <div className="container mx-auto px-4 lg:px-6">
-        <div className="mx-auto max-w-4xl">
-          <h1 className="mb-10 font-serif font-bold text-foreground">
-            About Us
-          </h1>
-          <div className="mb-10 gold-divider" />
-
-          <div className="space-y-8 text-lg md:text-xl leading-relaxed text-foreground">
-            <p>
-              MeghRaj Exports is a premier international trading and export company specializing in
-              equestrian and saddlery products. With years of experience in the industry, we have
-              established ourselves as a trusted partner for businesses worldwide seeking
-              high-quality equestrian equipment.
+    <div className="home-page-wrapper">
+      {/* Hero Section */}
+      <section className="home-section-intro py-32 md:py-40">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="mx-auto max-w-3xl text-center">
+            <h1 className="mb-6 font-serif text-4xl md:text-5xl font-bold text-white">
+              About MeghRaj Exports
+            </h1>
+            <div className="mx-auto mb-8 w-24 home-gold-divider" style={{ height: '3px' }} />
+            <p className="text-lg md:text-xl leading-relaxed text-white/85">
+              A trusted name in equestrian and saddlery manufacturing, delivering quality products
+              to customers worldwide.
             </p>
+          </div>
+        </div>
+      </section>
 
-            <p>
-              Our company was founded with a vision to bridge the gap between traditional
-              craftsmanship and modern manufacturing techniques. We take pride in our ability to
-              produce products that not only meet but exceed international quality standards while
-              maintaining competitive pricing for our global clientele.
-            </p>
+      {/* Mission Section */}
+      <section className="home-section-highlights py-24 md:py-32">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="mx-auto max-w-4xl">
+            <div className="home-highlight-card p-10 md:p-12">
+              <h2 className="mb-6 font-serif text-3xl md:text-4xl font-bold text-white">
+                Our Mission
+              </h2>
+              <p className="text-lg leading-relaxed text-white/85">
+                At MeghRaj Exports, we are dedicated to manufacturing and exporting premium
+                equestrian and saddlery products that meet the highest international standards. Our
+                mission is to provide our global customers with exceptional quality products,
+                reliable service, and competitive pricing that helps their businesses thrive.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="my-16 glass-card p-10" style={{ borderLeft: '2px solid #C79A52' }}>
-              <h2 className="mb-6 text-3xl font-serif font-semibold text-foreground">Our Mission</h2>
-              <p className="text-lg leading-relaxed text-foreground">
-                To provide exceptional equestrian and saddlery products that combine traditional
-                craftsmanship with modern innovation, while building lasting partnerships with our
-                clients through reliability, quality, and outstanding service.
+      {/* Values Section */}
+      <section className="home-section-transition py-24 md:py-32">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="mb-16 text-center">
+            <h2 className="mb-6 font-serif text-3xl md:text-4xl font-bold text-white">
+              What Sets Us Apart
+            </h2>
+            <div className="mx-auto mb-6 w-24 home-gold-divider" style={{ height: '3px' }} />
+          </div>
+
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            <div className="home-highlight-card p-8 text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full home-icon-badge">
+                  <Award className="h-8 w-8 home-icon-color" />
+                </div>
+              </div>
+              <h3 className="mb-4 text-xl font-serif font-semibold text-white">
+                Quality First
+              </h3>
+              <p className="text-sm leading-relaxed text-white/80">
+                Every product undergoes rigorous quality control to ensure it meets international
+                standards.
               </p>
             </div>
 
-            <h2 className="pt-8 text-3xl md:text-4xl font-serif font-semibold text-foreground">
-              What Sets Us Apart
-            </h2>
-
-            <div className="space-y-8">
-              <div>
-                <h3 className="mb-3 text-2xl font-serif font-semibold text-foreground">
-                  Quality Manufacturing
-                </h3>
-                <p className="text-foreground">
-                  Every product that leaves our facility undergoes rigorous quality control checks.
-                  We use premium materials and employ skilled craftsmen who understand the nuances
-                  of equestrian equipment manufacturing. Our commitment to quality has earned us
-                  recognition from clients across multiple continents.
-                </p>
+            <div className="home-highlight-card p-8 text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full home-icon-badge">
+                  <Wrench className="h-8 w-8 home-icon-color" />
+                </div>
               </div>
-
-              <div>
-                <h3 className="mb-3 text-2xl font-serif font-semibold text-foreground">
-                  Customization Expertise
-                </h3>
-                <p className="text-foreground">
-                  We understand that different markets have different requirements. Our team works
-                  closely with clients to customize products according to their specifications,
-                  whether it's adjusting dimensions, materials, colors, or adding specific features.
-                  This flexibility has made us a preferred partner for businesses looking to
-                  differentiate their offerings.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="mb-3 text-2xl font-serif font-semibold text-foreground">
-                  Global Export Experience
-                </h3>
-                <p className="text-foreground">
-                  With extensive experience in international trade, we handle all aspects of the
-                  export process efficiently. From documentation to logistics, our team ensures that
-                  your orders reach you on time and in perfect condition. We have successfully
-                  served clients in numerous countries and understand the complexities of
-                  cross-border trade.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="mb-3 text-2xl font-serif font-semibold text-foreground">
-                  Comprehensive Product Range
-                </h3>
-                <p className="text-foreground">
-                  Our extensive catalog covers 14 major product categories, encompassing everything
-                  from saddles and bridles to horse care accessories and rider equipment. This
-                  comprehensive range allows our clients to source multiple product types from a
-                  single, reliable supplier, simplifying their procurement process.
-                </p>
-              </div>
+              <h3 className="mb-4 text-xl font-serif font-semibold text-white">
+                Customization
+              </h3>
+              <p className="text-sm leading-relaxed text-white/80">
+                We offer comprehensive customization services to match your exact specifications
+                and brand requirements.
+              </p>
             </div>
 
-            <div className="my-16 glass-card p-10" style={{ borderLeft: '2px solid #C79A52' }}>
-              <h2 className="mb-6 text-3xl font-serif font-semibold text-foreground">
-                Our Commitment to You
-              </h2>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <span className="mr-3 mt-2 h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ background: '#C79A52' }} />
-                  <span className="text-lg leading-relaxed text-foreground">
-                    Maintaining the highest quality standards in every product we manufacture
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-2 h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ background: '#C79A52' }} />
-                  <span className="text-lg leading-relaxed text-foreground">
-                    Providing competitive pricing without compromising on quality
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-2 h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ background: '#C79A52' }} />
-                  <span className="text-lg leading-relaxed text-foreground">
-                    Ensuring timely delivery and reliable logistics support
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-2 h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ background: '#C79A52' }} />
-                  <span className="text-lg leading-relaxed text-foreground">
-                    Offering flexible customization options to meet your specific needs
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3 mt-2 h-1.5 w-1.5 rounded-full flex-shrink-0" style={{ background: '#C79A52' }} />
-                  <span className="text-lg leading-relaxed text-foreground">
-                    Building long-term partnerships based on trust and mutual success
-                  </span>
-                </li>
-              </ul>
+            <div className="home-highlight-card p-8 text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full home-icon-badge">
+                  <Globe className="h-8 w-8 home-icon-color" />
+                </div>
+              </div>
+              <h3 className="mb-4 text-xl font-serif font-semibold text-white">
+                Global Reach
+              </h3>
+              <p className="text-sm leading-relaxed text-white/80">
+                With extensive export experience, we handle all logistics to ensure smooth
+                worldwide delivery.
+              </p>
             </div>
 
-            <p className="text-foreground">
-              Whether you're a retailer looking to expand your product line, a distributor seeking
-              reliable suppliers, or a business requiring custom-manufactured equestrian products,
-              MeghRaj Exports is here to support your success. We invite you to explore our product
-              range and experience the difference that quality and dedication can make.
-            </p>
-          </div>
-
-          <div className="mt-16 text-center">
-            <button
-              onClick={() => navigate({ to: '/contact' })}
-              className="btn-primary"
-            >
-              Get in Touch
-            </button>
+            <div className="home-highlight-card p-8 text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full home-icon-badge">
+                  <Users className="h-8 w-8 home-icon-color" />
+                </div>
+              </div>
+              <h3 className="mb-4 text-xl font-serif font-semibold text-white">
+                Customer Focus
+              </h3>
+              <p className="text-sm leading-relaxed text-white/80">
+                We build long-term partnerships by understanding and exceeding our customers'
+                expectations.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Commitment Section */}
+      <section className="home-section-cta py-24 md:py-32">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="mx-auto max-w-4xl">
+            <div className="home-highlight-card p-10 md:p-12">
+              <h2 className="mb-6 font-serif text-3xl md:text-4xl font-bold text-white">
+                Our Commitment
+              </h2>
+              <div className="space-y-4 text-lg leading-relaxed text-white/85">
+                <p>
+                  We are committed to sustainable manufacturing practices and ethical business
+                  operations. Our team of skilled craftsmen combines traditional techniques with
+                  modern technology to create products that stand the test of time.
+                </p>
+                <p>
+                  Whether you're a retailer, distributor, or equestrian business, we work closely
+                  with you to understand your needs and deliver solutions that help your business
+                  succeed. Our flexible manufacturing capabilities allow us to handle orders of all
+                  sizes, from small custom batches to large-scale production runs.
+                </p>
+                <ul className="mt-6 space-y-3">
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-primary text-xl">•</span>
+                    <span>Competitive pricing for bulk orders</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-primary text-xl">•</span>
+                    <span>Flexible minimum order quantities</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-primary text-xl">•</span>
+                    <span>Fast turnaround times</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-primary text-xl">•</span>
+                    <span>Comprehensive after-sales support</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="mt-1 text-primary text-xl">•</span>
+                    <span>Worldwide shipping and logistics support</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

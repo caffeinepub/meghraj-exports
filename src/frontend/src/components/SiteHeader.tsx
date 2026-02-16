@@ -8,7 +8,6 @@ export default function SiteHeader() {
   const navigate = useNavigate();
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
-  const isHome = currentPath === '/';
 
   const navItems = [
     { label: 'Home', path: '/' },
@@ -38,9 +37,7 @@ export default function SiteHeader() {
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      isHome 
-        ? (scrolled ? 'home-header-glass-scrolled' : 'home-header-glass')
-        : (scrolled ? 'header-glass-scrolled' : 'header-glass')
+      scrolled ? 'home-header-glass-scrolled' : 'home-header-glass'
     }`}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex h-28 items-center justify-between">
@@ -63,15 +60,10 @@ export default function SiteHeader() {
                 key={item.path}
                 onClick={() => handleNavigation(item.path)}
                 className={`relative px-6 py-2 text-[15px] font-medium tracking-wide transition-colors ${
-                  isHome 
-                    ? (isActive(item.path) ? 'home-nav-item-active' : 'home-nav-item')
-                    : (isActive(item.path) ? 'text-white' : 'text-white/90 hover:text-white')
+                  isActive(item.path) ? 'home-nav-item-active' : 'home-nav-item'
                 }`}
               >
                 {item.label}
-                {isActive(item.path) && !isHome && (
-                  <span className="absolute bottom-0 left-1/2 h-0.5 w-12 -translate-x-1/2 rounded-full bg-primary" />
-                )}
               </button>
             ))}
           </nav>

@@ -65,7 +65,12 @@ export default function ContactPage() {
       });
       setErrors({});
     } catch (error) {
-      setErrors({ submit: 'Failed to submit inquiry. Please try again.' });
+      // Extract backend error message if available
+      let errorMessage = 'Failed to submit inquiry. Please try again.';
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      setErrors({ submit: errorMessage });
     }
   };
 
@@ -87,22 +92,22 @@ export default function ContactPage() {
 
   if (submitted) {
     return (
-      <div className="py-32 md:py-40">
+      <div className="home-section-cta py-32 md:py-40">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <div className="mb-8 flex justify-center">
-              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary/10">
-                <CheckCircle className="h-12 w-12 text-primary" />
+              <div className="flex h-24 w-24 items-center justify-center rounded-full home-icon-badge">
+                <CheckCircle className="h-12 w-12 home-icon-color" />
               </div>
             </div>
-            <h1 className="mb-6 font-serif font-bold text-foreground">Thank You!</h1>
-            <p className="mb-10 text-lg md:text-xl leading-relaxed text-muted-foreground">
+            <h1 className="mb-6 font-serif text-4xl md:text-5xl font-bold text-white">Thank You!</h1>
+            <p className="mb-10 text-lg md:text-xl leading-relaxed text-white/85">
               Your inquiry has been successfully submitted. Our team will review your message and
               get back to you within 24 hours.
             </p>
             <button
               onClick={() => setSubmitted(false)}
-              className="btn-primary"
+              className="home-btn-primary"
             >
               Submit Another Inquiry
             </button>
@@ -113,15 +118,15 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="py-32 md:py-40">
+    <div className="home-section-highlights py-32 md:py-40">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="mx-auto max-w-4xl">
           <div className="mb-20 text-center">
-            <h1 className="mb-6 font-serif font-bold text-foreground">
+            <h1 className="mb-6 font-serif text-4xl md:text-5xl font-bold text-white">
               Contact Us
             </h1>
-            <div className="mx-auto mb-6 w-24 gold-divider" />
-            <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
+            <div className="mx-auto mb-6 w-24 home-gold-divider" style={{ height: '3px' }} />
+            <p className="text-lg md:text-xl leading-relaxed text-white/85">
               Get in touch with us to discuss your requirements. We're here to help with your
               equestrian product needs.
             </p>
@@ -132,7 +137,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
+                    <label htmlFor="name" className="mb-2 block text-sm font-medium text-white">
                       Name *
                     </label>
                     <input
@@ -143,7 +148,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className={`w-full rounded-xl border ${
                         errors.name ? 'border-destructive' : 'border-input'
-                      } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                      } bg-background px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                     />
                     {errors.name && <p className="mt-1 text-sm text-destructive">{errors.name}</p>}
                   </div>
@@ -151,7 +156,7 @@ export default function ContactPage() {
                   <div>
                     <label
                       htmlFor="company"
-                      className="mb-2 block text-sm font-medium text-foreground"
+                      className="mb-2 block text-sm font-medium text-white"
                     >
                       Company Name
                     </label>
@@ -161,7 +166,7 @@ export default function ContactPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
                 </div>
@@ -170,7 +175,7 @@ export default function ContactPage() {
                   <div>
                     <label
                       htmlFor="country"
-                      className="mb-2 block text-sm font-medium text-foreground"
+                      className="mb-2 block text-sm font-medium text-white"
                     >
                       Country *
                     </label>
@@ -182,13 +187,13 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className={`w-full rounded-xl border ${
                         errors.country ? 'border-destructive' : 'border-input'
-                      } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                      } bg-background px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                     />
                     {errors.country && <p className="mt-1 text-sm text-destructive">{errors.country}</p>}
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
+                    <label htmlFor="email" className="mb-2 block text-sm font-medium text-white">
                       Email *
                     </label>
                     <input
@@ -199,7 +204,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className={`w-full rounded-xl border ${
                         errors.email ? 'border-destructive' : 'border-input'
-                      } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                      } bg-background px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                     />
                     {errors.email && <p className="mt-1 text-sm text-destructive">{errors.email}</p>}
                   </div>
@@ -209,7 +214,7 @@ export default function ContactPage() {
                   <div>
                     <label
                       htmlFor="whatsapp"
-                      className="mb-2 block text-sm font-medium text-foreground"
+                      className="mb-2 block text-sm font-medium text-white"
                     >
                       WhatsApp Number
                     </label>
@@ -220,14 +225,14 @@ export default function ContactPage() {
                       value={formData.whatsapp}
                       onChange={handleChange}
                       placeholder="+1234567890"
-                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full rounded-xl border border-input bg-background px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary"
                     />
                   </div>
 
                   <div>
                     <label
                       htmlFor="category"
-                      className="mb-2 block text-sm font-medium text-foreground"
+                      className="mb-2 block text-sm font-medium text-white"
                     >
                       Product Category *
                     </label>
@@ -238,12 +243,12 @@ export default function ContactPage() {
                       onChange={handleChange}
                       className={`w-full rounded-xl border ${
                         errors.category ? 'border-destructive' : 'border-input'
-                      } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
+                      } bg-background px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary`}
                     >
                       <option value="">Select a category</option>
-                      {categoryOptions.map((option) => (
-                        <option key={option} value={option}>
-                          {option}
+                      {categoryOptions.map((cat) => (
+                        <option key={cat} value={cat}>
+                          {cat}
                         </option>
                       ))}
                     </select>
@@ -254,7 +259,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">
+                  <label htmlFor="message" className="mb-2 block text-sm font-medium text-white">
                     Message *
                   </label>
                   <textarea
@@ -265,7 +270,8 @@ export default function ContactPage() {
                     rows={6}
                     className={`w-full rounded-xl border ${
                       errors.message ? 'border-destructive' : 'border-input'
-                    } bg-background px-4 py-3 text-foreground transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary resize-none`}
+                    } bg-background px-4 py-3 text-white transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary resize-none`}
+                    placeholder="Tell us about your requirements..."
                   />
                   {errors.message && <p className="mt-1 text-sm text-destructive">{errors.message}</p>}
                 </div>
@@ -279,32 +285,30 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={submitInquiry.isPending}
-                  className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="home-btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {submitInquiry.isPending ? 'Sending...' : 'Send Inquiry'}
+                  {submitInquiry.isPending ? 'Submitting...' : 'Submit Inquiry'}
                 </button>
               </form>
             </div>
 
             <div className="space-y-6">
-              <div className="glass-card p-6">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary" />
+              <div className="home-highlight-card p-6">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full home-icon-badge">
+                  <Mail className="h-6 w-6 home-icon-color" />
                 </div>
-                <h3 className="mb-2 text-lg font-serif font-semibold text-foreground">Email Us</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="mb-3 text-lg font-serif font-semibold text-white">Email Us</h3>
+                <p className="text-sm text-white/80">
                   info@meghrajexports.com
                 </p>
               </div>
 
-              <div className="glass-card p-6">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <MessageSquare className="h-6 w-6 text-primary" />
+              <div className="home-highlight-card p-6">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full home-icon-badge">
+                  <MessageSquare className="h-6 w-6 home-icon-color" />
                 </div>
-                <h3 className="mb-2 text-lg font-serif font-semibold text-foreground">
-                  Response Time
-                </h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="mb-3 text-lg font-serif font-semibold text-white">Response Time</h3>
+                <p className="text-sm text-white/80">
                   We typically respond within 24 hours during business days.
                 </p>
               </div>

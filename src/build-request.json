@@ -1,172 +1,83 @@
 {
   "kind": "build_request",
-  "title": "Home page-only dark luxury refinement (no layout/content changes)",
+  "title": "Set up backend canister to support inquiry submissions",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Apply visual + motion refinements ONLY to the existing Home page and its home-route-specific styling, without changing routing, layout/structure, component hierarchy, or any text/content. Do not modify the visual appearance of any non-Home pages.",
-      "target": "frontend",
+      "text": "Update the Motoko backend actor (backend/main.mo) to persist submitted inquiries across canister upgrades by storing inquiries in stable state instead of only in-memory variables.",
+      "target": "backend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Modify ONLY the existing Home page layout. Do NOT change routing, structure, component hierarchy, or content. Do NOT modify any other pages."
+          "now set the backend as well"
         ]
       },
       "acceptanceCriteria": [
-        "Home page keeps the same sections and order (Hero, Crafting Quality Section, Feature Cards Section, CTA Section, Footer).",
-        "No text/content strings are changed on the Home page.",
-        "Non-Home pages (Products, About, Catalogue, Contact, etc.) render identically to before this change (no new backgrounds/animations/colors applied)."
+        "After a canister upgrade, previously submitted inquiries are still available via the backend retrieval API.",
+        "Backend build succeeds with the updated stable state definitions."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Remove all white/light backgrounds from the Home page by implementing a cohesive layered deep-navy background system with smooth blending and no hard breaks, matching: Top #0b1622, Middle #0f1f2f, Lower #0b1622.",
-      "target": "frontend",
+      "text": "Align backend validation with the frontend forms by validating all required fields for inquiry submission (name, country, email, category, message) and returning clear English error messages when validation fails.",
+      "target": "backend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Remove all white/light backgrounds. Use layered luxury gradient: Top: #0b1622 Middle: #0f1f2f Lower: #0b1622 Create smooth gradient blending between sections. No hard breaks between sections."
+          "now set the backend as well"
         ]
       },
       "acceptanceCriteria": [
-        "No Home page section uses a white/light background (including transitions/dividers).",
-        "Home page backgrounds visually blend from #0b1622 → #0f1f2f → #0b1622 without abrupt color jumps.",
-        "The Home page wrapper/sections use only the navy–gold–charcoal palette (no new accent colors introduced)."
+        "Submitting an inquiry with any missing required field traps/rejects with a clear English error message indicating the missing requirement.",
+        "Submitting a valid inquiry succeeds and stores the inquiry."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Upgrade the Home Hero section for readability and depth while keeping the current hero image. Add a cinematic dark overlay at rgba(0,0,0,0.55), increase headline contrast to #f5f2ea, add a soft text shadow, and keep the parallax effect very subtle (respect prefers-reduced-motion).",
-      "target": "frontend",
+      "text": "Ensure the backend API surface supports the existing frontend integration by keeping the submitInquiry signature compatible with frontend/src/hooks/useQueries.ts and providing a query method to retrieve inquiries (e.g., getAllInquiries) that returns stored inquiries.",
+      "target": "both",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Keep current hero image. Add: • Dark cinematic overlay: rgba(0,0,0,0.55) • Improve headline contrast (#f5f2ea) • Subtle text shadow • Slight parallax effect (very subtle)"
+          "now set the backend as well"
         ]
       },
       "acceptanceCriteria": [
-        "Hero image remains unchanged and still loads from /assets/generated/hero-equestrian-editorial.dim_1600x900.png.",
-        "An overlay equivalent to rgba(0,0,0,0.55) is present over the hero image to improve text readability.",
-        "Hero headline text color is #f5f2ea (or visually equivalent) and has a soft shadow for contrast.",
-        "Parallax effect is subtle and disabled when prefers-reduced-motion is enabled."
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Adjust Home hero entrance animations to match the specified luxury timing: Headline fade + rise over 900ms ease-out; subtext uses a 150ms delay; buttons use a 300ms delay. Keep motion subtle (no large movement), and disable animations under prefers-reduced-motion.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Add entrance animation: Headline: fade + rise (900ms ease-out) Subtext: 150ms delay Buttons: 300ms delay"
-        ]
-      },
-      "acceptanceCriteria": [
-        "On initial Home page load, headline animates with fade + small upward rise using 900ms ease-out.",
-        "Subtext animation starts 150ms after the headline begins; buttons start 300ms after the headline begins.",
-        "When prefers-reduced-motion is enabled, hero entrance animations do not animate (content is immediately visible without transforms)."
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Refine the Home Crafting Quality section to remove any light background and continue the deep-navy gradient. Constrain the text container width to 680px, increase vertical padding, add a thin centered gold divider line with animated expansion, and apply scroll reveal (fade + ~30px rise) while staying subtle. Optional: very subtle radial glow behind the heading.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Crafting Quality Section... Remove any white background. Use deep navy gradient continuation. Add: • Thin animated gold divider line (centered) • Increase vertical padding • Max width text container (680px) • Scroll reveal animation (fade + 30px rise) Optional: Very subtle radial glow behind heading."
-        ]
-      },
-      "acceptanceCriteria": [
-        "Crafting section background is dark and blends with the overall Home gradient (no light/white panels).",
-        "Crafting section text container max width is 680px.",
-        "A thin centered gold divider line animates its width expansion (and is static if prefers-reduced-motion is enabled).",
-        "Crafting section reveals on scroll with subtle fade + rise (no flashy effects)."
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Update Home Feature Cards to a premium glass style with the exact richer card background and hover behavior: base background rgba(20,30,45,0.65), backdrop blur 12px, border 1px solid rgba(212,175,55,0.15). On hover: slight lift (translateY -6px), brighter gold border, and a subtle glow shadow. Entrance animation must be staggered with 0.15s delay increments between cards and remain subtle; respect prefers-reduced-motion.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Convert to premium glass style: Background: rgba(20,30,45,0.65) Backdrop blur: 12px Border: 1px solid rgba(212,175,55,0.15) Hover: • Slight lift (translateY -6px) • Border becomes stronger gold • Soft glow shadow Entrance: Stagger animation (0.15s delay between cards)"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Each feature card uses rgba(20,30,45,0.65) background with 12px backdrop blur and a gold-tinted border at rgba(212,175,55,0.15).",
-        "Hover state lifts cards by ~6px, increases border gold intensity, and adds a subtle glow shadow (no harsh/big glow).",
-        "Card entrances are staggered by 0.15s between cards and are disabled under prefers-reduced-motion."
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Upgrade the Home CTA section and the divider between Feature Cards and CTA: add a subtle thin horizontal gold glow line centered between sections (very thin, low opacity), keep CTA background dark, add a soft radial warm glow behind the CTA heading, and set CTA button gold to #c9a14a with hover glow + scale 1.03 and smooth 250ms transition.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Between feature cards and CTA: Add subtle horizontal gold glow line centered. Very thin. Low opacity.",
-          "CTA Section... Add subtle radial warm glow behind heading. Button: Gold (#c9a14a) Hover: • Glow • Slight scale • Smooth 250ms transition"
-        ]
-      },
-      "acceptanceCriteria": [
-        "A thin, centered, low-opacity horizontal gold glow divider is visible between the feature cards section and the CTA section (no bright or thick line).",
-        "CTA heading has a subtle radial warm glow behind it (kept understated).",
-        "CTA button base color is #c9a14a and hover uses a 250ms smooth transition with slight glow and scale to ~1.03 (scale suppressed under prefers-reduced-motion if necessary)."
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "text": "Make the Home footer fully dark luxury (no white) while ensuring non-Home footers are unchanged: set Home footer background to #08121a (or current home-footer-dark token updated to match), add top border 1px solid rgba(212,175,55,0.15), set body text to #b8b8b8, and keep headings in soft gold. Footer must feel like a continuation of the Home page (no abrupt light break).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Footer (Critical) Remove white footer completely. Use: Background: #08121a Top border: 1px solid rgba(212,175,55,0.15) Text: Body → #b8b8b8 Headings → soft gold Footer must visually continue the page — not feel separate."
-        ]
-      },
-      "acceptanceCriteria": [
-        "On the Home route only, the footer background is #08121a with a top border rgba(212,175,55,0.15).",
-        "Home footer body text is #b8b8b8 and headings are gold-toned.",
-        "On non-Home routes, footer styling remains unchanged compared to before this change."
+        "The frontend inquiry submission flows (Contact page and Catalogue request) successfully call actor.submitInquiry without runtime actor/method mismatch errors.",
+        "The backend exposes a query method that returns the stored inquiry records in a structured array type.",
+        "End-to-end: submitting an inquiry from the UI results in the inquiry being retrievable from the backend retrieval method."
       ]
     }
   ],
   "constraints": [
-    "Use English for any user-facing text.",
-    "Home page only: do not modify other pages' visuals.",
-    "Do not change routing, layout/structure, component hierarchy, or any Home page content strings.",
-    "No white/light sections on the Home page.",
-    "No flashy animations, particles, or large motion; luxury motion must remain subtle.",
-    "Respect prefers-reduced-motion by disabling or minimizing motion effects."
+    "Backend must remain a single Motoko actor in backend/main.mo.",
+    "Do not edit files under frontend/src/hooks/useInternetIdentity.ts(x) or frontend/src/hooks/useActor.ts (immutable paths).",
+    "Use English for any user-facing text."
   ],
   "nonGoals": [
-    "Backend changes (Motoko canister logic)",
-    "New pages, new routes, or navigation changes",
-    "Changing any Home page text/content or swapping the hero image asset",
-    "Adding new sections or restructuring existing Home page sections"
+    "Adding third-party auth providers (only Internet Identity is supported).",
+    "Adding external databases or off-chain storage.",
+    "Building an admin UI for viewing inquiries (unless explicitly requested later)."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

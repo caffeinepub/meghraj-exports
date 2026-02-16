@@ -1,5 +1,6 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useActor } from './useActor';
+import type { Inquiry } from '../backend';
 
 interface InquiryFormData {
   name: string;
@@ -34,5 +35,18 @@ export function useSubmitInquiry() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['inquiries'] });
     },
+  });
+}
+
+export function useGetAllInquiries() {
+  const { actor, isFetching } = useActor();
+
+  return useQuery<Inquiry[]>({
+    queryKey: ['inquiries'],
+    queryFn: async () => {
+      if (!actor) return [];
+      return actor.getAllInquiries();
+    },
+    enabled: !!actor && !isFetching,
   });
 }

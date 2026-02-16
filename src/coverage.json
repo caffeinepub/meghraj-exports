@@ -1,123 +1,56 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-16T09:50:14.231Z",
+  "generatedAt": "2026-02-16T14:33:26.901Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 8,
-    "implemented": 8,
+    "total": 3,
+    "implemented": 1,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Apply visual + motion refinements ONLY to the existing Home page and its home-route-specific styling, without changing routing, layout/structure, component hierarchy, or any text/content. Do not modify the visual appearance of any non-Home pages.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/index.css"
-        ]
+        "summary": "Update the Motoko backend actor (backend/main.mo) to persist submitted inquiries across canister upgrades by storing inquiries in stable state instead of only in-memory variables.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
       },
       {
         "id": "REQ-2",
-        "summary": "Remove all white/light backgrounds from the Home page by implementing a cohesive layered deep-navy background system with smooth blending and no hard breaks, matching: Top #0b1622, Middle #0f1f2f, Lower #0b1622.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css"
-        ]
+        "summary": "Align backend validation with the frontend forms by validating all required fields for inquiry submission (name, country, email, category, message) and returning clear English error messages when validation fails.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
       },
       {
         "id": "REQ-3",
-        "summary": "Upgrade the Home Hero section for readability and depth while keeping the current hero image. Add a cinematic dark overlay at rgba(0,0,0,0.55), increase headline contrast to #f5f2ea, add a soft text shadow, and keep the parallax effect very subtle (respect prefers-reduced-motion).",
+        "summary": "Ensure the backend API surface supports the existing frontend integration by keeping the submitInquiry signature compatible with frontend/src/hooks/useQueries.ts and providing a query method to retrieve inquiries (e.g., getAllInquiries) that returns stored inquiries.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/index.css"
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/ContactPage.tsx",
+          "frontend/src/pages/CataloguePage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/index.css"
-        ]
-      },
-      {
-        "id": "REQ-4",
-        "summary": "Adjust Home hero entrance animations to match the specified luxury timing: Headline fade + rise over 900ms ease-out; subtext uses a 150ms delay; buttons use a 300ms delay. Keep motion subtle (no large movement), and disable animations under prefers-reduced-motion.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css"
-        ]
-      },
-      {
-        "id": "REQ-5",
-        "summary": "Refine the Home Crafting Quality section to remove any light background and continue the deep-navy gradient. Constrain the text container width to 680px, increase vertical padding, add a thin centered gold divider line with animated expansion, and apply scroll reveal (fade + ~30px rise) while staying subtle. Optional: very subtle radial glow behind the heading.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/index.css"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Update Home Feature Cards to a premium glass style with the exact richer card background and hover behavior: base background rgba(20,30,45,0.65), backdrop blur 12px, border 1px solid rgba(212,175,55,0.15). On hover: slight lift (translateY -6px), brighter gold border, and a subtle glow shadow. Entrance animation must be staggered with 0.15s delay increments between cards and remain subtle; respect prefers-reduced-motion.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/pages/HomePage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/pages/HomePage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-7",
-        "summary": "Upgrade the Home CTA section and the divider between Feature Cards and CTA: add a subtle thin horizontal gold glow line centered between sections (very thin, low opacity), keep CTA background dark, add a soft radial warm glow behind the CTA heading, and set CTA button gold to #c9a14a with hover glow + scale 1.03 and smooth 250ms transition.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/index.css"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/index.css"
-        ]
-      },
-      {
-        "id": "REQ-8",
-        "summary": "Make the Home footer fully dark luxury (no white) while ensuring non-Home footers are unchanged: set Home footer background to #08121a (or current home-footer-dark token updated to match), add top border 1px solid rgba(212,175,55,0.15), set body text to #b8b8b8, and keep headings in soft gold. Footer must feel like a continuation of the Home page (no abrupt light break).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/components/SiteFooter.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css"
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/ContactPage.tsx",
+          "frontend/src/pages/CataloguePage.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/index.css",
-    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/CataloguePage.tsx",
+    "frontend/src/pages/ContactPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

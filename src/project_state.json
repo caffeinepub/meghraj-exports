@@ -1,78 +1,16 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Refine existing Home page only with a cohesive dark-luxury navy–gold aesthetic and subtle premium motion; no routing/layout/content/component hierarchy changes; remove all white/light sections.",
-  "architectural_notes": [
-    "Scope constraint: Apply changes ONLY to the existing Home page; do NOT modify routing, other pages, component hierarchy, section names, or content/text.",
-    "Design system constraint: Remove all white/light backgrounds on Home; use layered gradients (#0b1622 → #0f1f2f → #0b1622) with smooth blending and no hard breaks.",
-    "Motion constraint: Luxury/subtle animations only (fade + soft rise, slow easing); avoid flashy animations/particles/large movements."
-  ],
-  "known_issues": [
-    "Home page has white/light backgrounds and footer areas that break the dark theme; hero text readability is insufficient (needs contrast/overlay)."
-  ],
-  "isFixRequest": true,
+  "summary": "Project expanded to include backend setup in addition to the existing frontend/styling work.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-apply-visual-motion-refinements-only-to-the-existing-home-page-and-its-home-route-specific-styling-without-changing-routing-layout-structure-component-hierarchy-or-any-text-content-do-not-modify-the-visual-appearance-of-any-non-home-pages",
-      "title": "Apply visual + motion refinements ONLY to the existing Home page and its home-route-specific styling, without changing routing, layout/structure, component hierarchy, or any text/content. Do not modify the visual appearance of any non-Home pages.",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-remove-all-white-light-backgrounds-from-the-home-page-by-implementing-a-cohesive-layered-deep-navy-background-system-with-smooth-blending-and-no-hard-breaks-matching-top-0b1622-middle-0f1f2f-lower-0b1622",
-      "title": "Remove all white/light backgrounds from the Home page by implementing a cohesive layered deep-navy background system with smooth blending and no hard breaks, matching: Top #0b1622, Middle #0f1f2f, Lower #0b1622.",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-upgrade-the-home-hero-section-for-readability-and-depth-while-keeping-the-current-hero-image-add-a-cinematic-dark-overlay-at-rgba-0-0-0-0-55-increase-headline-contrast-to-f5f2ea-add-a-soft-text-shadow-and-keep-the-parallax-effect-very-subtle-respect-prefers-reduced-motion",
-      "title": "Upgrade the Home Hero section for readability and depth while keeping the current hero image. Add a cinematic dark overlay at rgba(0,0,0,0.55), increase headline contrast to #f5f2ea, add a soft text shadow, and keep the parallax effect very subtle (respect prefers-reduced-motion).",
+      "id": "feature-ensure-the-backend-api-surface-supports-the-existing-frontend-integration-by-keeping-the-submitinquiry-signature-compatible-with-frontend-src-hooks-usequeries-ts-and-providing-a-query-method-to-retrieve-inquiries-e-g-getallinquiries-that-returns-stored-inquiries",
+      "title": "Ensure the backend API surface supports the existing frontend integration by keeping the submitInquiry signature compatible with frontend/src/hooks/useQueries.ts and providing a query method to retrieve inquiries (e.g., getAllInquiries) that returns stored inquiries.",
       "reqIds": [
         "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-adjust-home-hero-entrance-animations-to-match-the-specified-luxury-timing-headline-fade-rise-over-900ms-ease-out-subtext-uses-a-150ms-delay-buttons-use-a-300ms-delay-keep-motion-subtle-no-large-movement-and-disable-animations-under-prefers-reduced-motion",
-      "title": "Adjust Home hero entrance animations to match the specified luxury timing: Headline fade + rise over 900ms ease-out; subtext uses a 150ms delay; buttons use a 300ms delay. Keep motion subtle (no large movement), and disable animations under prefers-reduced-motion.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-refine-the-home-crafting-quality-section-to-remove-any-light-background-and-continue-the-deep-navy-gradient-constrain-the-text-container-width-to-680px-increase-vertical-padding-add-a-thin-centered-gold-divider-line-with-animated-expansion-and-apply-scroll-reveal-fade-30px-rise-while-staying-subtle-optional-very-subtle-radial-glow-behind-the-heading",
-      "title": "Refine the Home Crafting Quality section to remove any light background and continue the deep-navy gradient. Constrain the text container width to 680px, increase vertical padding, add a thin centered gold divider line with animated expansion, and apply scroll reveal (fade + ~30px rise) while staying subtle. Optional: very subtle radial glow behind the heading.",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-home-feature-cards-to-a-premium-glass-style-with-the-exact-richer-card-background-and-hover-behavior-base-background-rgba-20-30-45-0-65-backdrop-blur-12px-border-1px-solid-rgba-212-175-55-0-15-on-hover-slight-lift-translatey-6px-brighter-gold-border-and-a-subtle-glow-shadow-entrance-animation-must-be-staggered-with-0-15s-delay-increments-between-cards-and-remain-subtle-respect-prefers-reduced-motion",
-      "title": "Update Home Feature Cards to a premium glass style with the exact richer card background and hover behavior: base background rgba(20,30,45,0.65), backdrop blur 12px, border 1px solid rgba(212,175,55,0.15). On hover: slight lift (translateY -6px), brighter gold border, and a subtle glow shadow. Entrance animation must be staggered with 0.15s delay increments between cards and remain subtle; respect prefers-reduced-motion.",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-upgrade-the-home-cta-section-and-the-divider-between-feature-cards-and-cta-add-a-subtle-thin-horizontal-gold-glow-line-centered-between-sections-very-thin-low-opacity-keep-cta-background-dark-add-a-soft-radial-warm-glow-behind-the-cta-heading-and-set-cta-button-gold-to-c9a14a-with-hover-glow-scale-1-03-and-smooth-250ms-transition",
-      "title": "Upgrade the Home CTA section and the divider between Feature Cards and CTA: add a subtle thin horizontal gold glow line centered between sections (very thin, low opacity), keep CTA background dark, add a soft radial warm glow behind the CTA heading, and set CTA button gold to #c9a14a with hover glow + scale 1.03 and smooth 250ms transition.",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-make-the-home-footer-fully-dark-luxury-no-white-while-ensuring-non-home-footers-are-unchanged-set-home-footer-background-to-08121a-or-current-home-footer-dark-token-updated-to-match-add-top-border-1px-solid-rgba-212-175-55-0-15-set-body-text-to-b8b8b8-and-keep-headings-in-soft-gold-footer-must-feel-like-a-continuation-of-the-home-page-no-abrupt-light-break",
-      "title": "Make the Home footer fully dark luxury (no white) while ensuring non-Home footers are unchanged: set Home footer background to #08121a (or current home-footer-dark token updated to match), add top border 1px solid rgba(212,175,55,0.15), set body text to #b8b8b8, and keep headings in soft gold. Footer must feel like a continuation of the Home page (no abrupt light break).",
-      "reqIds": [
-        "REQ-8"
       ],
       "version": 1
     }
@@ -80,12 +18,28 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Home page-only dark-luxury visual + motion refinement: layered deep navy gradients, improved hero readability (overlay/contrast), premium glass feature cards, upgraded CTA and footer, and subtle fade/rise animations; preserve existing layout and content",
+      "summary": "Set up the backend (server/API and related infrastructure) for the project.",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Update the Motoko backend actor (backend/main.mo) to persist submitted inquiries across canister upgrades by storing inquiries in stable state instead of only in-memory variables.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Align backend validation with the frontend forms by validating all required fields for inquiry submission (name, country, email, category, message) and returning clear English error messages when validation fails.",
+      "reqIds": [
+        "REQ-2"
+      ],
       "status": "pending"
     }
   ],
-  "projectName": "Home page-only dark luxury refinement (no layout/content changes)",
+  "projectName": "Set up backend canister to support inquiry submissions",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

@@ -1,8 +1,9 @@
 import Text "mo:core/Text";
-import Array "mo:core/Array";
 import Time "mo:core/Time";
 import Runtime "mo:core/Runtime";
+import Migration "migration";
 
+(with migration = Migration.run)
 actor {
   public type Inquiry = {
     timestamp : Time.Time;
@@ -18,9 +19,7 @@ actor {
   var inquiries : [Inquiry] = [];
 
   public shared ({ caller }) func submitInquiry(name : Text, company : Text, country : Text, email : Text, whatsapp : Text, category : Text, message : Text) : async () {
-    if (name.isEmpty() or email.isEmpty() or message.isEmpty()) {
-      Runtime.trap("Empty input field. Please fill in all required fields.");
-    };
+    validateInput(name, country, email, category, message);
 
     let inquiry : Inquiry = {
       timestamp = Time.now();
@@ -38,5 +37,27 @@ actor {
 
   public query ({ caller }) func getAllInquiries() : async [Inquiry] {
     inquiries;
+  };
+
+  func validateInput(name : Text, country : Text, email : Text, category : Text, message : Text) {
+    if (name.isEmpty()) {
+      Runtime.trap("Name is required. Please fill in the name field.");
+    };
+
+    if (country.isEmpty()) {
+      Runtime.trap("Country is required. Please fill in the country field.");
+    };
+
+    if (email.isEmpty()) {
+      Runtime.trap("Email is required. Please fill in the email field.");
+    };
+
+    if (category.isEmpty()) {
+      Runtime.trap("Category is required. Please select a category.");
+    };
+
+    if (message.isEmpty()) {
+      Runtime.trap("Message is required. Please fill in the message field.");
+    };
   };
 };
