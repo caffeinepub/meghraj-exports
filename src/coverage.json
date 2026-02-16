@@ -1,83 +1,79 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T21:09:23.293Z",
+  "generatedAt": "2026-02-16T09:50:14.231Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 7,
-    "implemented": 7,
+    "total": 8,
+    "implemented": 8,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update the global navigation header to be fully transparent with a premium glassmorphism effect at the top of the page: backdrop blur 10–15px, very subtle white tint (rgba(255,255,255,0.08)), thin soft border (rgba(255,255,255,0.1)), and white navigation text. Remove the current solid/dark filled header background.",
+        "summary": "Apply visual + motion refinements ONLY to the existing Home page and its home-route-specific styling, without changing routing, layout/structure, component hierarchy, or any text/content. Do not modify the visual appearance of any non-Home pages.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/SiteHeader.tsx",
+          "frontend/src/pages/HomePage.tsx",
           "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/components/SiteHeader.tsx",
+          "frontend/src/pages/HomePage.tsx",
           "frontend/src/index.css"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Implement scroll-based header styling: when the page is scrolled, slightly increase blur and opacity and add a very subtle darker tint (deep navy/charcoal at low opacity) while keeping the header glassy (not a solid bar).",
+        "summary": "Remove all white/light backgrounds from the Home page by implementing a cohesive layered deep-navy background system with smooth blending and no hard breaks, matching: Top #0b1622, Middle #0f1f2f, Lower #0b1622.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/SiteHeader.tsx",
           "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/components/SiteHeader.tsx",
           "frontend/src/index.css"
         ]
       },
       {
         "id": "REQ-3",
-        "summary": "Increase the header logo size to approximately 1.5× the current size while keeping alignment clean across breakpoints and ensuring it does not overlap navigation or push layout awkwardly.",
+        "summary": "Upgrade the Home Hero section for readability and depth while keeping the current hero image. Add a cinematic dark overlay at rgba(0,0,0,0.55), increase headline contrast to #f5f2ea, add a soft text shadow, and keep the parallax effect very subtle (respect prefers-reduced-motion).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/SiteHeader.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/SiteHeader.tsx"
-        ]
-      },
-      {
-        "id": "REQ-4",
-        "summary": "Refine the Home page hero section to match a cinematic-but-clean luxury editorial style: use a sharp, high-resolution equestrian placeholder image (close-up leather saddle/bridle detail, warm brown tones, shallow depth of field, natural lighting), remove heavy/dark overlays, and apply only a very subtle top gradient for text readability while keeping the image crisp and visible.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/public/assets/generated/hero-equestrian-editorial.dim_1600x900.png",
           "frontend/src/pages/HomePage.tsx",
           "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/public/assets/generated/hero-equestrian-editorial.dim_1600x900.png",
           "frontend/src/pages/HomePage.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Adjust Home hero entrance animations to match the specified luxury timing: Headline fade + rise over 900ms ease-out; subtext uses a 150ms delay; buttons use a 300ms delay. Keep motion subtle (no large movement), and disable animations under prefers-reduced-motion.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
           "frontend/src/index.css"
         ]
       },
       {
         "id": "REQ-5",
-        "summary": "Update hero typography and CTA button styling to match the requested direction: large elegant serif headline in white/soft warm white with a slight text shadow; generous spacing; primary button in warm gold; secondary button transparent with a white border; both buttons have a subtle hover lift animation (2–4px) with smooth transitions (avoid heavy scaling).",
+        "summary": "Refine the Home Crafting Quality section to remove any light background and continue the deep-navy gradient. Constrain the text container width to 680px, increase vertical padding, add a thin centered gold divider line with animated expansion, and apply scroll reveal (fade + ~30px rise) while staying subtle. Optional: very subtle radial glow behind the heading.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/pages/HomePage.tsx"
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/pages/HomePage.tsx"
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/index.css"
         ]
       },
       {
         "id": "REQ-6",
-        "summary": "Restyle the Home page features/highlights cards as floating glass panels over a deep navy/charcoal section background: card background rgba(255,255,255,0.08), backdrop blur, thin soft border, subtle shadow, rounded corners, and a smooth hover lift of 2–4px. Remove/avoid heavy beige/grey blocks and avoid switching to ivory or light sections for this features area.",
+        "summary": "Update Home Feature Cards to a premium glass style with the exact richer card background and hover behavior: base background rgba(20,30,45,0.65), backdrop blur 12px, border 1px solid rgba(212,175,55,0.15). On hover: slight lift (translateY -6px), brighter gold border, and a subtle glow shadow. Entrance animation must be staggered with 0.15s delay increments between cards and remain subtle; respect prefers-reduced-motion.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/index.css",
@@ -90,14 +86,26 @@
       },
       {
         "id": "REQ-7",
-        "summary": "Enforce Home page section background consistency and spacing: reduce/replace alternating light backgrounds so the page uses mostly deep dark navy/charcoal with restrained transparent overlays; avoid white-heavy sections and flat grey sections; increase vertical spacing/breathing room between sections and slightly increase heading sizes where needed to maintain an editorial premium feel.",
+        "summary": "Upgrade the Home CTA section and the divider between Feature Cards and CTA: add a subtle thin horizontal gold glow line centered between sections (very thin, low opacity), keep CTA background dark, add a soft radial warm glow behind the CTA heading, and set CTA button gold to #c9a14a with hover glow + scale 1.03 and smooth 250ms transition.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/index.css",
           "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/index.css",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Make the Home footer fully dark luxury (no white) while ensuring non-Home footers are unchanged: set Home footer background to #08121a (or current home-footer-dark token updated to match), add top border 1px solid rgba(212,175,55,0.15), set body text to #b8b8b8, and keep headings in soft gold. Footer must feel like a continuation of the Home page (no abrupt light break).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/SiteFooter.tsx"
+        ],
+        "matchedFiles": [
           "frontend/src/index.css"
         ]
       }
@@ -108,8 +116,6 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/hero-equestrian-editorial.dim_1600x900.png",
-    "frontend/src/components/SiteHeader.tsx",
     "frontend/src/index.css",
     "frontend/src/pages/HomePage.tsx",
     "project_state.json",

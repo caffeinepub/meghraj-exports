@@ -1,42 +1,90 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T21:09:23.290Z",
-  "summary": "Header glassmorphism baseline + scrolled state and larger logo appear implemented in SiteHeader + index.css; Home hero uses new editorial image path and minimal gradient overlay; Home sections use dark backgrounds with glass-style cards and increased spacing. However, the new hero image asset itself is not added in the diff, and several style requirements (hero CTA gold/white-border + hover lift, dark glass-card styling specifics) are referenced via class names but their CSS definitions are not visible in the truncated diff, so their implementation cannot be confirmed from the provided evidence.",
+  "generatedAt": "2026-02-16T09:50:14.228Z",
+  "summary": "Diff implements substantial Home-page styling hooks (home-page-wrapper gradient, hero overlays/classes, reveal hooks) but also changes global CSS design tokens (light/ivory base) that likely affects non-Home pages, violating the “Home page only” constraint. Several requested Home-specific behaviors (exact overlays/animation timings/reduced-motion behavior, CTA/footer specifics) are not verifiable from the truncated diff snippets.",
   "missing_requirements": [
     {
-      "id": "REQ-4",
-      "requirement": "Generate/replace the hero image asset with a sharper luxury editorial equestrian close-up (hero-equestrian.dim_1600x900.png → hero-equestrian-editorial.dim_1600x900.png).",
-      "reason": "HomePage references the new asset path, but the diff shows no added/modified image file; Added files: 0.",
+      "id": "REQ-1",
+      "requirement": "Do not modify the visual appearance of any non-Home pages; apply changes only to Home route styling.",
+      "reason": "Global CSS variables for background/foreground/card/etc. are changed at :root and body uses bg-background/text-foreground, which likely affects styling site-wide (non-Home routes).",
       "evidence": [
-        "frontend/src/pages/HomePage.tsx (references /assets/generated/hero-equestrian-editorial.dim_1600x900.png)",
-        "<file-diff> Added: 0"
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Hero overlay equivalent to rgba(0,0,0,0.55), headline color #f5f2ea with soft shadow, subtle parallax disabled for prefers-reduced-motion.",
+      "reason": "HomePage.tsx shows hero overlay elements via CSS classes (home-hero-vignette, home-hero-gradient) and useParallax(0.5), but the diff snippet does not show the overlay color/opacity, headline color/shadow, or reduced-motion disabling behavior (likely in truncated CSS / hook implementation).",
+      "evidence": [
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Hero entrance animations: headline 900ms ease-out fade+rise; subtext delay 150ms; buttons delay 300ms; disabled under prefers-reduced-motion.",
+      "reason": "HomePage.tsx applies entrance classes (home-hero-entrance-text, ...-delayed, ...-buttons), but the diff snippet does not include the actual timing/easing/delays or reduced-motion handling (likely in truncated CSS).",
+      "evidence": [
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/index.css"
       ]
     },
     {
       "id": "REQ-5",
-      "requirement": "Primary hero CTA in warm gold; secondary CTA transparent with white border; both with subtle 2–4px hover lift (translateY) and smooth transitions (no heavy scaling).",
-      "reason": "HomePage uses class names (btn-primary-hero, btn-secondary-hero), but the CSS implementing the gold fill, white border, and hover lift is not shown in the truncated index.css diff, so it cannot be verified from provided evidence.",
+      "requirement": "Crafting section: dark background blending; max width 680px; thin centered gold divider with animated expansion (static under reduced motion); scroll reveal fade + ~30px rise.",
+      "reason": "HomePage.tsx shows max-w-[680px], gold line element (home-gold-line-top), and reveal hook usage, but the divider animation, scroll-reveal motion details (~30px), and reduced-motion behavior are not visible in the provided truncated diff.",
       "evidence": [
-        "frontend/src/pages/HomePage.tsx (btn-primary-hero / btn-secondary-hero)",
-        "frontend/src/index.css (truncated; button class definitions not visible)"
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/index.css"
       ]
     },
     {
       "id": "REQ-6",
-      "requirement": "Feature/highlights cards: rgba(255,255,255,0.08) background + backdrop blur + thin soft border + subtle shadow + rounded corners; hover lift 2–4px; on deep navy/charcoal section background.",
-      "reason": "HomePage applies classes (glass-card-dark, glass-card-hover-lift) on a charcoal section, but the CSS details for these classes (exact rgba(255,255,255,0.08), blur, border, shadow, hover translateY) are not visible in the truncated index.css diff, so it cannot be confirmed.",
+      "requirement": "Feature cards: exact glass style (rgba(20,30,45,0.65), blur 12px, border rgba(212,175,55,0.15)); hover translateY -6px + brighter gold border + subtle glow; staggered entrances 0.15s increments; disabled under reduced motion.",
+      "reason": "No feature-card markup/styles are visible in the truncated HomePage.tsx snippet, and the truncated CSS excerpt does not show the card rules, hover behavior, stagger timing, or reduced-motion handling.",
       "evidence": [
-        "frontend/src/pages/HomePage.tsx (glass-card-dark glass-card-hover-lift)",
-        "frontend/src/index.css (truncated; dark glass card classes not visible)"
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "requirement": "CTA section + divider: thin centered low-opacity gold glow line between features and CTA; CTA heading radial warm glow; CTA button #c9a14a with hover glow + scale 1.03 and 250ms transition (reduced-motion considerations).",
+      "reason": "CTA section/divider/button styling is not shown in the provided HomePage.tsx snippet, and the visible portion of index.css does not include CTA/button/divider rules; cannot confirm the required colors/transition/treatment.",
+      "evidence": [
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "requirement": "Home-only footer styling: background #08121a, top border rgba(212,175,55,0.15), body text #b8b8b8, gold headings; non-Home footer unchanged.",
+      "reason": "Only a CSS token (--home-footer-dark) is visible; no footer component or Home-route-only footer application is shown in the diff snippet, so the required footer background/border/text colors and non-Home invariance cannot be verified.",
+      "evidence": [
+        "frontend/src/index.css"
       ]
     }
   ],
-  "hallucinated_features": [],
-  "confidence": 0.62,
+  "hallucinated_features": [
+    {
+      "description": "Global redesign of base theme tokens to a light/ivory palette (e.g., --background, --card, --muted, etc.) that applies across the app, not just the Home page.",
+      "reason": "BuildRequest explicitly constrains changes to Home page only and forbids modifying non-Home pages’ visuals; changing :root tokens and body bg/text likely impacts all pages.",
+      "evidence": [
+        "frontend/src/index.css"
+      ]
+    },
+    {
+      "description": "Home header/navigation “glass luxury” styling classes (home-header-glass, home-nav-item underline animation).",
+      "reason": "Not requested in any REQ; requirements focus on Home sections (Hero, Crafting, Feature Cards, CTA, Footer). Adding header/nav styling is extra scope (even if Home-route-only).",
+      "evidence": [
+        "frontend/src/index.css"
+      ]
+    }
+  ],
+  "confidence": 0.66,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/components/SiteHeader.tsx",
     "frontend/src/index.css",
     "frontend/src/pages/HomePage.tsx",
     "project_state.json"

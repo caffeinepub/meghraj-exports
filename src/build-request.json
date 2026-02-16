@@ -1,168 +1,172 @@
 {
   "kind": "build_request",
-  "title": "Apply luxury glassmorphism navigation + cinematic hero + dark section consistency on Home page",
+  "title": "Home page-only dark luxury refinement (no layout/content changes)",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the global navigation header to be fully transparent with a premium glassmorphism effect at the top of the page: backdrop blur 10–15px, very subtle white tint (rgba(255,255,255,0.08)), thin soft border (rgba(255,255,255,0.1)), and white navigation text. Remove the current solid/dark filled header background.",
+      "text": "Apply visual + motion refinements ONLY to the existing Home page and its home-route-specific styling, without changing routing, layout/structure, component hierarchy, or any text/content. Do not modify the visual appearance of any non-Home pages.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Remove the solid blue/navy background",
-          "Make navigation fully transparent",
-          "Add glassmorphism effect: backdrop blur (10–15px) very subtle white tint (rgba(255,255,255,0.08)) thin soft border (rgba(255,255,255,0.1))",
-          "Keep text white",
-          "Navigation should feel floating and premium No heavy colors."
+          "Modify ONLY the existing Home page layout. Do NOT change routing, structure, component hierarchy, or content. Do NOT modify any other pages."
         ]
       },
       "acceptanceCriteria": [
-        "Header no longer renders with an opaque background at page top (no solid fill).",
-        "Header uses blur and subtle tint/border consistent with the provided RGBA values (or visually equivalent), and nav link text renders in white.",
-        "Desktop and mobile header states both follow the transparent glass styling (including the opened mobile menu area)."
+        "Home page keeps the same sections and order (Hero, Crafting Quality Section, Feature Cards Section, CTA Section, Footer).",
+        "No text/content strings are changed on the Home page.",
+        "Non-Home pages (Products, About, Catalogue, Contact, etc.) render identically to before this change (no new backgrounds/animations/colors applied)."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Implement scroll-based header styling: when the page is scrolled, slightly increase blur and opacity and add a very subtle darker tint (deep navy/charcoal at low opacity) while keeping the header glassy (not a solid bar).",
+      "text": "Remove all white/light backgrounds from the Home page by implementing a cohesive layered deep-navy background system with smooth blending and no hard breaks, matching: Top #0b1622, Middle #0f1f2f, Lower #0b1622.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "On scroll: Increase blur slightly Increase opacity slightly Add a very subtle darker tint (deep navy / charcoal at low opacity) It should still feel glassy and floating — not like a solid bar."
+          "Remove all white/light backgrounds. Use layered luxury gradient: Top: #0b1622 Middle: #0f1f2f Lower: #0b1622 Create smooth gradient blending between sections. No hard breaks between sections."
         ]
       },
       "acceptanceCriteria": [
-        "When at top of page, header uses the baseline transparent glass style.",
-        "After scrolling down, header transitions (smoothly) to a slightly stronger blur/opacity with a subtle dark tint; it never becomes an opaque/solid bar.",
-        "Scroll state transitions are animated and do not cause layout shift."
+        "No Home page section uses a white/light background (including transitions/dividers).",
+        "Home page backgrounds visually blend from #0b1622 → #0f1f2f → #0b1622 without abrupt color jumps.",
+        "The Home page wrapper/sections use only the navy–gold–charcoal palette (no new accent colors introduced)."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Increase the header logo size to approximately 1.5× the current size while keeping alignment clean across breakpoints and ensuring it does not overlap navigation or push layout awkwardly.",
+      "text": "Upgrade the Home Hero section for readability and depth while keeping the current hero image. Add a cinematic dark overlay at rgba(0,0,0,0.55), increase headline contrast to #f5f2ea, add a soft text shadow, and keep the parallax effect very subtle (respect prefers-reduced-motion).",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Logo size slightly larger (about 1.5x current)"
+          "Keep current hero image. Add: • Dark cinematic overlay: rgba(0,0,0,0.55) • Improve headline contrast (#f5f2ea) • Subtle text shadow • Slight parallax effect (very subtle)"
         ]
       },
       "acceptanceCriteria": [
-        "Logo height/visual prominence increases ~1.5× compared to current sizing on both mobile and desktop.",
-        "Header height and spacing remain balanced; navigation remains accessible and not clipped at common viewport sizes."
+        "Hero image remains unchanged and still loads from /assets/generated/hero-equestrian-editorial.dim_1600x900.png.",
+        "An overlay equivalent to rgba(0,0,0,0.55) is present over the hero image to improve text readability.",
+        "Hero headline text color is #f5f2ea (or visually equivalent) and has a soft shadow for contrast.",
+        "Parallax effect is subtle and disabled when prefers-reduced-motion is enabled."
       ]
     },
     {
       "id": "REQ-4",
-      "text": "Refine the Home page hero section to match a cinematic-but-clean luxury editorial style: use a sharp, high-resolution equestrian placeholder image (close-up leather saddle/bridle detail, warm brown tones, shallow depth of field, natural lighting), remove heavy/dark overlays, and apply only a very subtle top gradient for text readability while keeping the image crisp and visible.",
+      "text": "Adjust Home hero entrance animations to match the specified luxury timing: Headline fade + rise over 900ms ease-out; subtext uses a 150ms delay; buttons use a 300ms delay. Keep motion subtle (no large movement), and disable animations under prefers-reduced-motion.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1",
-          "msg-2"
+          "msg-1"
         ],
         "quotes": [
-          "Use a clear, sharp, high-resolution equestrian image",
-          "Remove heavy dark overlay",
-          "Apply only a very subtle gradient (top slightly darker for text readability)",
-          "Keep background image visible and crisp",
-          "Use a premium placeholder for now that fits a luxury editorial style (close-up leather saddle, bridle detail, warm brown tones, shallow depth of field, natural lighting).",
-          "The image must be sharp, not overly filtered, and not darkened too much."
+          "Add entrance animation: Headline: fade + rise (900ms ease-out) Subtext: 150ms delay Buttons: 300ms delay"
         ]
       },
       "acceptanceCriteria": [
-        "Hero background image appears sharp and not overly filtered; overlay does not significantly darken the image.",
-        "Hero overlay is limited to a subtle top gradient for readability (lighter than the current heavy overlay).",
-        "Hero still maintains adequate text contrast/readability over the image."
+        "On initial Home page load, headline animates with fade + small upward rise using 900ms ease-out.",
+        "Subtext animation starts 150ms after the headline begins; buttons start 300ms after the headline begins.",
+        "When prefers-reduced-motion is enabled, hero entrance animations do not animate (content is immediately visible without transforms)."
       ]
     },
     {
       "id": "REQ-5",
-      "text": "Update hero typography and CTA button styling to match the requested direction: large elegant serif headline in white/soft warm white with a slight text shadow; generous spacing; primary button in warm gold; secondary button transparent with a white border; both buttons have a subtle hover lift animation (2–4px) with smooth transitions (avoid heavy scaling).",
+      "text": "Refine the Home Crafting Quality section to remove any light background and continue the deep-navy gradient. Constrain the text container width to 680px, increase vertical padding, add a thin centered gold divider line with animated expansion, and apply scroll reveal (fade + ~30px rise) while staying subtle. Optional: very subtle radial glow behind the heading.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Large elegant serif headline",
-          "White or soft warm white text",
-          "Add slight text shadow for readability",
-          "Keep spacing generous",
-          "Primary: warm gold",
-          "Secondary: transparent with white border",
-          "Subtle hover animation (lift + smooth transition)"
+          "Crafting Quality Section... Remove any white background. Use deep navy gradient continuation. Add: • Thin animated gold divider line (centered) • Increase vertical padding • Max width text container (680px) • Scroll reveal animation (fade + 30px rise) Optional: Very subtle radial glow behind heading."
         ]
       },
       "acceptanceCriteria": [
-        "Hero headline renders as an elegant serif with increased prominence and a subtle text shadow; spacing around hero elements feels more spacious than current.",
-        "Primary hero CTA uses a warm gold fill; secondary hero CTA is transparent with a white border and white text.",
-        "On hover, hero CTAs lift subtly (translateY) with smooth transitions; no aggressive scaling."
+        "Crafting section background is dark and blends with the overall Home gradient (no light/white panels).",
+        "Crafting section text container max width is 680px.",
+        "A thin centered gold divider line animates its width expansion (and is static if prefers-reduced-motion is enabled).",
+        "Crafting section reveals on scroll with subtle fade + rise (no flashy effects)."
       ]
     },
     {
       "id": "REQ-6",
-      "text": "Restyle the Home page features/highlights cards as floating glass panels over a deep navy/charcoal section background: card background rgba(255,255,255,0.08), backdrop blur, thin soft border, subtle shadow, rounded corners, and a smooth hover lift of 2–4px. Remove/avoid heavy beige/grey blocks and avoid switching to ivory or light sections for this features area.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1",
-          "msg-2"
-        ],
-        "quotes": [
-          "Glass Effect Cards (Features Section) Apply glassmorphism style: • background: rgba(255,255,255,0.08) • backdrop blur • thin soft border • subtle shadow • rounded corners • smooth hover lift (2–4px) • no heavy beige or grey blocks",
-          "Use a deep navy / charcoal background behind the glass cards. Do NOT use another image in that section."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The highlights/features section background is deep navy/charcoal (solid, minimal) with no additional background image.",
-        "Feature cards use the specified glass look (rgba(255,255,255,0.08) + blur + thin border + subtle shadow) and appear as floating panels.",
-        "Hover on cards lifts them by ~2–4px with smooth transition; no heavy glow or thick borders."
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Enforce Home page section background consistency and spacing: reduce/replace alternating light backgrounds so the page uses mostly deep dark navy/charcoal with restrained transparent overlays; avoid white-heavy sections and flat grey sections; increase vertical spacing/breathing room between sections and slightly increase heading sizes where needed to maintain an editorial premium feel.",
+      "text": "Update Home Feature Cards to a premium glass style with the exact richer card background and hover behavior: base background rgba(20,30,45,0.65), backdrop blur 12px, border 1px solid rgba(212,175,55,0.15). On hover: slight lift (translateY -6px), brighter gold border, and a subtle glow shadow. Entrance animation must be staggered with 0.15s delay increments between cards and remain subtle; respect prefers-reduced-motion.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Section Background Consistency Do NOT alternate too many colors. Use mostly: • Deep dark navy / charcoal • Transparent overlays • Very soft warm neutral only where needed Avoid white-heavy sections. Avoid flat grey sections.",
-          "Typography & Spacing • Increase vertical spacing between sections • Use more breathing room • Headings slightly larger • Clean, elegant typography • No overcrowding"
+          "Convert to premium glass style: Background: rgba(20,30,45,0.65) Backdrop blur: 12px Border: 1px solid rgba(212,175,55,0.15) Hover: • Slight lift (translateY -6px) • Border becomes stronger gold • Soft glow shadow Entrance: Stagger animation (0.15s delay between cards)"
         ]
       },
       "acceptanceCriteria": [
-        "Home page no longer alternates multiple distinct light section backgrounds (e.g., ivory/blue-tint) in a way that feels busy; overall reads as restrained dark luxury.",
-        "Section spacing is increased and consistent; content does not feel cramped.",
-        "No new sections/components are introduced; changes are styling and light layout spacing adjustments only."
+        "Each feature card uses rgba(20,30,45,0.65) background with 12px backdrop blur and a gold-tinted border at rgba(212,175,55,0.15).",
+        "Hover state lifts cards by ~6px, increases border gold intensity, and adds a subtle glow shadow (no harsh/big glow).",
+        "Card entrances are staggered by 0.15s between cards and are disabled under prefers-reduced-motion."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Upgrade the Home CTA section and the divider between Feature Cards and CTA: add a subtle thin horizontal gold glow line centered between sections (very thin, low opacity), keep CTA background dark, add a soft radial warm glow behind the CTA heading, and set CTA button gold to #c9a14a with hover glow + scale 1.03 and smooth 250ms transition.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Between feature cards and CTA: Add subtle horizontal gold glow line centered. Very thin. Low opacity.",
+          "CTA Section... Add subtle radial warm glow behind heading. Button: Gold (#c9a14a) Hover: • Glow • Slight scale • Smooth 250ms transition"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A thin, centered, low-opacity horizontal gold glow divider is visible between the feature cards section and the CTA section (no bright or thick line).",
+        "CTA heading has a subtle radial warm glow behind it (kept understated).",
+        "CTA button base color is #c9a14a and hover uses a 250ms smooth transition with slight glow and scale to ~1.03 (scale suppressed under prefers-reduced-motion if necessary)."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Make the Home footer fully dark luxury (no white) while ensuring non-Home footers are unchanged: set Home footer background to #08121a (or current home-footer-dark token updated to match), add top border 1px solid rgba(212,175,55,0.15), set body text to #b8b8b8, and keep headings in soft gold. Footer must feel like a continuation of the Home page (no abrupt light break).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Footer (Critical) Remove white footer completely. Use: Background: #08121a Top border: 1px solid rgba(212,175,55,0.15) Text: Body → #b8b8b8 Headings → soft gold Footer must visually continue the page — not feel separate."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On the Home route only, the footer background is #08121a with a top border rgba(212,175,55,0.15).",
+        "Home footer body text is #b8b8b8 and headings are gold-toned.",
+        "On non-Home routes, footer styling remains unchanged compared to before this change."
       ]
     }
   ],
   "constraints": [
-    "Frontend files under frontend/src/components/ui must not be edited directly; compose them as-is.",
-    "Do not modify the immutable paths listed in SYSTEM_CONTEXT (e.g., frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
-    "Keep existing site structure/components intact; implement visual refinements only.",
-    "Use English for any user-facing text."
+    "Use English for any user-facing text.",
+    "Home page only: do not modify other pages' visuals.",
+    "Do not change routing, layout/structure, component hierarchy, or any Home page content strings.",
+    "No white/light sections on the Home page.",
+    "No flashy animations, particles, or large motion; luxury motion must remain subtle.",
+    "Respect prefers-reduced-motion by disabling or minimizing motion effects."
   ],
   "nonGoals": [
-    "Backend changes (Motoko canister logic, schema, or endpoints).",
-    "Adding new pages, routes, or content sections beyond restyling existing Home/header UI.",
-    "Implementing third-party asset sourcing pipelines; use generated/static placeholder assets instead."
+    "Backend changes (Motoko canister logic)",
+    "New pages, new routes, or navigation changes",
+    "Changing any Home page text/content or swapping the hero image asset",
+    "Adding new sections or restructuring existing Home page sections"
   ],
   "imageRequirements": {
     "required": [],
-    "edits": [
-      "Generate a sharper, luxury editorial equestrian close-up (warm brown leather saddle/bridle detail, shallow depth of field, natural lighting; not overly dark or filtered) (hero-equestrian.dim_1600x900.png > hero-equestrian-editorial.dim_1600x900.png)"
-    ]
+    "edits": []
   }
 }

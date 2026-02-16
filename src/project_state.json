@@ -1,70 +1,78 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Luxury, minimal, cinematic home page visual redesign emphasizing glassmorphism navigation and feature cards, refined hero imagery/typography, and consistent dark navy/charcoal backgrounds.",
+  "summary": "Refine existing Home page only with a cohesive dark-luxury navy–gold aesthetic and subtle premium motion; no routing/layout/content/component hierarchy changes; remove all white/light sections.",
   "architectural_notes": [
-    "Home page visual direction: minimal, premium, cinematic, modern luxury/editorial; not colorful, not template-like, not busy.",
-    "Hero image guidance: premium placeholder allowed (to be replaced later); must be sharp, lightly graded, not overly darkened/filtered.",
-    "Nav scroll behavior: transparent at top; on scroll increase blur/opacity and add very subtle deep navy/charcoal tint while remaining glassy.",
-    "Features cards section background: solid deep navy/charcoal (no background image) to emphasize glass card depth."
+    "Scope constraint: Apply changes ONLY to the existing Home page; do NOT modify routing, other pages, component hierarchy, section names, or content/text.",
+    "Design system constraint: Remove all white/light backgrounds on Home; use layered gradients (#0b1622 → #0f1f2f → #0b1622) with smooth blending and no hard breaks.",
+    "Motion constraint: Luxury/subtle animations only (fade + soft rise, slow easing); avoid flashy animations/particles/large movements."
   ],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Edit Images\n- Generate a sharper, luxury editorial equestrian close-up (warm brown leather saddle/bridle detail, shallow depth of field, natural lighting; not overly dark or filtered) (hero-equestrian.dim_1600x900.png > hero-equestrian-editorial.dim_1600x900.png)",
+  "known_issues": [
+    "Home page has white/light backgrounds and footer areas that break the dark theme; hero text readability is insufficient (needs contrast/overlay)."
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-update-the-global-navigation-header-to-be-fully-transparent-with-a-premium-glassmorphism-effect-at-the-top-of-the-page-backdrop-blur-10-15px-very-subtle-white-tint-rgba-255-255-255-0-08-thin-soft-border-rgba-255-255-255-0-1-and-white-navigation-text-remove-the-current-solid-dark-filled-header-background",
-      "title": "Update the global navigation header to be fully transparent with a premium glassmorphism effect at the top of the page: backdrop blur 10–15px, very subtle white tint (rgba(255,255,255,0.08)), thin soft border (rgba(255,255,255,0.1)), and white navigation text. Remove the current solid/dark filled header background.",
+      "id": "feature-apply-visual-motion-refinements-only-to-the-existing-home-page-and-its-home-route-specific-styling-without-changing-routing-layout-structure-component-hierarchy-or-any-text-content-do-not-modify-the-visual-appearance-of-any-non-home-pages",
+      "title": "Apply visual + motion refinements ONLY to the existing Home page and its home-route-specific styling, without changing routing, layout/structure, component hierarchy, or any text/content. Do not modify the visual appearance of any non-Home pages.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-implement-scroll-based-header-styling-when-the-page-is-scrolled-slightly-increase-blur-and-opacity-and-add-a-very-subtle-darker-tint-deep-navy-charcoal-at-low-opacity-while-keeping-the-header-glassy-not-a-solid-bar",
-      "title": "Implement scroll-based header styling: when the page is scrolled, slightly increase blur and opacity and add a very subtle darker tint (deep navy/charcoal at low opacity) while keeping the header glassy (not a solid bar).",
+      "id": "feature-remove-all-white-light-backgrounds-from-the-home-page-by-implementing-a-cohesive-layered-deep-navy-background-system-with-smooth-blending-and-no-hard-breaks-matching-top-0b1622-middle-0f1f2f-lower-0b1622",
+      "title": "Remove all white/light backgrounds from the Home page by implementing a cohesive layered deep-navy background system with smooth blending and no hard breaks, matching: Top #0b1622, Middle #0f1f2f, Lower #0b1622.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-increase-the-header-logo-size-to-approximately-1-5-the-current-size-while-keeping-alignment-clean-across-breakpoints-and-ensuring-it-does-not-overlap-navigation-or-push-layout-awkwardly",
-      "title": "Increase the header logo size to approximately 1.5× the current size while keeping alignment clean across breakpoints and ensuring it does not overlap navigation or push layout awkwardly.",
+      "id": "feature-upgrade-the-home-hero-section-for-readability-and-depth-while-keeping-the-current-hero-image-add-a-cinematic-dark-overlay-at-rgba-0-0-0-0-55-increase-headline-contrast-to-f5f2ea-add-a-soft-text-shadow-and-keep-the-parallax-effect-very-subtle-respect-prefers-reduced-motion",
+      "title": "Upgrade the Home Hero section for readability and depth while keeping the current hero image. Add a cinematic dark overlay at rgba(0,0,0,0.55), increase headline contrast to #f5f2ea, add a soft text shadow, and keep the parallax effect very subtle (respect prefers-reduced-motion).",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-refine-the-home-page-hero-section-to-match-a-cinematic-but-clean-luxury-editorial-style-use-a-sharp-high-resolution-equestrian-placeholder-image-close-up-leather-saddle-bridle-detail-warm-brown-tones-shallow-depth-of-field-natural-lighting-remove-heavy-dark-overlays-and-apply-only-a-very-subtle-top-gradient-for-text-readability-while-keeping-the-image-crisp-and-visible",
-      "title": "Refine the Home page hero section to match a cinematic-but-clean luxury editorial style: use a sharp, high-resolution equestrian placeholder image (close-up leather saddle/bridle detail, warm brown tones, shallow depth of field, natural lighting), remove heavy/dark overlays, and apply only a very subtle top gradient for text readability while keeping the image crisp and visible.",
+      "id": "feature-adjust-home-hero-entrance-animations-to-match-the-specified-luxury-timing-headline-fade-rise-over-900ms-ease-out-subtext-uses-a-150ms-delay-buttons-use-a-300ms-delay-keep-motion-subtle-no-large-movement-and-disable-animations-under-prefers-reduced-motion",
+      "title": "Adjust Home hero entrance animations to match the specified luxury timing: Headline fade + rise over 900ms ease-out; subtext uses a 150ms delay; buttons use a 300ms delay. Keep motion subtle (no large movement), and disable animations under prefers-reduced-motion.",
       "reqIds": [
         "REQ-4"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-hero-typography-and-cta-button-styling-to-match-the-requested-direction-large-elegant-serif-headline-in-white-soft-warm-white-with-a-slight-text-shadow-generous-spacing-primary-button-in-warm-gold-secondary-button-transparent-with-a-white-border-both-buttons-have-a-subtle-hover-lift-animation-2-4px-with-smooth-transitions-avoid-heavy-scaling",
-      "title": "Update hero typography and CTA button styling to match the requested direction: large elegant serif headline in white/soft warm white with a slight text shadow; generous spacing; primary button in warm gold; secondary button transparent with a white border; both buttons have a subtle hover lift animation (2–4px) with smooth transitions (avoid heavy scaling).",
+      "id": "feature-refine-the-home-crafting-quality-section-to-remove-any-light-background-and-continue-the-deep-navy-gradient-constrain-the-text-container-width-to-680px-increase-vertical-padding-add-a-thin-centered-gold-divider-line-with-animated-expansion-and-apply-scroll-reveal-fade-30px-rise-while-staying-subtle-optional-very-subtle-radial-glow-behind-the-heading",
+      "title": "Refine the Home Crafting Quality section to remove any light background and continue the deep-navy gradient. Constrain the text container width to 680px, increase vertical padding, add a thin centered gold divider line with animated expansion, and apply scroll reveal (fade + ~30px rise) while staying subtle. Optional: very subtle radial glow behind the heading.",
       "reqIds": [
         "REQ-5"
       ],
       "version": 1
     },
     {
-      "id": "feature-restyle-the-home-page-features-highlights-cards-as-floating-glass-panels-over-a-deep-navy-charcoal-section-background-card-background-rgba-255-255-255-0-08-backdrop-blur-thin-soft-border-subtle-shadow-rounded-corners-and-a-smooth-hover-lift-of-2-4px-remove-avoid-heavy-beige-grey-blocks-and-avoid-switching-to-ivory-or-light-sections-for-this-features-area",
-      "title": "Restyle the Home page features/highlights cards as floating glass panels over a deep navy/charcoal section background: card background rgba(255,255,255,0.08), backdrop blur, thin soft border, subtle shadow, rounded corners, and a smooth hover lift of 2–4px. Remove/avoid heavy beige/grey blocks and avoid switching to ivory or light sections for this features area.",
+      "id": "feature-update-home-feature-cards-to-a-premium-glass-style-with-the-exact-richer-card-background-and-hover-behavior-base-background-rgba-20-30-45-0-65-backdrop-blur-12px-border-1px-solid-rgba-212-175-55-0-15-on-hover-slight-lift-translatey-6px-brighter-gold-border-and-a-subtle-glow-shadow-entrance-animation-must-be-staggered-with-0-15s-delay-increments-between-cards-and-remain-subtle-respect-prefers-reduced-motion",
+      "title": "Update Home Feature Cards to a premium glass style with the exact richer card background and hover behavior: base background rgba(20,30,45,0.65), backdrop blur 12px, border 1px solid rgba(212,175,55,0.15). On hover: slight lift (translateY -6px), brighter gold border, and a subtle glow shadow. Entrance animation must be staggered with 0.15s delay increments between cards and remain subtle; respect prefers-reduced-motion.",
       "reqIds": [
         "REQ-6"
       ],
       "version": 1
     },
     {
-      "id": "feature-enforce-home-page-section-background-consistency-and-spacing-reduce-replace-alternating-light-backgrounds-so-the-page-uses-mostly-deep-dark-navy-charcoal-with-restrained-transparent-overlays-avoid-white-heavy-sections-and-flat-grey-sections-increase-vertical-spacing-breathing-room-between-sections-and-slightly-increase-heading-sizes-where-needed-to-maintain-an-editorial-premium-feel",
-      "title": "Enforce Home page section background consistency and spacing: reduce/replace alternating light backgrounds so the page uses mostly deep dark navy/charcoal with restrained transparent overlays; avoid white-heavy sections and flat grey sections; increase vertical spacing/breathing room between sections and slightly increase heading sizes where needed to maintain an editorial premium feel.",
+      "id": "feature-upgrade-the-home-cta-section-and-the-divider-between-feature-cards-and-cta-add-a-subtle-thin-horizontal-gold-glow-line-centered-between-sections-very-thin-low-opacity-keep-cta-background-dark-add-a-soft-radial-warm-glow-behind-the-cta-heading-and-set-cta-button-gold-to-c9a14a-with-hover-glow-scale-1-03-and-smooth-250ms-transition",
+      "title": "Upgrade the Home CTA section and the divider between Feature Cards and CTA: add a subtle thin horizontal gold glow line centered between sections (very thin, low opacity), keep CTA background dark, add a soft radial warm glow behind the CTA heading, and set CTA button gold to #c9a14a with hover glow + scale 1.03 and smooth 250ms transition.",
       "reqIds": [
         "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-make-the-home-footer-fully-dark-luxury-no-white-while-ensuring-non-home-footers-are-unchanged-set-home-footer-background-to-08121a-or-current-home-footer-dark-token-updated-to-match-add-top-border-1px-solid-rgba-212-175-55-0-15-set-body-text-to-b8b8b8-and-keep-headings-in-soft-gold-footer-must-feel-like-a-continuation-of-the-home-page-no-abrupt-light-break",
+      "title": "Make the Home footer fully dark luxury (no white) while ensuring non-Home footers are unchanged: set Home footer background to #08121a (or current home-footer-dark token updated to match), add top border 1px solid rgba(212,175,55,0.15), set body text to #b8b8b8, and keep headings in soft gold. Footer must feel like a continuation of the Home page (no abrupt light break).",
+      "reqIds": [
+        "REQ-8"
       ],
       "version": 1
     }
@@ -72,36 +80,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Redesign navigation bar: fully transparent glassmorphism (blur 10–15px, subtle white tint/border), white text, larger logo (~1.5x), floating premium feel; on scroll increase blur/opacity and add subtle dark navy/charcoal tint while staying glassy",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Update hero section: use sharp high-res cinematic equestrian placeholder image (saddle/bridle detail, warm browns, shallow DOF, natural light), remove heavy overlay, add only subtle top gradient; elegant large serif headline in soft white with slight shadow; generous spacing; primary warm gold button + secondary transparent with white border; subtle hover lift transitions",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Restyle features section cards with glassmorphism: rgba(255,255,255,0.08) background, backdrop blur, thin soft border, subtle shadow, rounded corners, smooth hover lift (2–4px); avoid heavy beige/grey blocks; cards appear like floating glass panels",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Enforce section background consistency: mostly deep dark navy/charcoal with transparent overlays; avoid alternating many colors, white-heavy sections, and flat greys; maintain restrained luxury aesthetic",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Typography & spacing refinement: increase vertical spacing/breathing room between sections, slightly larger headings, clean elegant typography, avoid overcrowding for editorial premium look",
+      "summary": "Home page-only dark-luxury visual + motion refinement: layered deep navy gradients, improved hero readability (overlay/contrast), premium glass feature cards, upgraded CTA and footer, and subtle fade/rise animations; preserve existing layout and content",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Apply luxury glassmorphism navigation + cinematic hero + dark section consistency on Home page",
+  "projectName": "Home page-only dark luxury refinement (no layout/content changes)",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
